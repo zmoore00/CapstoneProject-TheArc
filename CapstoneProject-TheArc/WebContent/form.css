@@ -99,7 +99,7 @@ span.term a:hover{
 input[type=submit] {
 	padding: 17px 30px;
 	color: #fff;
-	float: right;
+	float: left;
 	font-family: 'Oxygen', sans-serif;
 	background: #40A46F;
 	border: 1px solid #40A46F;
@@ -111,7 +111,7 @@ input[type=submit] {
 	-ms-transition: all 0.5s ease-out;
 	-o-transition: all 0.5s ease-out;
 	outline:none;
-	width: 100%;
+	width: 96.41%;
 	-webkit-appearance: none;
 }
 .submit input[type=submit]:hover {
@@ -179,7 +179,6 @@ i.fb, i.tw {
 }
 .main {
 	width: 50%;
-}
 }
 @media (max-width:800px){
 .span_1_of_f {

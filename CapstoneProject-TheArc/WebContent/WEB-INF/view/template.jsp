@@ -7,6 +7,7 @@
 </head>
 
 <body>
+<!--  Everything from div id = "wrapper" through div id = "welcome-bg" goes on individual pages. This is so that the nav bar isn't shown on the login page. -->
 <div id="wrapper">
 	<header>		
 	<div>
@@ -15,39 +16,47 @@
 	 <div class="sub"> = hidden drop down item -->
 			<nav>
 				<ul>
-					<li><a href="index">LOGIN</a></li> 
 					<li><a href="">MEMBERS</a>
 						<div class="sub">
-							<a href="">List Members</a>
-							<a href="">Create Member</a>
-							<a href="">Update Member</a>
-							<a href="">Delete Member</a>
+							<span class="submenu"><a href="">List</a></span>
+							<span class="submenu"><a href="">Create</a></span>
+							<span class="submenu"><a href="">Update</a></span>
+							<span class="submenuEnd"><a href="">Delete</a></span>
 						</div>
 					</li> 
 					<li><a href="">VOLUNTEERS</a>
 						<div class="sub">
-							<a href="">List Volunteers</a>
-							<a href="">Create Volunteer</a>
-							<a href="">Update Volunteer</a>
-							<a href="">Delete Volunteer</a>
+							<span class="submenu"><a href="">List</a></span>
+							<span class="submenu"><a href="">Create</a></span>
+							<span class="submenu"><a href="">Update</a></span>
+							<span class="submenuEnd"><a href="">Delete</a></span>
 						</div>
 					</li> 
 					<li><a href="">ACTIVITIES</a>
-					<div class="sub">
-							<a href="">List Activities</a>
-							<a href="">Create Activity</a>
-							<a href="">Update Activity</a>
-							<a href="">Delete Activity</a>
+						<div class="sub">
+							<span class="submenu"><a href="">List</a></span>
+							<span class="submenu"><a href="">Create</a></span>
+							<span class="submenu"><a href="">Update</a></span>
+							<span class="submenuEnd"><a href="">Delete</a></span>
 						</div>
 					</li> 
 					<li><a href="">GROUP HOMES</a>
 					<div class="sub">
-							<a href="">List Group Homes</a>
-							<a href="">Create Group Home</a>
-							<a href="">Update Group Home</a>
-							<a href="">Delete Group Home</a>
+							<span class="submenu"><a href="">List</a></span>
+							<span class="submenu"><a href="">Create</a></span>
+							<span class="submenu"><a href="">Update</a></span>
+							<span class="submenuEnd"><a href="">Delete</a></span>
 						</div>
 					</li>
+					<li><a href="">REPORTS</a>
+						<div class="sub">
+							<span class="submenu"><a href="">Activity Lists</a></span>
+							<span class="submenu"><a href="">Birthday List</a></span>
+							<span class="submenu"><a href="">Mailing List</a></span>
+							<span class="submenuEnd"><a href="">Delete</a></span>
+						</div>
+					</li>
+					<li><a href="index">LOG OUT</a></li> 
 				</ul>
 			</nav>
 		</div>
@@ -56,12 +65,11 @@
 
 <section id="welcome-bg">
   <div class="container"> 
- <!-- Main page content goes here -->
- <jsp:include page="<%=content%>" />
+  	 <!-- Div class "welcome" is contained in individual pages, as well as any other divs within container. -->
+     <jsp:include page="<%=content%>" />
   </div>
 </section>
-
-
+</div>
 <section id="copy">
   <div class="">
     <div id="copyright">
