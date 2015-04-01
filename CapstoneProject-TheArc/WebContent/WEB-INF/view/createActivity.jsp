@@ -11,7 +11,7 @@
 </head>
 <body>
     <div id="welcome">
-     Create Member
+     Create Activity
     </div>
     <div id="member">
     	<form>
