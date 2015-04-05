@@ -46,7 +46,7 @@
 <section id="welcome-bg">
   <div class="container"> 
   	 <!-- Div class "welcome" is contained in individual pages, as well as any other divs within container. -->
-     <jsp:include page="<%=content%>" />
+     <jsp:include page="<%=%>" />
   </div>
 </section>
 </div>

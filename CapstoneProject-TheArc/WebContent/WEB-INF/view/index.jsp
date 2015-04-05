@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="welcome">
-    Welcome, <%name%>!
+    Welcome, <%%>!
 </div>
 </body>
 </html>
