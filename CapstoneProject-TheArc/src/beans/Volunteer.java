@@ -20,14 +20,13 @@ public class Volunteer implements Serializable{
 	private String 	vol_FName;
 	private String 	vol_LName;
 	private String 	vol_Add1;
-	private String 	vol_Add2;
 	private String 	Vol_City;
 	private String 	vol_State;
 	private String 	vol_Zip;
 	private String 	vol_HPhone;
 	private String 	vol_CPhone;
 	private String 	vol_WPhone;
-	private String 	vol_Emp;
+	private String 	vol_Email;
 	private char 	vol_Liab;
 	private char 	vol_PhotoFlag;
 	private int 	vol_Hours;
@@ -65,12 +64,6 @@ public class Volunteer implements Serializable{
 	public void setVol_Add1(String vol_Add1) {
 		this.vol_Add1 = vol_Add1;
 	}
-	public String getVol_Add2() {
-		return vol_Add2;
-	}
-	public void setVol_Add2(String vol_Add2) {
-		this.vol_Add2 = vol_Add2;
-	}
 	public String getVol_City() {
 		return Vol_City;
 	}
@@ -107,11 +100,11 @@ public class Volunteer implements Serializable{
 	public void setVol_WPhone(String vol_WPhone) {
 		this.vol_WPhone = vol_WPhone;
 	}
-	public String getVol_Emp() {
-		return vol_Emp;
+	public String getVol_Email() {
+		return vol_Email;
 	}
-	public void setVol_Emp(String vol_Emp) {
-		this.vol_Emp = vol_Emp;
+	public void setVol_Email(String vol_Email) {
+		this.vol_Email = vol_Email;
 	}
 	public char getVol_Liab() {
 		return vol_Liab;
