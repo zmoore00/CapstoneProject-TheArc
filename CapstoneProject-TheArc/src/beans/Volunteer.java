@@ -12,7 +12,7 @@ import java.io.Serializable;
  * Boolean  --> char
  * char was chosen for cross platform compatibility
  */
-public class Volunteers implements Serializable{
+public class Volunteer implements Serializable{
 	
 	private static final long serialVersionUID = 2917851356233717858L;
 	
