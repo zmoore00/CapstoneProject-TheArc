@@ -18,42 +18,22 @@
 				<ul>
 					<li><a href="">MEMBERS</a>
 						<div class="sub">
-							<span class="submenu"><a href="">List</a></span>
-							<span class="submenu"><a href="">Create</a></span>
-							<span class="submenu"><a href="">Update</a></span>
-							<span class="submenuEnd"><a href="">Delete</a></span>
 						</div>
 					</li> 
 					<li><a href="">VOLUNTEERS</a>
 						<div class="sub">
-							<span class="submenu"><a href="">List</a></span>
-							<span class="submenu"><a href="">Create</a></span>
-							<span class="submenu"><a href="">Update</a></span>
-							<span class="submenuEnd"><a href="">Delete</a></span>
 						</div>
 					</li> 
 					<li><a href="">ACTIVITIES</a>
 						<div class="sub">
-							<span class="submenu"><a href="">List</a></span>
-							<span class="submenu"><a href="">Create</a></span>
-							<span class="submenu"><a href="">Update</a></span>
-							<span class="submenuEnd"><a href="">Delete</a></span>
 						</div>
 					</li> 
 					<li><a href="">GROUP HOMES</a>
 					<div class="sub">
-							<span class="submenu"><a href="">List</a></span>
-							<span class="submenu"><a href="">Create</a></span>
-							<span class="submenu"><a href="">Update</a></span>
-							<span class="submenuEnd"><a href="">Delete</a></span>
 						</div>
 					</li>
 					<li><a href="">REPORTS</a>
 						<div class="sub">
-							<span class="submenu"><a href="">Activity Lists</a></span>
-							<span class="submenu"><a href="">Birthday List</a></span>
-							<span class="submenu"><a href="">Mailing List</a></span>
-							<span class="submenuEnd"><a href="">Delete</a></span>
 						</div>
 					</li>
 					<li><a href="index">LOG OUT</a></li> 
