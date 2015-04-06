@@ -27,6 +27,7 @@ public class Member implements Serializable
   private char   mem_PhotoFlag;
   private int    mem_GHID;
   private char   mem_PhysFlag;
+  private char   mem_EmailFlag;
   private char   mem_BowlFlag;
   private char   mem_SwimFlag;
   private String mem_County;
@@ -229,6 +230,16 @@ public class Member implements Serializable
 	public void setMem_PhysFlag(char mem_PhysFlag) 
 	{
 		this.mem_PhysFlag = mem_PhysFlag;
+	}
+	
+	// GETTER AND SETTER FOR EMAIL FLAG
+	public char getMem_EmailFlag() 
+	{
+		return mem_EmailFlag;
+	}
+	public void setMem_EmailFlag(char mem_EmailFlag) 
+	{
+		this.mem_BowlFlag = mem_EmailFlag;
 	}
 		
 	// GETTER AND SETTER FOR BOWLING FLAG
