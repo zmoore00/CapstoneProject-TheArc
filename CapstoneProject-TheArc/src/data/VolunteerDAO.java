@@ -39,7 +39,7 @@ public class VolunteerDAO {
 				volunteer.setVol_Hours(rs.getInt("VOL_Hours"));
 				volunteer.setVol_ArtFlag(rs.getString("VOL_ArtFlag").charAt(0));
 				volunteer.setVol_BowlFlag(rs.getString("VOL_BowlFlag").charAt(0));
-				volunteer.setVol_LabFlag(rs.getString("VOL_LabFlag").charAt(0));
+				volunteer.setVol_Liab(rs.getString("VOL_LiabFlag").charAt(0));
 				volunteer.setVol_DanceFlag(rs.getString("VOL_DanceFlag").charAt(0));
 				volunteer.setVol_FishFlag(rs.getString("VOL_FishFlag").charAt(0));
 				volunteer.setVol_WaterFlag(rs.getString("VOL_WaterFlag").charAt(0));
@@ -56,6 +56,46 @@ public class VolunteerDAO {
 			System.out.println("Query: " + statement.toString());
 		}
 		return volunteers;
+	}
+	
+	public synchronized int addStudent(Volunteer volunteer){
+		int status=0;
+		String preparedSQL = "INSERT INTO volunteer(VOL_FName,VOL_LName,VOL_Add1,VOL_City,VOL_State,VOL_Zip,VOL_HPhone,VOL_CPhone,VOL_WPhone,VOL_LiabFlag,VOL_PhotoFlag,VOL_Hours,VOL_ArtFlag,VOL_BowlFlag,VOL_LabFlag,VOL_DanceFlag,VOL_FishFlag,VOL_WaterFlag,VOL_OfficeFlag,VOL_SpecFlag,VOL_email,) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+		PreparedStatement statement=null;
+		
+		try {
+			connection = ConnectionDAO.getCon();
+			statement = connection.prepareStatement(preparedSQL);
+			statement.setString(1, volunteer.getVol_FName());
+			statement.setString(2, volunteer.getVol_LName());
+			statement.setString(3, volunteer.getVol_Add1());
+			statement.setString(4, volunteer.getVol_City());
+			statement.setString(5, volunteer.getVol_State());
+			statement.setString(6, volunteer.getVol_Zip());
+			statement.setString(7, volunteer.getVol_HPhone());
+			statement.setString(8, volunteer.getVol_CPhone());
+			statement.setString(9, volunteer.getVol_WPhone());
+			statement.setString(10, String.valueOf(volunteer.getVol_Liab()));
+			statement.setString(11, String.valueOf(volunteer.getVol_PhotoFlag()));
+			statement.setString(12, String.valueOf(volunteer.getVol_Hours()));
+			statement.setString(13, String.valueOf(volunteer.getVol_ArtFlag()));
+			statement.setString(14, String.valueOf(volunteer.getVol_BowlFlag()));
+			statement.setString(15, String.valueOf(volunteer.getVol_LabFlag()));
+			statement.setString(16, String.valueOf(volunteer.getVol_DanceFlag()));
+			statement.setString(17, String.valueOf(volunteer.getVol_FishFlag()));
+			statement.setString(18, String.valueOf(volunteer.getVol_WaterFlag()));
+			statement.setString(19, String.valueOf(volunteer.getVol_OfficeFlag()));
+			statement.setString(20, String.valueOf(volunteer.getVol_SpecFlag()));
+			statement.setString(21, volunteer.getVol_Email());
+			
+	
+			status = statement.executeUpdate();
+			statement.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return status;
 	}
 	
 	
