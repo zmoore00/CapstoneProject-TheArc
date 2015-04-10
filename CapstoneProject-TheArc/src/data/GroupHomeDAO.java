@@ -44,7 +44,9 @@ public class GroupHomeDAO {
 		return grouphomes;
 	}
 	
-	
+	public synchronized int addGroupHome(GroupHome grouphome){
+		
+	}
 	
 
 }
