@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import beans.Activities;
 import beans.Volunteer;
 
+
 public class ActivityDAO {
 	private static Connection connection=null;
 

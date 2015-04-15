@@ -100,7 +100,7 @@ public class VolunteerDAO {
 	
 	public synchronized int removeVolunteer(String volunteerID){
 		int status=0;
-		String preparedSQL = "delete from volunteer where VOL_ID = ?;";
+		String preparedSQL = "delete from volunteer where VOL_ID = ?;"; 
 		PreparedStatement statement=null;
 		
 		try {
