@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import beans.GroupHomes;
+import beans.GroupHome;
 
 public class GroupHomeDAO {
   
@@ -102,7 +102,7 @@ public class GroupHomeDAO {
 			statement.setString(4, grouphome.getGRP_City());
 			statement.setString(5, grouphome.getGRP_State());
 			statement.setString(6, grouphome.getGRP_Zip());
-			statement.setString(7, GRP_ID);
+			statement.setString(7, grouphome.getGRP_ID());
 			
 			status = statement.executeUpdate();
 			statement.close();

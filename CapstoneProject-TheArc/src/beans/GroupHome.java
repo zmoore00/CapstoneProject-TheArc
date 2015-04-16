@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 //Evan Burkes
 
-public class GroupHomes implements Serializable
+public class GroupHome implements Serializable
 {
 	private String  GRP_ID;
 	private String  GRP_Name;
