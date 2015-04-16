@@ -1,5 +1,15 @@
+<%
+
+	String content = (String) request.getAttribute("content");
+
+%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*,beans.*,data.*" %>
+
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
 	<link href="style.css" rel="stylesheet">
@@ -46,7 +56,8 @@
 <section id="welcome-bg">
   <div class="container"> 
   	 <!-- Div class "welcome" is contained in individual pages, as well as any other divs within container. -->
-     <jsp:include page="<%=%>" />
+     <jsp:include page="<%=content%>" />
+     
   </div>
 </section>
 </div>
