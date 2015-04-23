@@ -16,7 +16,7 @@ public class VolunteerDAO {
 	 	ArrayList<Volunteer> volunteers = new ArrayList<Volunteer>();
 	 	Volunteer volunteer;
 	 	PreparedStatement statement=null;
-		String preparedSQL = "SELECT * FROM volunteer;";
+		String preparedSQL = "SELECT * FROM ARC_Volunteer;";
 		
 	    try{
 	    	connection = ConnectionDAO.getCon();
@@ -60,7 +60,7 @@ public class VolunteerDAO {
 	
 	public synchronized int addVolunteer(Volunteer volunteer){
 		int status=0;
-		String preparedSQL = "INSERT INTO volunteer(VOL_FName,VOL_LName,VOL_Add1,VOL_City,VOL_State,VOL_Zip,VOL_HPhone,VOL_CPhone,VOL_WPhone,VOL_LiabFlag,VOL_PhotoFlag,VOL_Hours,VOL_ArtFlag,VOL_BowlFlag,VOL_LabFlag,VOL_DanceFlag,VOL_FishFlag,VOL_WaterFlag,VOL_OfficeFlag,VOL_SpecFlag,VOL_email,) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+		String preparedSQL = "INSERT INTO ARC_Volunteer(VOL_FName,VOL_LName,VOL_Add1,VOL_City,VOL_State,VOL_Zip,VOL_HPhone,VOL_CPhone,VOL_WPhone,VOL_LiabFlag,VOL_PhotoFlag,VOL_Hours,VOL_ArtFlag,VOL_BowlFlag,VOL_LabFlag,VOL_DanceFlag,VOL_FishFlag,VOL_WaterFlag,VOL_OfficeFlag,VOL_SpecFlag,VOL_email) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		PreparedStatement statement=null;
 		
 		try {
@@ -100,7 +100,7 @@ public class VolunteerDAO {
 	
 	public synchronized int removeVolunteer(String volunteerID){
 		int status=0;
-		String preparedSQL = "delete from volunteer where VOL_ID = ?;"; 
+		String preparedSQL = "delete from ARC_Volunteer where VOL_ID = ?;"; 
 		PreparedStatement statement=null;
 		
 		try {
@@ -120,7 +120,7 @@ public class VolunteerDAO {
 		int status=0;
 		
 	 	PreparedStatement statement=null;
-		String preparedSQL = "UPDATE volunteer SET VOL_FName = ?, VOL_LName = ?, VOL_Add1 = ?, VOL_City = ?, VOL_State = ?, VOL_Zip = ?, VOL_HPhone = ?, VOL_CPhone = ?, VOL_WPhone = ?, VOL_LiabFlag = ?, VOL_PhotoFlag = ?, VOL_Hours = ?, VOL_ArtFlag = ?, VOL_BowlFlag = ?, VOL_LabFlag = ?, VOL_DanceFlag = ?, VOL_FishFlag = ?, VOL_WaterFlag = ?, VOL_OfficeFlag = ?, VOL_SpecFlag = ? WHERE VOL_ID = ?;";
+		String preparedSQL = "UPDATE ARC_Volunteer SET VOL_FName = ?, VOL_LName = ?, VOL_Add1 = ?, VOL_City = ?, VOL_State = ?, VOL_Zip = ?, VOL_HPhone = ?, VOL_CPhone = ?, VOL_WPhone = ?, VOL_LiabFlag = ?, VOL_PhotoFlag = ?, VOL_Hours = ?, VOL_ArtFlag = ?, VOL_BowlFlag = ?, VOL_LabFlag = ?, VOL_DanceFlag = ?, VOL_FishFlag = ?, VOL_WaterFlag = ?, VOL_OfficeFlag = ?, VOL_SpecFlag = ? WHERE VOL_ID = ?;";
 		
 	    try{
 	    	connection = ConnectionDAO.getCon();
@@ -146,7 +146,7 @@ public class VolunteerDAO {
 			statement.setString(19, String.valueOf(volunteer.getVol_OfficeFlag()));
 			statement.setString(20, String.valueOf(volunteer.getVol_SpecFlag()));
 			statement.setString(21, volunteer.getVol_Email());
-	    	statement.setString(6, String.valueOf(volunteer.getVol_ID()));
+	    	statement.setString(22, String.valueOf(volunteer.getVol_ID()));
 			status = statement.executeUpdate();
 			statement.close();
 			connection.close();
@@ -160,7 +160,7 @@ public class VolunteerDAO {
 	public synchronized static Volunteer getVolunteer(String id) {	 	
 	 	Volunteer volunteer=null;
 	 	PreparedStatement statement=null;
-		String preparedSQL = "SELECT * FROM volunteer WHERE VOL_ID = ?;";
+		String preparedSQL = "SELECT * FROM ARC_Volunteer WHERE VOL_ID = ?;";
 		
 	    try{
 	    	connection = ConnectionDAO.getCon();

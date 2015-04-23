@@ -101,7 +101,7 @@ public class MemberDAO {
 	
 	public synchronized int removeMember(String memberID){
 		int status=0;
-		String preparedSQL = "delete from member where MEM_ID = ?";
+		String preparedSQL = "delete from ARC_Member where MEM_ID = ?";
 		PreparedStatement statement=null;
 		
 		try {

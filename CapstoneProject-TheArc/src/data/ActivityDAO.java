@@ -17,7 +17,7 @@ public class ActivityDAO {
 		ArrayList<Activities> 	activities = new ArrayList<Activities>();
 		Activities 				activity;
 		PreparedStatement 		statement=null;
-		String preparedSQL = 	"SELECT * FROM Activities;";
+		String preparedSQL = 	"SELECT * FROM ARC_Activities;";
 
 		try{
 			connection = 	ConnectionDAO.getCon();
@@ -54,7 +54,7 @@ public class ActivityDAO {
 		int status=0;
 		PreparedStatement statement=null;
 		String preparedSQL = 
-				"INSERT INTO Activities("
+				"INSERT INTO ARC_Activities("
 						+"ACT_Name, ACT_Type, ACT_Date, ACT_Loc, ACT_VolCount, "
 						+"ACT_MemCount, ACT_NonCount, ACT_TotCount, ACT_Revenue,"
 						+"ACT_Expense) VALUES(?,?,?,?,?,?,?,?,?,?);";
@@ -88,7 +88,7 @@ public class ActivityDAO {
 	
 	public synchronized int remove_Activity(String Act_ID){
 		int status=0;
-		String preparedSQL = "delete from Activities where ACT_ID = ?;";
+		String preparedSQL = "delete from ARC_Activities where ACT_ID = ?;";
 		PreparedStatement statement=null;
 		
 		try {
@@ -108,7 +108,7 @@ public class ActivityDAO {
 		int status=0;
 		PreparedStatement statement=null;
 		String preparedSQL = 
-				"UPDATE Activities SET"
+				"UPDATE ARC_Activities SET"
 						+"ACT_Name = ?, ACT_Type = ?, ACT_Date = ?, ACT_Loc = ?, ACT_VolCount = ?, "
 						+"ACT_MemCount = ?, ACT_NonCount = ?, ACT_TotCount = ?, ACT_Revenue = ?,"
 						+"ACT_Expense = ?);";
@@ -143,7 +143,7 @@ public class ActivityDAO {
 		Activities 				activity  = null;
 		PreparedStatement 		statement = null;
 		
-		String preparedSQL = 	"SELECT * FROM Activities WHERE ACT_ID = ?;";
+		String preparedSQL = 	"SELECT * FROM ARC_Activities WHERE ACT_ID = ?;";
 
 		try{
 			connection 	= 	ConnectionDAO.getCon();
