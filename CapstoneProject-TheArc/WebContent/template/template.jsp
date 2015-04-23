@@ -12,8 +12,16 @@
 
 
 <head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<link href="style.css" rel="stylesheet">
-	<link href="form.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<script type="text/javascript" src="jquery.cookie.js"></script> <!--required only if using cookies-->
+    <script type="text/javascript" src="jquery.accordion.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.accordion').accordion({defaultOpen: 'some_id'}); //some_id section1 in demo
+        });
+    </script>
 </head>
 
 <body>
@@ -26,23 +34,23 @@
 	 <div class="sub"> = hidden drop down item -->
 			<nav>
 				<ul>
-					<li><a href="">MEMBERS</a>
+					<li><a href="member.jsp">MEMBERS</a>
 						<div class="sub">
 						</div>
 					</li> 
-					<li><a href="">VOLUNTEERS</a>
+					<li><a href="volunteer.jsp">VOLUNTEERS</a>
 						<div class="sub">
 						</div>
 					</li> 
-					<li><a href="">ACTIVITIES</a>
+					<li><a href="activity.jsp">ACTIVITIES</a>
 						<div class="sub">
 						</div>
 					</li> 
-					<li><a href="">GROUP HOMES</a>
+					<li><a href="grouphome.jsp">GROUP HOMES</a>
 					<div class="sub">
 						</div>
 					</li>
-					<li><a href="">REPORTS</a>
+					<li><a href="report.jsp">REPORTS</a>
 						<div class="sub">
 						</div>
 					</li>
