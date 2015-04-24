@@ -272,6 +272,16 @@
 				
 			  </div>
 			</div>
+			
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="mem_GHID">Group Home ID</label>  
+			  <div class="col-md-5">
+			  <input id="mem_GHID" name="mem_GHID" type="text" placeholder="" class="form-control input-md">
+				
+			  </div>
+			</div>
+			
 
 			<!-- Button -->
 			<div class="form-group">
@@ -486,6 +496,15 @@
 			  <label class="col-md-4 control-label" for="mem_Country">Country</label>  
 			  <div class="col-md-5">
 			  <input id="mem_Country" name="mem_Country" type="text" placeholder="USA" class="form-control input-md" required="">
+				
+			  </div>
+			</div>
+			
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="mem_GHID">Group Home ID</label>  
+			  <div class="col-md-5">
+			  <input id="mem_GHID" name="mem_GHID" type="text" placeholder="" class="form-control input-md">
 				
 			  </div>
 			</div>

@@ -74,7 +74,7 @@
 				
 			<!-- Button -->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="create">Get Member List</label>
+			  <label class="col-md-4 control-label" for="create">Get Volunteer List</label>
 			  <div class="col-md-4">
 				<button id="getVolunteers" name="getVolunteers" class="btn btn-warning">Submit</button>
 			  </div>
@@ -110,18 +110,9 @@
 
 			<!-- Text input-->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="vol_Add1">Address 1</label>  
+			  <label class="col-md-4 control-label" for="vol_Add1">Address</label>  
 			  <div class="col-md-5">
 			  <input id="vol_Add1" name="vol_Add1" type="text" placeholder="1 N 1st St" class="form-control input-md" required="">
-				
-			  </div>
-			</div>
-
-			<!-- Text input-->
-			<div class="form-group">
-			  <label class="col-md-4 control-label" for="vol_Add2">Address 2</label>  
-			  <div class="col-md-5">
-			  <input id="vol_Add2" name="vol_Add2" type="text" placeholder="" class="form-control input-md">
 				
 			  </div>
 			</div>
@@ -182,9 +173,9 @@
 			
 			<!-- Text input-->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="vol_State">Employer</label>  
+			  <label class="col-md-4 control-label" for="vol_Email">Email</label>  
 			  <div class="col-md-2">
-			  <input id="vol_Emp" name="vol_Emp" type="text" placeholder="Employer" class="form-control input-md" required="">
+			  <input id="vol_Email" name="vol_Email" type="text" placeholder="" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -205,6 +196,94 @@
 			  <label class="col-md-4 control-label" for="vol_PhotoFlag">Photo Release Flag</label>
 			  <div class="col-md-2">
 				<select id="vol_PhotoFlag" name="vol_PhotoFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_ArtFlag">Art Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_ArtFlag" name="vol_ArtFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_BowlFlag">Bowling Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_BowlFlag" name="vol_BowlFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_LabFlag">Computer Lab Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_LabFlag" name="vol_LabFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_DanceFlag">Dance Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_DanceFlag" name="vol_DanceFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_FishFlag">Fishing Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_FishFlag" name="vol_FishFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_WaterFlag">Water Park Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_WaterFlag" name="vol_WaterFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_OfficeFlag">Office Work Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_OfficeFlag" name="vol_OfficeFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_SpecFlag">Special Events Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_SpecFlag" name="vol_SpecFlag" class="form-control">
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -257,22 +336,13 @@
 
 			<!-- Text input-->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="vol_Add1">Address 1</label>  
+			  <label class="col-md-4 control-label" for="vol_Add1">Address</label>  
 			  <div class="col-md-5">
 			  <input id="vol_Add1" name="vol_Add1" type="text" placeholder="1 N 1st St" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
-
-			<!-- Text input-->
-			<div class="form-group">
-			  <label class="col-md-4 control-label" for="vol_Add2">Address 2</label>  
-			  <div class="col-md-5">
-			  <input id="vol_Add2" name="vol_Add2" type="text" placeholder="" class="form-control input-md">
-				
-			  </div>
-			</div>
-
+			
 			<!-- Text input-->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="vol_City">City</label>  
@@ -329,9 +399,9 @@
 
 			<!-- Text input-->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="vol_Email">Employer</label>  
-			  <div class="col-md-5">
-			  <input id="vol_Emp" name="vol_Emp" type="text" placeholder="" class="form-control input-md" required="">
+			  <label class="col-md-4 control-label" for="vol_Email">Email</label>  
+			  <div class="col-md-2">
+			  <input id="vol_Email" name="vol_Email" type="text" placeholder="" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -357,6 +427,94 @@
 				</select>
 			  </div>
 			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_ArtFlag">Art Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_ArtFlag" name="vol_ArtFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_BowlFlag">Bowling Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_BowlFlag" name="vol_BowlFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_LabFlag">Computer Lab Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_LabFlag" name="vol_LabFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_DanceFlag">Dance Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_DanceFlag" name="vol_DanceFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_FishFlag">Fishing Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_FishFlag" name="vol_FishFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_WaterFlag">Water Park Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_WaterFlag" name="vol_WaterFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_OfficeFlag">Office Work Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_OfficeFlag" name="vol_OfficeFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="vol_SpecFlag">Special Events Flag</label>
+			  <div class="col-md-2">
+				<select id="vol_SpecFlag" name="vol_SpecFlag" class="form-control">
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
+				</select>
+			  </div>
+			</div>
 
 			<!-- Button -->
 			<div class="form-group">
@@ -377,7 +535,7 @@
 			<fieldset>
 			<!-- Text input-->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="vol_ID">Member ID</label>  
+			  <label class="col-md-4 control-label" for="vol_ID">Volunteer ID</label>  
 			  <div class="col-md-5">
 			  <input id="vol_ID" name="vol_ID" type="text" placeholder="" class="form-control input-md" required="">
 			  </div>
@@ -385,7 +543,7 @@
 			
 			<!-- Button -->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="create">Delete Member</label>
+			  <label class="col-md-4 control-label" for="create">Delete Volunteer</label>
 			  <div class="col-md-4">
 				<button id="delete" name="delete" class="btn btn-danger">Submit</button>
 			  </div>
