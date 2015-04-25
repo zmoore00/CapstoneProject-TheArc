@@ -13,6 +13,7 @@ public class ConnectionDAO {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://hightower.cis.uafs.edu:22/arcproject?user=arcproject&password=arcproject");
+			System.out.println("Successful Connection");
 		}
 		catch (SQLException ex){
 			System.out.println("Error" + ex);
