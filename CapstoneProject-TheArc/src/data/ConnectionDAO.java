@@ -12,7 +12,7 @@ public class ConnectionDAO {
 		Connection conn=null;
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://");
+			conn = DriverManager.getConnection("jdbc:mysql://hightower.cis.uafs.edu:22/arcproject?user=arcproject&password=arcproject");
 		}
 		catch (SQLException ex){
 			System.out.println("Error" + ex);
