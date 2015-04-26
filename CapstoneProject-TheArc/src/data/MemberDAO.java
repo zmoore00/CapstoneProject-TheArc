@@ -207,5 +207,47 @@ public class MemberDAO {
 	    return member;
 		
 	}
-
+	
+	public synchronized static ArrayList<Member> getEXPMembers() {
+	 	ArrayList<Member> members = new ArrayList<Member>();
+	 	Member member;
+	 	PreparedStatement statement=null;
+		String preparedSQL = "SELECT MEM_ID, MEM_FName, MEM_LName, MEM_Add1, MEM_Add2, MEM_City, MEM_State, MEM_Zip, MEM_HPhone, MEM_WPhone, MEM_RenewDate, MEM_CurFlag FROM ARC_Member WHERE VOL_ID = ?;"
+		
+	        try{
+	    	connection = ConnectionDAO.getCon();
+	    	statement = connection.prepareStatement(preparedSQL);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()){
+				member = new Member();
+				member.setMem_ID(rs.getString("MEM_ID"));
+				member.setMem_FName(rs.getString("MEM_FName"));
+				member.setMem_LName(rs.getString("MEM_LName"));
+				member.setMem_Add1(rs.getString("MEM_Add1"));
+				member.setMem_Add2(rs.getString("MEM_Add2"));
+				member.setMem_City(rs.getString("MEM_City"));
+				member.setMem_State(rs.getString("MEM_State"));
+				member.setMem_Zip(rs.getString("MEM_Zip"));
+				member.setMem_HPhone(rs.getString("MEM_HPhone"));
+				member.setMem_CPhone(rs.getString("MEM_CPhone"));
+				member.setMem_WPhone(rs.getString("MEM_WPhone"));
+				member.setMem_RenewDate(rs.getString("MEM_RenewDate"));
+				member.setMem_CurFlag(rs.getString("MEM_CurFlag").charAt(0));
+				member.setMem_GHID(rs.getString("MEM_GHID").charAt(0));
+				members.add(member);
+			}
+			
+			rs.close();		
+			statement.close();
+			connection.close();
+		}catch (SQLException ex){
+			System.out.println("Error: " + ex);
+			System.out.println("Query: " + statement.toString());
+		}
+		return members;
+		
+	}
+	
 }
+		
+		
