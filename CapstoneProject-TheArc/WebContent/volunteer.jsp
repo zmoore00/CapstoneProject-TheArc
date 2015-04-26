@@ -57,6 +57,66 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 			System.out.println(volFname);
 		}
 	}
+	//This handles the Delete AND Create for a Volunteer and can be used for all others
+	if(request.getMethod().equalsIgnoreCase("POST")){
+		//This is what handles the delete
+		if(request.getParameter("vol_ID") != null)
+		{
+		String volunteerID = request.getParameter("vol_ID");
+		
+		int status = VolunteerDAO.removeVolunteer(volunteerID);
+		}
+		//This is what handles the Create
+		if(request.getParameter("vol_ID") == null)
+		{
+		volFname = request.getParameter("vol_FName");
+		volLname = request.getParameter("vol_LName");
+ 		volAdd1  = request.getParameter("vol_Add1");
+ 		volCity  = request.getParameter("vol_City");
+ 		volState = request.getParameter("vol_State");
+ 		volZip   = request.getParameter("vol_Zip");
+ 		volHPhone = request.getParameter("vol_HPhone");
+ 		volCPhone = request.getParameter("vol_CPhone");
+ 		volWPhone = request.getParameter("vol_WPhone");
+ 		volLabFlag = request.getParameter("vol_LabFlag");
+ 		volPhotoFlag = request.getParameter("vol_PhotoFlag");
+ 		volHours = request.getParameter("vol_Hours");
+ 		volArtFlag = request.getParameter("vol_ArtFlag");
+ 		volBowlFlag = request.getParameter("vol_BowlFlag");
+ 		volLiab = request.getParameter("vol_LiabFLag");
+ 		volDanceFlag = request.getParameter("vol_DanceFlag");
+ 		volFishFlag = request.getParameter("vol_FishFlag");
+ 		volWaterFlag = request.getParameter("vol_WaterFlag");
+ 		volOfficeFlag = request.getParameter("vol_OfficeFlag");
+ 		volSpecFlag = request.getParameter("vol_SpecFlag");
+ 		volEmail = request.getParameter("vol_Email");
+		
+		Volunteer volunteer = new Volunteer();
+		volunteer.setVol_FName(volFname);
+		volunteer.setVol_LName(volLname);
+ 		volunteer.setVol_Add1(volAdd1);
+ 		volunteer.setVol_City(volCity);
+ 		volunteer.setVol_State(volState);
+ 		volunteer.setVol_Zip(volZip);
+ 		volunteer.setVol_HPhone(volHPhone);
+ 		volunteer.setVol_CPhone(volCPhone);
+ 		volunteer.setVol_WPhone(volWPhone);
+ 		volunteer.setVol_LabFlag(volLabFlag.charAt(0));
+ 		volunteer.setVol_PhotoFlag(volPhotoFlag.charAt(0));
+ 		volunteer.setVol_Hours(0);
+ 		volunteer.setVol_ArtFlag(volArtFlag.charAt(0));
+ 		volunteer.setVol_BowlFlag(volBowlFlag.charAt(0));
+ 		volunteer.setVol_Liab(volLabFlag.charAt(0));
+ 		volunteer.setVol_DanceFlag(volDanceFlag.charAt(0));
+ 		volunteer.setVol_FishFlag(volFishFlag.charAt(0));
+ 		volunteer.setVol_WaterFlag(volWaterFlag.charAt(0));
+ 		volunteer.setVol_OfficeFlag(volOfficeFlag.charAt(0));
+ 		volunteer.setVol_SpecFlag(volSpecFlag.charAt(0));
+ 		volunteer.setVol_Email(volEmail);
+		
+		VolunteerDAO.addVolunteer(volunteer);
+		}
+	}
 %>
 
 
@@ -150,7 +210,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<!-- BEGIN CREATE MEMBER SECTION -->
 		<div class="accordion" id="section2">Create Volunteer<span></span></div>
 			<div class="content">
-					<p>			<form class="form-horizontal">
+					<p>			<form class="form-horizontal" method="POST">
 			<fieldset>
 
 			<!-- Text input-->
@@ -592,9 +652,10 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		</div>
 		
 	<!-- BEGIN DELETE MEMBER SECTION -->
+	<!-- You have to put method="POST" on the form to make it work -->
 	<div class="accordion" id="section4">Delete Volunteer<span></span></div>
 			<div class="content">
-			<p>			<form class="form-horizontal">
+			<p>			<form class="form-horizontal" method="POST">
 			<fieldset>
 			<!-- Text input-->
 			<div class="form-group">

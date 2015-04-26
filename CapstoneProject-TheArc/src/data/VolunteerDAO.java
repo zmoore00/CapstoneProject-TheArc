@@ -60,7 +60,7 @@ public class VolunteerDAO {
 		return volunteers;
 	}
 	
-	public synchronized int addVolunteer(Volunteer volunteer){
+	public synchronized static int addVolunteer(Volunteer volunteer){
 		int status=0;
 		String preparedSQL = "INSERT INTO ARC_Volunteer(VOL_FName,VOL_LName,VOL_Add1,VOL_City,VOL_State,VOL_Zip,VOL_HPhone,VOL_CPhone,VOL_WPhone,VOL_LiabFlag,VOL_PhotoFlag,VOL_Hours,VOL_ArtFlag,VOL_BowlFlag,VOL_LabFlag,VOL_DanceFlag,VOL_FishFlag,VOL_WaterFlag,VOL_OfficeFlag,VOL_SpecFlag,VOL_email) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		PreparedStatement statement=null;
@@ -90,7 +90,6 @@ public class VolunteerDAO {
 			statement.setString(20, String.valueOf(volunteer.getVol_SpecFlag()));
 			statement.setString(21, volunteer.getVol_Email());
 			
-	
 			status = statement.executeUpdate();
 			statement.close();
 			connection.close();
@@ -100,7 +99,7 @@ public class VolunteerDAO {
 		return status;
 	}
 	
-	public synchronized int removeVolunteer(String volunteerID){
+	public synchronized static int removeVolunteer(String volunteerID){
 		int status=0;
 		String preparedSQL = "delete from ARC_Volunteer where VOL_ID = ?;"; 
 		PreparedStatement statement=null;

@@ -126,7 +126,7 @@ public class GroupHomeDAO {
 	    	    
 	    	    ResultSet rs = statement.executeQuery();
 			while(rs.next()){
-				grouphome = new GourpHome();
+				grouphome = new GroupHome();
 				grouphome.setGRP_ID(rs.getString("GRP_ID"));
 				grouphome.setGRP_Name(rs.getString("GRP_Name"));
 				grouphome.setGRP_Add1(rs.getString("GRP_Add1"));
