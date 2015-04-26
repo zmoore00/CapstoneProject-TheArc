@@ -114,6 +114,40 @@ public class GroupHomeDAO {
 	    return status;
 	}
 	
+	public synchronized static GroupHome getGroupHome(String id) {
+		GroupHome grouphome=null;
+	 	PreparedStatement statement=null;
+		String preparedSQL = "SELECT * FROM ARC_GroupHome WHERE GRP_ID = ?;";
+		
+		try{
+		    connection = ConnectionDAO.getCon();
+	    	    statement = connection.prepareStatement(preparedSQL);
+	    	    statement.setString(1, id);
+	    	    
+	    	    ResultSet rs = statement.executeQuery();
+			while(rs.next()){
+				grouphome = new GourpHome();
+				grouphome.setGRP_ID(rs.getString("GRP_ID"));
+				grouphome.setGRP_Name(rs.getString("GRP_Name"));
+				grouphome.setGRP_Add1(rs.getString("GRP_Add1"));
+				grouphome.setGRP_Add2(rs.getString("GRP_Add2"));
+				grouphome.setGRP_City(rs.getString("GRP_City"));
+				grouphome.setGRP_State(rs.getString("GRP_State"));
+				grouphome.setGRP_Zip(rs.getString("GRP_Zip"));
+			
+			}
+			rs.close();		
+			statement.close();
+			connection.close();
+			
+		}catch (SQLException ex){
+			System.out.println("Error: " + ex);
+			System.out.println("Query: " + statement.toString());
+		}
+		
+	return grouphome;
+	
+	}
 	
 			
 }
