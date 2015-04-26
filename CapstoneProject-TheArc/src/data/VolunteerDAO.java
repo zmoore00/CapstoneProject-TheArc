@@ -12,7 +12,7 @@ public class VolunteerDAO {
 	
 	private static Connection connection=null;
 	
-	public synchronized ArrayList<Volunteer> getVolunteers() {
+	public synchronized static ArrayList<Volunteer> getVolunteers() {
 	 	ArrayList<Volunteer> volunteers = new ArrayList<Volunteer>();
 	 	Volunteer volunteer;
 	 	PreparedStatement statement=null;

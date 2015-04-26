@@ -11,7 +11,7 @@ import beans.Member;
 public class MemberDAO {
 	private static Connection connection=null;
 	
-	public synchronized ArrayList<Member> getMembers() {
+	public synchronized static ArrayList<Member> getMembers() {
 	 	ArrayList<Member> members = new ArrayList<Member>();
 	 	Member member;
 	 	PreparedStatement statement=null;

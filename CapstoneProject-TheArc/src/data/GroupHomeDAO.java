@@ -12,7 +12,7 @@ public class GroupHomeDAO {
   
 	private static Connection connection=null;
 	
-		public synchronized ArrayList<GroupHome> getGroupHomes() {
+		public synchronized static ArrayList<GroupHome> getGroupHomes() {
 	 	ArrayList<GroupHome> grouphomes = new ArrayList<GroupHome>();
 	 	GroupHome grouphome;
 	 	PreparedStatement statement=null;

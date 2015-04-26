@@ -13,7 +13,7 @@ import beans.Volunteer;
 public class ActivityDAO {
 	private static Connection connection=null;
 
-	public synchronized ArrayList<Activities> getActivities() {
+	public synchronized static ArrayList<Activities> getActivities() {
 		ArrayList<Activities> 	activities = new ArrayList<Activities>();
 		Activities 				activity;
 		PreparedStatement 		statement=null;

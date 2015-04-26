@@ -3,6 +3,38 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<%
+	ArrayList<Volunteer> volunteers;
+	int i;
+	
+	volunteers=VolunteerDAO.getVolunteers();
+	
+if(request.getMethod().equalsIgnoreCase("GET")){
+		for(Volunteer volunteer : volunteers){
+			String volFname = volunteer.getVol_FName();
+			String volLname = volunteer.getVol_LName();
+			String volAdd1  = volunteer.getVol_Add1();
+			String volCity  = volunteer.getVol_City();
+			String volState = volunteer.getVol_State();
+			String volZip   = volunteer.getVol_Zip();
+			String volHPhone = volunteer.getVol_HPhone();
+			String volCPhone = volunteer.getVol_CPhone();
+			String volWPhone = volunteer.getVol_WPhone();
+			String volLabFlag = String.valueOf(volunteer.getVol_LabFlag());
+			String volPhotoFlag = String.valueOf(volunteer.getVol_PhotoFlag());
+			String volHours = String.valueOf(volunteer.getVol_Hours());
+			String volArtFlag = String.valueOf(volunteer.getVol_ArtFlag());
+			String volBowlFlag = String.valueOf(volunteer.getVol_BowlFlag());
+			String volLiab = String.valueOf(volunteer.getVol_Liab());
+			String volDanceFlag = String.valueOf(volunteer.getVol_DanceFlag());
+			String volFishFlag = String.valueOf(volunteer.getVol_FishFlag());
+			String volWaterFlag = String.valueOf(volunteer.getVol_WaterFlag());
+			String volOfficeFlag = String.valueOf(volunteer.getVol_OfficeFlag());
+			String volSpecFlag = String.valueOf(volunteer.getVol_SpecFlag());
+			String volEmail = volunteer.getVol_Email();
+		}
+	}
+%>
 
 
 <head>
@@ -74,6 +106,11 @@
 				
 			<!-- Button -->
 			<div class="form-group">
+			<table>
+				<tr>
+					<td id="fnameHead" value="<%=volFname%>"><td>
+				<tr>
+			</table>
 			  <label class="col-md-4 control-label" for="create">Get Volunteer List</label>
 			  <div class="col-md-4">
 				<button id="getVolunteers" name="getVolunteers" class="btn btn-warning">Submit</button>
