@@ -47,6 +47,7 @@ public class MemberDAO {
 				member.setMem_SwimFlag(rs.getString("MEM_SwimFlag").charAt(0));
 				member.setMem_County(rs.getString("MEM_County"));
 
+				members.add(member);
 			}	
 			rs.close();		
 			statement.close();

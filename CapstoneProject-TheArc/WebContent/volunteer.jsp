@@ -4,34 +4,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <%
+	//This is the Java section that reads in the Volunteers from the database, this can be used for all others
 	ArrayList<Volunteer> volunteers;
 	int i;
 	
 	volunteers=VolunteerDAO.getVolunteers();
-	
+	String volFname = null;
+	String volLname = null;
+	String volAdd1  = null;
+	String volCity  = null;
+	String volState = null;
+	String volZip   = null;
+	String volHPhone = null;
+	String volCPhone = null;
+	String volWPhone = null;
+	String volLabFlag = null;
+	String volPhotoFlag = null;
+	String volHours = null;
+	String volArtFlag = null;
+	String volBowlFlag = null;
+	String volLiab = null;
+	String volDanceFlag = null;
+	String volFishFlag = null;
+	String volWaterFlag = null;
+	String volOfficeFlag = null;
+	String volSpecFlag = null;
+	String volEmail = null;
+	String test = "test";
 if(request.getMethod().equalsIgnoreCase("GET")){
 		for(Volunteer volunteer : volunteers){
-			String volFname = volunteer.getVol_FName();
-			String volLname = volunteer.getVol_LName();
-			String volAdd1  = volunteer.getVol_Add1();
-			String volCity  = volunteer.getVol_City();
-			String volState = volunteer.getVol_State();
-			String volZip   = volunteer.getVol_Zip();
-			String volHPhone = volunteer.getVol_HPhone();
-			String volCPhone = volunteer.getVol_CPhone();
-			String volWPhone = volunteer.getVol_WPhone();
-			String volLabFlag = String.valueOf(volunteer.getVol_LabFlag());
-			String volPhotoFlag = String.valueOf(volunteer.getVol_PhotoFlag());
-			String volHours = String.valueOf(volunteer.getVol_Hours());
-			String volArtFlag = String.valueOf(volunteer.getVol_ArtFlag());
-			String volBowlFlag = String.valueOf(volunteer.getVol_BowlFlag());
-			String volLiab = String.valueOf(volunteer.getVol_Liab());
-			String volDanceFlag = String.valueOf(volunteer.getVol_DanceFlag());
-			String volFishFlag = String.valueOf(volunteer.getVol_FishFlag());
-			String volWaterFlag = String.valueOf(volunteer.getVol_WaterFlag());
-			String volOfficeFlag = String.valueOf(volunteer.getVol_OfficeFlag());
-			String volSpecFlag = String.valueOf(volunteer.getVol_SpecFlag());
-			String volEmail = volunteer.getVol_Email();
+			volFname = volunteer.getVol_FName();
+			volLname = volunteer.getVol_LName();
+			volAdd1  = volunteer.getVol_Add1();
+			volCity  = volunteer.getVol_City();
+			volState = volunteer.getVol_State();
+			volZip   = volunteer.getVol_Zip();
+			volHPhone = volunteer.getVol_HPhone();
+			volCPhone = volunteer.getVol_CPhone();
+			volWPhone = volunteer.getVol_WPhone();
+			volLabFlag = String.valueOf(volunteer.getVol_LabFlag());
+			volPhotoFlag = String.valueOf(volunteer.getVol_PhotoFlag());
+			volHours = String.valueOf(volunteer.getVol_Hours());
+			volArtFlag = String.valueOf(volunteer.getVol_ArtFlag());
+			volBowlFlag = String.valueOf(volunteer.getVol_BowlFlag());
+			volLiab = String.valueOf(volunteer.getVol_Liab());
+			volDanceFlag = String.valueOf(volunteer.getVol_DanceFlag());
+			volFishFlag = String.valueOf(volunteer.getVol_FishFlag());
+			volWaterFlag = String.valueOf(volunteer.getVol_WaterFlag());
+			volOfficeFlag = String.valueOf(volunteer.getVol_OfficeFlag());
+			volSpecFlag = String.valueOf(volunteer.getVol_SpecFlag());
+			volEmail = volunteer.getVol_Email();
+			System.out.println(volFname);
 		}
 	}
 %>
@@ -87,8 +110,14 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 			</nav>
 		</div>
 	</header>
-
-
+<!--  This is for a get to list all of the volunteers, this can be used on all of the lists -->
+<% for(int index = 0; index < volunteers.size(); index++){ %>
+			<table>
+				<tr>
+					<td id="fnameHead"><%=volunteers.get(index).getVol_FName()%><td>
+				<tr>
+		</table>
+<%} %>
 <section id="welcome-bg">
   <div class="container"> 
     <div id="welcome">
@@ -97,6 +126,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	<div id="subtext">
 	Click a section below to expand!
 	</div>
+
 	<div id="member">
 		<!-- BEGIN LIST MEMBERS SECTION -->
 		<div class="accordion" id="section1">List Volunteers<span></span></div>
@@ -106,11 +136,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 				
 			<!-- Button -->
 			<div class="form-group">
-			<table>
-				<tr>
-					<td id="fnameHead" value="<%=volFname%>"><td>
-				<tr>
-			</table>
+			
 			  <label class="col-md-4 control-label" for="create">Get Volunteer List</label>
 			  <div class="col-md-4">
 				<button id="getVolunteers" name="getVolunteers" class="btn btn-warning">Submit</button>

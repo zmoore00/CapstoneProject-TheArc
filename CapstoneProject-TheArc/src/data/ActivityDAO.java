@@ -40,6 +40,8 @@ public class ActivityDAO {
 				activity.setAct_totCount(rs.getInt("ACT_TotCount"));
 				activity.setAct_revenue	(rs.getInt("ACT_Revenue"));
 				activity.setAct_expense	(rs.getInt("ACT_Expense"));
+				
+				activities.add(activity);
 			}			
 			rs.close();		
 			statement.close();

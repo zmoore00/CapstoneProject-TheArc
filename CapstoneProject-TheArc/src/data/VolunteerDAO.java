@@ -46,6 +46,8 @@ public class VolunteerDAO {
 				volunteer.setVol_OfficeFlag(rs.getString("VOL_OfficeFlag").charAt(0));
 				volunteer.setVol_SpecFlag(rs.getString("VOL_SpecFlag").charAt(0));
 				volunteer.setVol_Email(rs.getString("VOL_email"));
+				
+				volunteers.add(volunteer);
 
 			}	
 			rs.close();		
