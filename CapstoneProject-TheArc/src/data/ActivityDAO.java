@@ -88,7 +88,7 @@ public class ActivityDAO {
 		return status;
 	}
 	
-	public synchronized int remove_Activity(String Act_ID){
+	public synchronized int removeActivity(String Act_ID){
 		int status=0;
 		String preparedSQL = "delete from ARC_Activities where ACT_ID = ?;";
 		PreparedStatement statement=null;
@@ -106,7 +106,7 @@ public class ActivityDAO {
 		return status;
 	}
 	
-	public synchronized static int updateVolunteer(Activities activity){
+	public synchronized static int updateActivity(Activities activity){
 		int status=0;
 		PreparedStatement statement=null;
 		String preparedSQL = 
