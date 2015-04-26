@@ -212,7 +212,7 @@ public class MemberDAO {
 	 	ArrayList<Member> members = new ArrayList<Member>();
 	 	Member member;
 	 	PreparedStatement statement=null;
-		String preparedSQL = "SELECT MEM_ID, MEM_FName, MEM_LName, MEM_Add1, MEM_Add2, MEM_City, MEM_State, MEM_Zip, MEM_HPhone, MEM_WPhone, MEM_RenewDate, MEM_CurFlag FROM ARC_Member WHERE Mem_CurFlag = 'N'";
+		String preparedSQL = "SELECT MEM_ID, MEM_FName, MEM_LName, MEM_Add1, MEM_Add2, MEM_City, MEM_State, MEM_Zip, MEM_HPhone, MEM_CPhone, MEM_WPhone, MEM_RenewDate, MEM_CurFlag FROM ARC_Member WHERE Mem_CurFlag = 'N'";
 		
 	        try{
 	    	connection = ConnectionDAO.getCon();
@@ -233,7 +233,6 @@ public class MemberDAO {
 				member.setMem_WPhone(rs.getString("MEM_WPhone"));
 				member.setMem_RenewDate(rs.getString("MEM_RenewDate"));
 				member.setMem_CurFlag(rs.getString("MEM_CurFlag").charAt(0));
-				member.setMem_GHID(rs.getString("MEM_GHID").charAt(0));
 				members.add(member);
 			}
 			
