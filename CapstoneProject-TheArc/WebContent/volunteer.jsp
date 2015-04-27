@@ -123,6 +123,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 <head>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<link href="style.css" rel="stylesheet">
+	<link href="form.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 	<script type="text/javascript" src="jquery.cookie.js"></script> <!--required only if using cookies-->
     <script type="text/javascript" src="jquery.accordion.js"></script>
@@ -170,14 +171,6 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 			</nav>
 		</div>
 	</header>
-<!--  This is for a get to list all of the volunteers, this can be used on all of the lists -->
-<% for(int index = 0; index < volunteers.size(); index++){ %>
-			<table>
-				<tr>
-					<td id="fnameHead"><%=volunteers.get(index).getVol_FName()%><td>
-				<tr>
-		</table>
-<%} %>
 <section id="welcome-bg">
   <div class="container"> 
     <div id="welcome">
@@ -191,20 +184,25 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		<!-- BEGIN LIST MEMBERS SECTION -->
 		<div class="accordion" id="section1">List Volunteers<span></span></div>
 			<div class="content">
-				<p><form class="form-horizontal">
-			<fieldset>
-				
-			<!-- Button -->
-			<div class="form-group">
-			
-			  <label class="col-md-4 control-label" for="create">Get Volunteer List</label>
-			  <div class="col-md-4">
-				<button id="getVolunteers" name="getVolunteers" class="btn btn-warning">Submit</button>
-			  </div>
-			</div>
-
-			</fieldset>
-			</form></p>
+				<!--  This is for a get to list all of the volunteers, this can be used on all of the lists -->
+				<table id="listTable">
+				<tr>
+					<th>ID</th><th>Name</th><th>Address</th><th>ZIP</th><th>Email</th><th>Home Phone</th><th>Cell Phone</th><th>Work Phone</th>
+				</tr>
+				<% for(int index = 0; index < volunteers.size(); index++){ %>
+								<tr>
+									<td width="30px"><%=volunteers.get(index).getVol_ID()%>
+									<td><%=volunteers.get(index).getVol_LName()%>, <%=volunteers.get(index).getVol_FName()%></td>
+									<td><%=volunteers.get(index).getVol_Add1() %></td>
+									<td><%=volunteers.get(index).getVol_Zip() %></td>
+									<td><%=volunteers.get(index).getVol_Email() %></td>
+									<td><%=volunteers.get(index).getVol_HPhone() %></td>
+									<td><%=volunteers.get(index).getVol_CPhone() %></td>
+									<td><%=volunteers.get(index).getVol_WPhone() %></td>
+								</tr>
+				<%} %>
+				<!-- <th>Liab</th><th>Photos</th><th>Art</th><th>Bowling</th><th>Lab</th><th>Dance</th><th>Fishing</th><th>Water</th><th>Office</th><th>Special</th> -->
+				</table>
 			</div>
 		
 		<!-- BEGIN CREATE MEMBER SECTION -->
