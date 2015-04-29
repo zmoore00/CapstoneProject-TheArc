@@ -3,7 +3,190 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<%
+	//This is the Java section that reads in the Volunteers from the database, this can be used for all others
+	ArrayList<Member> members;
+	int i;
+	
+	members=MemberDAO.getMembers();
+	String memFname = null;
+	String memLname = null;
+	String memAdd1  = null;
+	String memAdd2  = null;
+	String memCity  = null;
+	String memState = null;
+	String memCounty  = null;
+	String memZip   = null;
+	String memHPhone = null;
+	String memCPhone = null;
+	String memWPhone = null;
+	String memRegDate = null;
+	String memRenewDate = null;
+	String memCurFlag = null;
+	String memDOBFlag = null;
+	String memPhotoFlag = null;
+	String memLiabFlag = null;
+	String memGHID  = null;
+	String memEmailFlag = null;
+	String memBowlFlag = null;
+	String memSwimFlag = null;
+	
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		for(Member member : members){
+			memFname = member.getMem_FName();
+			memLname = member.getMem_LName();
+			memAdd1  = member.getMem_Add1();
+			memAdd2  = member.getMem_Add2();
+			memCity  = member.getMem_City();
+			memState = member.getMem_State();
+			memCounty   = member.getMem_County();
+			memZip   = member.getMem_Zip();
+			memHPhone = member.getMem_HPhone();
+			memCPhone = member.getMem_CPhone();
+			memWPhone = member.getMem_WPhone();
+			memRegDate = member.getMem_RegDate();
+			memRenewDate = member.getMem_RenewDate();
+			memCurFlag = String.valueOf(member.getMem_CurFlag());
+			memDOBFlag = String.valueOf(member.getMem_DOBFlag());
+			memPhotoFlag = String.valueOf(member.getMem_PhotoFlag());
+			memLiabFlag = String.valueOf(member.getMem_LiabFlag());
+			memGHID = String.valueOf(member.getMem_GHID());
+			memEmailFlag = String.valueOf(member.getMem_EmailFlag());
+			memBowlFlag = String.valueOf(member.getMem_BowlFlag());
+			memSwimFlag = String.valueOf(member.getMem_SwimFlag());
+		}
+	}
+	//This handles the Delete AND Create for a Volunteer and can be used for all others
+	if(request.getMethod().equalsIgnoreCase("POST")){
+		//This is what handles the Update
+		if(request.getParameter("mem_ID_Update") != null){
+			String memberID = request.getParameter("mem_ID_Update");
+			System.out.println("update");
+			
+			memFname = request.getParameter("mem_FName");
+			memLname = request.getParameter("mem_LName");
+	 		memAdd1  = request.getParameter("mem_Add1");
+	 		memAdd2  = request.getParameter("mem_Add2");
+	 		memCity  = request.getParameter("mem_City");
+	 		memState = request.getParameter("mem_State");
+	 		memCounty  = request.getParameter("mem_County");
+	 		memZip   = request.getParameter("mem_Zip");
+	 		memHPhone = request.getParameter("mem_HPhone");
+	 		memCPhone = request.getParameter("mem_CPhone");
+	 		memWPhone = request.getParameter("mem_WPhone");
+	 		memRegDate = request.getParameter("mem_RegDate");
+	 		memRenewDate = request.getParameter("mem_RenewDate");
+	 		memCurFlag = request.getParameter("mem_CurFlag");
+	 		memDOBFlag = request.getParameter("mem_DOB");
+	 		memPhotoFlag = request.getParameter("mem_PhotoFlag");
+	 		memLiabFlag = request.getParameter("mem_LiabFLag");
+	 		memGHID = request.getParameter("mem_GHID");
+	 		memEmailFlag = request.getParameter("mem_EmailFlag");
+	 		memBowlFlag = request.getParameter("mem_BowlFlag");
+	 		memSwimFlag = request.getParameter("mem_SwimFlag");
 
+			Member member = new Member();
+			member.setMem_ID(memberID);
+			member.setMem_FName(memFname);
+			member.setMem_LName(memLname);
+	 		member.setMem_Add1(memAdd1);
+	 		member.setMem_Add2(memAdd2);
+	 		member.setMem_City(memCity);
+	 		member.setMem_State(memState);
+	 		member.setMem_County(memCounty);
+	 		member.setMem_Zip(memZip);
+	 		member.setMem_HPhone(memHPhone);
+	 		member.setMem_CPhone(memCPhone);
+	 		member.setMem_WPhone(memWPhone);
+	 		member.setMem_RegDate(memRegDate);
+	 		member.setMem_RenewDate(memRenewDate);
+	 		member.setMem_CurFlag(memCurFlag.charAt(0));
+	 		member.setMem_DOBFlag(memDOBFlag);
+	 		member.setMem_PhotoFlag(memPhotoFlag.charAt(0));
+	 		member.setMem_LiabFlag(request.getParameter("mem_LiabFlag").charAt(0));
+	 		member.setMem_GHID(memGHID.charAt(0));
+	 		member.setMem_EmailFlag(memEmailFlag.charAt(0));
+	 		member.setMem_BowlFlag(memBowlFlag.charAt(0));
+	 		member.setMem_SwimFlag(memSwimFlag.charAt(0));
+	 		
+			MemberDAO.updateMember(member);
+			response.sendRedirect("member.jsp");
+			return;
+		}
+		
+		//This is what handles the delete
+		if(request.getParameter("mem_ID") != null)
+		{
+		String memberID = request.getParameter("mem_ID");
+		int status = MemberDAO.removeMember(memberID);
+		response.sendRedirect("member.jsp");
+		return;
+		}
+		
+		//This is what handles the Create
+		if(request.getParameter("mem_ID") == null)
+		{
+		System.out.println("create");
+		memFname = request.getParameter("mem_FName");
+		memLname = request.getParameter("mem_LName");
+ 		memAdd1  = request.getParameter("mem_Add1");
+ 		memAdd2  = request.getParameter("mem_Add2");
+ 		memCity  = request.getParameter("mem_City");
+ 		memState = request.getParameter("mem_State");
+ 		memCounty  = request.getParameter("mem_County");
+ 		memZip   = request.getParameter("mem_Zip");
+ 		memHPhone = request.getParameter("mem_HPhone");
+ 		memCPhone = request.getParameter("mem_CPhone");
+ 		memWPhone = request.getParameter("mem_WPhone");
+ 		memRegDate = request.getParameter("mem_RegDate");
+ 		memRenewDate = request.getParameter("mem_RenewDate");
+ 		memCurFlag = request.getParameter("mem_CurFlag");
+ 		memDOBFlag = request.getParameter("mem_DOB");
+ 		memPhotoFlag = request.getParameter("mem_PhotoFlag");
+ 		memLiabFlag = request.getParameter("mem_LiabFLag");
+ 		memGHID = request.getParameter("mem_GHID");
+ 		memEmailFlag = request.getParameter("mem_EmailFlag");
+ 		memBowlFlag = request.getParameter("mem_BowlFlag");
+ 		memSwimFlag = request.getParameter("mem_SwimFlag");
+
+ 		Member member = new Member();
+		member.setMem_FName(memFname);
+		member.setMem_LName(memLname);
+ 		member.setMem_Add1(memAdd1);
+ 		member.setMem_Add2(memAdd2);
+ 		member.setMem_City(memCity);
+ 		member.setMem_State(memState);
+ 		member.setMem_County(memCounty);
+ 		member.setMem_Zip(memZip);
+ 		member.setMem_HPhone(memHPhone);
+ 		member.setMem_CPhone(memCPhone);
+ 		member.setMem_WPhone(memWPhone);
+ 		member.setMem_RegDate(memRegDate);
+ 		member.setMem_RenewDate(memRenewDate);
+ 		member.setMem_CurFlag(memCurFlag.charAt(0));
+ 		member.setMem_DOBFlag(memDOBFlag);
+ 		member.setMem_PhotoFlag(memPhotoFlag.charAt(0));
+ 		member.setMem_LiabFlag(request.getParameter("mem_LiabFlag").charAt(0));
+ 		member.setMem_GHID(memGHID.charAt(0));
+ 		member.setMem_EmailFlag(memEmailFlag.charAt(0));
+ 		member.setMem_BowlFlag(memBowlFlag.charAt(0));
+ 		member.setMem_SwimFlag(memSwimFlag.charAt(0));
+ 		
+		MemberDAO.addMember(member);
+		response.sendRedirect("member.jsp");
+		return;
+		
+		}
+		
+		
+	}
+	
+	if(request.getMethod().equalsIgnoreCase("PUT")){
+		System.out.println("Fuck!");
+		response.sendRedirect("member.jsp");
+		return;
+	}
+%>
 
 <head>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -69,25 +252,31 @@
 		<!-- BEGIN LIST MEMBERS SECTION -->
 		<div class="accordion" id="section1">List Members<span></span></div>
 			<div class="content">
-				<p><form class="form-horizontal">
-			<fieldset>
-				
-			<!-- Button -->
-			<div class="form-group">
-			  <label class="col-md-4 control-label" for="create">Get Member List</label>
-			  <div class="col-md-4">
-				<button id="getMembers" name="getMembers" class="btn btn-warning">Submit</button>
-			  </div>
-			</div>
-
-			</fieldset>
-			</form></p>
+				<!--  This is for a get to list all of the volunteers, this can be used on all of the lists -->
+				<table id="listTable">
+				<tr>
+					<th>ID</th><th>Name</th><th>Address</th><th>ZIP</th><th>Email</th><th>Home Phone</th><th>Cell Phone</th><th>Work Phone</th>
+				</tr>
+				<% for(int index = 0; index < members.size(); index++){ %>
+								<tr>
+									<td width="30px"><%=members.get(index).getMem_ID()%>
+									<td><%=members.get(index).getMem_LName()%>, <%=members.get(index).getMem_FName()%></td>
+									<td><%=members.get(index).getMem_Add1() %></td>
+									<td><%=members.get(index).getMem_Zip() %></td>
+									<td><%=members.get(index).getMem_Email() %></td>
+									<td><%=members.get(index).getMem_HPhone() %></td>
+									<td><%=members.get(index).getMem_CPhone() %></td>
+									<td><%=members.get(index).getMem_WPhone() %></td>
+								</tr>
+				<%} %>
+				<!-- <th></th><th>Photos</th><th>Art</th><th>Bowling</th><th>Lab</th><th>Dance</th><th>Fishing</th><th>Water</th><th>Office</th><th>Special</th> -->
+				</table>
 			</div>
 		
 		<!-- BEGIN CREATE MEMBER SECTION -->
 		<div class="accordion" id="section2">Create Member<span></span></div>
 			<div class="content">
-					<p>			<form class="form-horizontal">
+					<p>			<form class="form-horizontal" method="POST">
 			<fieldset>
 
 			<!-- Text input-->
@@ -152,6 +341,15 @@
 				
 			  </div>
 			</div>
+			
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="mem_Country">County</label>  
+			  <div class="col-md-5">
+			  <input id="mem_County" name="mem_County" type="text" placeholder="Sebastian" class="form-control input-md" required="">
+				
+			  </div>
+			</div>
 
 			<!-- Text input-->
 			<div class="form-group">
@@ -182,9 +380,18 @@
 
 			<!-- Text input-->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="mem_Email">Email</label>  
+			  <label class="col-md-4 control-label" for="mem_RegDate">Registration Date</label>  
 			  <div class="col-md-5">
-			  <input id="mem_Email" name="mem_Email" type="text" placeholder="" class="form-control input-md" required="">
+			  <input id="mem_RegDate" name="mem_RegDate" type="text" placeholder="2015/01/30" class="form-control input-md" required="">
+				
+			  </div>
+			</div>
+			
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="mem_RenewDate">Renew Date</label>  
+			  <div class="col-md-5">
+			  <input id="mem_RenewDate" name="mem_RenewDate" type="text" placeholder="2016/01/30" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -233,9 +440,9 @@
 
 			<!-- Select Basic -->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="mem_PhysFlag">Newsletter?</label>
+			  <label class="col-md-4 control-label" for="mem_emailFlag">Newsletter?</label>
 			  <div class="col-md-2">
-				<select id="mem_PhysFlag" name="mem_PhysFlag" class="form-control">
+				<select id="mem_EmailFlag" name="mem_EmailFlag" class="form-control">
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -261,15 +468,6 @@
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
-			  </div>
-			</div>
-
-			<!-- Text input-->
-			<div class="form-group">
-			  <label class="col-md-4 control-label" for="mem_Country">Country</label>  
-			  <div class="col-md-5">
-			  <input id="mem_Country" name="mem_Country" type="text" placeholder="USA" class="form-control input-md" required="">
-				
 			  </div>
 			</div>
 			
@@ -298,14 +496,14 @@
 	<!-- BEGIN UPDATE MEMBER SECTION -->
 	<div class="accordion" id="section3">Update Member<span></span></div>
 		<div class="content">
-			<p><form class="form-horizontal">
+			<p><form class="form-horizontal" method = "POST">
 			<fieldset>
 
 			<!-- Text input-->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="mem_ID">Member ID</label>  
+			  <label class="col-md-4 control-label" for="mem_ID_Update">Member ID</label>  
 			  <div class="col-md-5">
-			  <input id="mem_ID" name="mem_ID" type="text" placeholder="" class="form-control input-md" required="">
+			  <input id="mem_ID_Update" name="mem_ID_Update" type="text" placeholder="" class="form-control input-md" required="">
 			  </div>
 			</div>
 
@@ -371,6 +569,15 @@
 				
 			  </div>
 			</div>
+			
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="mem_Country">County</label>  
+			  <div class="col-md-5">
+			  <input id="mem_County" name="mem_County" type="text" placeholder="Sebastian" class="form-control input-md" required="">
+				
+			  </div>
+			</div>
 
 			<!-- Text input-->
 			<div class="form-group">
@@ -401,18 +608,19 @@
 
 			<!-- Text input-->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="mem_Email">Email</label>  
+			  <label class="col-md-4 control-label" for="mem_RegDate">Registration Date</label>  
 			  <div class="col-md-5">
-			  <input id="mem_Email" name="mem_Email" type="text" placeholder="" class="form-control input-md" required="">
+			  <input id="mem_RegDate" name="mem_RegDate" type="text" placeholder="2015/01/30" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
-
+			
 			<!-- Text input-->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="mem_RenewDate">Renewal Date</label>  
-			  <div class="col-md-4">
-			  <input id="mem_RenewDate" name="mem_RenewDate" type="date" placeholder="2015-01-01" class="form-control input-md">
+			  <label class="col-md-4 control-label" for="mem_RenewDate">Renew Date</label>  
+			  <div class="col-md-5">
+			  <input id="mem_RenewDate" name="mem_RenewDate" type="text" placeholder="2016/01/30" class="form-control input-md" required="">
+				
 			  </div>
 			</div>
 
@@ -460,9 +668,9 @@
 
 			<!-- Select Basic -->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="mem_PhysFlag">Newsletter?</label>
+			  <label class="col-md-4 control-label" for="mem_emailFlag">Newsletter?</label>
 			  <div class="col-md-2">
-				<select id="mem_PhysFlag" name="mem_PhysFlag" class="form-control">
+				<select id="mem_EmailFlag" name="mem_EmailFlag" class="form-control">
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -490,15 +698,6 @@
 				</select>
 			  </div>
 			</div>
-
-			<!-- Text input-->
-			<div class="form-group">
-			  <label class="col-md-4 control-label" for="mem_Country">Country</label>  
-			  <div class="col-md-5">
-			  <input id="mem_Country" name="mem_Country" type="text" placeholder="USA" class="form-control input-md" required="">
-				
-			  </div>
-			</div>
 			
 			<!-- Text input-->
 			<div class="form-group">
@@ -524,7 +723,7 @@
 	<!-- BEGIN DELETE MEMBER SECTION -->
 	<div class="accordion" id="section4">Delete Member<span></span></div>
 			<div class="content">
-			<p>			<form class="form-horizontal">
+			<p>			<form class="form-horizontal" method="POST">
 			<fieldset>
 			<!-- Text input-->
 			<div class="form-group">

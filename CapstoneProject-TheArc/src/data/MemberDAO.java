@@ -30,7 +30,7 @@ public class MemberDAO {
 				member.setMem_Add2(rs.getString("MEM_Add2"));
 				member.setMem_City(rs.getString("MEM_City"));
 				member.setMem_State(rs.getString("MEM_State"));
-				member.setMem_State(rs.getString("MEM_County"));
+				member.setMem_County(rs.getString("MEM_County"));
 				member.setMem_Zip(rs.getString("MEM_Zip"));
 				member.setMem_HPhone(rs.getString("MEM_HPhone"));
 				member.setMem_CPhone(rs.getString("MEM_CPhone"));
@@ -38,14 +38,13 @@ public class MemberDAO {
 				member.setMem_RegDate(rs.getString("MEM_RegDate"));
 				member.setMem_RenewDate(rs.getString("MEM_RenewDate"));
 				member.setMem_CurFlag(rs.getString("MEM_CurFlag").charAt(0));
-				member.setMem_DOBFlag(rs.getString("MEM_DOBFlag"));
+				member.setMem_DOBFlag(rs.getString("MEM_DOB"));
 				member.setMem_PhotoFlag(rs.getString("MEM_PhotoFlag").charAt(0));
 				member.setMem_LiabFlag(rs.getString("MEM_LiabFlag").charAt(0));
 				member.setMem_GHID(rs.getString("MEM_GHID").charAt(0));
-				member.setMem_BowlFlag(rs.getString("MEM_EmailFlag").charAt(0));
+				member.setMem_EmailFlag(rs.getString("MEM_EmailFlag").charAt(0));
 				member.setMem_BowlFlag(rs.getString("MEM_BowlFlag").charAt(0));
 				member.setMem_SwimFlag(rs.getString("MEM_SwimFlag").charAt(0));
-				member.setMem_County(rs.getString("MEM_County"));
 
 				members.add(member);
 			}	
@@ -59,9 +58,9 @@ public class MemberDAO {
 		return members;
 	}
 	
-	public synchronized int addMember(Member member){
+	public synchronized static int addMember(Member member){
 		int status=0;
-		String preparedSQL = "INSERT INTO ARC_Member(MEM_FName,MEM_LName,MEM_Add1,MEM_Add2,MEM_City,MEM_State,MEM_Zip,MEM_HPhone,MEM_CPhone,MEM_WPhone,MEM_RegDate,MEM_RenewDate,MEM_CurFlag,MEM_DOB,MEM_LiabFlag,MEM_PhotoFlag,MEM_GHID,MEM_PhysFlag,MEM_EmailFlag,MEM_BowlFlag,MEM_SwimFlag) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+		String preparedSQL = "INSERT INTO ARC_Member(MEM_FName,MEM_LName,MEM_Add1,MEM_Add2,MEM_City,MEM_State,MEM_County,MEM_Zip,MEM_HPhone,MEM_CPhone,MEM_WPhone,MEM_RegDate,MEM_RenewDate,MEM_CurFlag,MEM_DOB,MEM_LiabFlag,MEM_PhotoFlag,MEM_GHID,MEM_PhysFlag,MEM_EmailFlag,MEM_BowlFlag,MEM_SwimFlag) VALUES(se?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		PreparedStatement statement=null;
 		
 		try {
@@ -100,7 +99,7 @@ public class MemberDAO {
 		return status;
 	}
 	
-	public synchronized int removeMember(String memberID){
+	public synchronized static int removeMember(String memberID){
 		int status=0;
 		String preparedSQL = "delete from ARC_Member where MEM_ID = ?";
 		PreparedStatement statement=null;
@@ -122,7 +121,7 @@ public class MemberDAO {
 		int status=0;
 		
 	 	PreparedStatement statement=null;
-		String preparedSQL = "UPDATE ARC_Member SET MEM_FName = ?,MEM_LName = ?,MEM_Add1 = ?,MEM_Add2 = ?,MEM_City = ?,MEM_State = ?,MEM_Zip = ?,MEM_HPhone = ?,MEM_CPhone = ?,MEM_WPhone = ?,MEM_RegDate = ?,MEM_RenewDate = ?,MEM_CurFlag = ?,MEM_DOB = ?,MEM_LiabFlag = ?,MEM_PhotoFlag = ?,MEM_GHID = ?,MEM_PhysFlag = ?,MEM_EmailFlag = ?,MEM_BowlFlag = ?,MEM_SwimFlag = ?  WHERE MEM_ID = ?;";
+		String preparedSQL = "UPDATE ARC_Member SET MEM_FName = ?,MEM_LName = ?,MEM_Add1 = ?,MEM_Add2 = ?,MEM_City = ?,MEM_State = ?,MEM_County = ?,MEM_Zip = ?,MEM_HPhone = ?,MEM_CPhone = ?,MEM_WPhone = ?,MEM_RegDate = ?,MEM_RenewDate = ?,MEM_CurFlag = ?,MEM_DOB = ?,MEM_LiabFlag = ?,MEM_PhotoFlag = ?,MEM_GHID = ?,MEM_PhysFlag = ?,MEM_EmailFlag = ?,MEM_BowlFlag = ?,MEM_SwimFlag = ?  WHERE MEM_ID = ?;";
 		
 	    try{
 	    	connection = ConnectionDAO.getCon();
