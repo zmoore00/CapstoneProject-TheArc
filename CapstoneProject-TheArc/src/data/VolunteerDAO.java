@@ -166,7 +166,7 @@ public class VolunteerDAO {
 	    try{
 	    	connection = ConnectionDAO.getCon();
 	    	statement = connection.prepareStatement(preparedSQL);
-	    	statement.setString(1, id);
+	    	statement.setInt(1, Integer.parseInt(id));
 			ResultSet rs = statement.executeQuery();
 			while(rs.next()){
 				volunteer = new Volunteer();

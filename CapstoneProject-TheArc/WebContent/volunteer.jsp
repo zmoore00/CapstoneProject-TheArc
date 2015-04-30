@@ -32,7 +32,36 @@
 	String volEmail = null;
 	String test = "test";
 	
+	String volFnameUpdate = null;
+	
 	if(request.getMethod().equalsIgnoreCase("GET")){
+		System.out.println("We're Updating!");
+		if(request.getParameter("vol_ID_Update") != null){
+			Volunteer volunteer;
+			volunteer = VolunteerDAO.getVolunteer("2");
+			
+			volFnameUpdate = volunteer.getVol_FName();
+			volLname = volunteer.getVol_LName();
+			volAdd1  = volunteer.getVol_Add1();
+			volCity  = volunteer.getVol_City();
+			volState = volunteer.getVol_State();
+			volZip   = volunteer.getVol_Zip();
+			volHPhone = volunteer.getVol_HPhone();
+			volCPhone = volunteer.getVol_CPhone();
+			volWPhone = volunteer.getVol_WPhone();
+			volLabFlag = String.valueOf(volunteer.getVol_LabFlag());
+			volPhotoFlag = String.valueOf(volunteer.getVol_PhotoFlag());
+			volHours = String.valueOf(volunteer.getVol_Hours());
+			volArtFlag = String.valueOf(volunteer.getVol_ArtFlag());
+			volBowlFlag = String.valueOf(volunteer.getVol_BowlFlag());
+			volLiab = String.valueOf(volunteer.getVol_Liab());
+			volDanceFlag = String.valueOf(volunteer.getVol_DanceFlag());
+			volFishFlag = String.valueOf(volunteer.getVol_FishFlag());
+			volWaterFlag = String.valueOf(volunteer.getVol_WaterFlag());
+			volOfficeFlag = String.valueOf(volunteer.getVol_OfficeFlag());
+			volSpecFlag = String.valueOf(volunteer.getVol_SpecFlag());
+			volEmail = volunteer.getVol_Email();
+		}
 		for(Volunteer volunteer : volunteers){
 			volFname = volunteer.getVol_FName();
 			volLname = volunteer.getVol_LName();
@@ -56,7 +85,10 @@
 			volSpecFlag = String.valueOf(volunteer.getVol_SpecFlag());
 			volEmail = volunteer.getVol_Email();
 			//System.out.println(volFname);
+			
 		}
+		
+		
 	}
 	//This handles the Delete AND Create for a Volunteer and can be used for all others
 	if(request.getMethod().equalsIgnoreCase("POST")){
@@ -183,11 +215,6 @@
 		
 	}
 	
-	if(request.getMethod().equalsIgnoreCase("PUT")){
-		System.out.println("Fuck!");
-		response.sendRedirect("volunteer.jsp");
-		return;
-	}
 %>
 
 
@@ -497,7 +524,7 @@
 	<!-- BEGIN UPDATE VOLUNTEER SECTION -->
 	<div class="accordion" id="section3">Update Volunteer<span></span></div>
 		<div class="content">
-			<p><form class="form-horizontal" method="POST">
+			<p><form class="form-horizontal" method="GET">
 			<fieldset>
 
 			<!-- Text input-->
@@ -507,12 +534,23 @@
 			  		<input id="vol_ID_Update" name="vol_ID_Update" type="text" placeholder="" class="form-control input-md" required="">
 				</div>
 			</div>
+			
+			<!-- Button -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="populate">Populate Fields</label>
+			  <div class="col-md-4">
+				<button id="populate" name="populate" class="btn btn-primary">Get Info	</button>
+			  </div>
+			</div>
+			
+			</form>
+			<form class="form-horizontal" method="POST">
 
 			<!-- Text input-->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="vol_FName">First Name</label>  
 			  <div class="col-md-4">
-			  <input id="vol_FName" name="vol_FName" type="text" placeholder="John" class="form-control input-md" required="">
+			  <input id="vol_FName" value= <%=volFnameUpdate%> name="vol_FName" type="text" placeholder="John" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
