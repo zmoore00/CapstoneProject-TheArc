@@ -38,7 +38,7 @@ public class MemberDAO {
 				member.setMem_RegDate(rs.getString("MEM_RegDate"));
 				member.setMem_RenewDate(rs.getString("MEM_RenewDate"));
 				member.setMem_CurFlag(rs.getString("MEM_CurFlag").charAt(0));
-				member.setMem_DOBFlag(rs.getString("MEM_DOBFlag"));
+				member.setMem_DOBFlag(rs.getString("MEM_DOB"));
 				member.setMem_PhotoFlag(rs.getString("MEM_PhotoFlag").charAt(0));
 				member.setMem_LiabFlag(rs.getString("MEM_LiabFlag").charAt(0));
 				member.setMem_GHID(rs.getString("MEM_GHID").charAt(0));

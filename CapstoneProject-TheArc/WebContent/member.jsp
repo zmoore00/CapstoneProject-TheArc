@@ -171,7 +171,6 @@
  		member.setMem_EmailFlag(memEmailFlag.charAt(0));
  		member.setMem_BowlFlag(memBowlFlag.charAt(0));
  		member.setMem_SwimFlag(memSwimFlag.charAt(0));
- 		
 		MemberDAO.addMember(member);
 		response.sendRedirect("member.jsp");
 		return;
@@ -181,11 +180,6 @@
 		
 	}
 	
-	if(request.getMethod().equalsIgnoreCase("PUT")){
-		System.out.println("Fuck!");
-		response.sendRedirect("member.jsp");
-		return;
-	}
 %>
 
 <head>
