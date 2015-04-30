@@ -38,7 +38,7 @@ public class MemberDAO {
 				member.setMem_RegDate(rs.getString("MEM_RegDate"));
 				member.setMem_RenewDate(rs.getString("MEM_RenewDate"));
 				member.setMem_CurFlag(rs.getString("MEM_CurFlag").charAt(0));
-				member.setMem_DOBFlag(rs.getString("MEM_DOB"));
+				member.setMem_DOBFlag(rs.getString("MEM_DOBFlag"));
 				member.setMem_PhotoFlag(rs.getString("MEM_PhotoFlag").charAt(0));
 				member.setMem_LiabFlag(rs.getString("MEM_LiabFlag").charAt(0));
 				member.setMem_GHID(rs.getString("MEM_GHID").charAt(0));
@@ -213,7 +213,7 @@ public class MemberDAO {
 	 	ArrayList<Member> members = new ArrayList<Member>();
 	 	Member member;
 	 	PreparedStatement statement=null;
-		String preparedSQL = "SELECT MEM_ID, MEM_FName, MEM_LName, MEM_Add1, MEM_Add2, MEM_City, MEM_State, MEM_Zip, MEM_HPhone, MEM_CPhone, MEM_WPhone, MEM_RenewDate, MEM_CurFlag FROM ARC_Member WHERE Mem_CurFlag = 'N'";
+		String preparedSQL = "SELECT MEM_ID, MEM_FName, MEM_LName, MEM_Add1, MEM_Add2, MEM_City, MEM_State, MEM_Zip, MEM_HPhone, MEM_CPhone, MEM_WPhone, MEM_RenewDate, MEM_CurFlag FROM ARC_Member WHERE Mem_CurFlag = 'N';";
 		
 	        try{
 	    	connection = ConnectionDAO.getCon();
@@ -246,6 +246,38 @@ public class MemberDAO {
 		}
 		return members;
 		
+	}
+	
+	public synchronized static ArrayList<Member> getBDMembers(String month) {
+	 	ArrayList<Member> members = new ArrayList<Member>();
+	 	Member member;
+	 	PreparedStatement statement=null;
+	 	String preparedSQL = "SELECT MEM_ID, MEM_FName, MEM_LName, MEM_DOBFlag, MEM_CurFlag FROM ARC_Member WHERE MONTH(MEM_DOBFlag) = ?;";
+	 	
+	 	try{
+	    	connection = ConnectionDAO.getCon();
+	    	statement = connection.prepareStatement(preparedSQL);
+	    	statement.setString(1, month);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()){
+				member = new Member();
+				member.setMem_ID(rs.getString("MEM_ID"));
+				member.setMem_FName(rs.getString("MEM_FName"));
+				member.setMem_LName(rs.getString("MEM_LName"));
+				member.setMem_DOBFlag(rs.getString("MEM_DOBFlag"));
+				member.setMem_CurFlag(rs.getString("MEM_CurFlag").charAt(0));
+				members.add(member);
+			}
+	 	
+	 		rs.close();		
+			statement.close();
+			connection.close();
+		}
+		catch (SQLException ex){
+			System.out.println("Error: " + ex);
+			System.out.println("Query: " + statement.toString());
+		}
+		return members;
 	}
 	
 }
