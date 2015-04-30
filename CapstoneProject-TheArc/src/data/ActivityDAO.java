@@ -110,12 +110,10 @@ public class ActivityDAO {
 		int status=0;
 		PreparedStatement statement=null;
 		String preparedSQL = 
-				"UPDATE ARC_Activities SET"
-						+"ACT_Name = ?, ACT_Type = ?, ACT_Date = ?, ACT_Loc = ?, ACT_VolCount = ?, "
-						+"ACT_MemCount = ?, ACT_NonCount = ?, ACT_TotCount = ?, ACT_Revenue = ?,"
-						+"ACT_Expense = ?);";
-
+				"UPDATE ARC_Activities SET ACT_Name = ?, ACT_Type = ?, ACT_Date = ?, ACT_Loc = ?, ACT_VolCount = ?, ACT_MemCount = ?, ACT_NonCount = ?, ACT_TotCount = ?, ACT_Revenue = ?,ACT_Expense = ? WHERE ACT_ID=?;";
+		
 		try {
+			
 			connection 	= ConnectionDAO.getCon();
 			statement 	= connection.prepareStatement(preparedSQL);
 			
@@ -124,13 +122,15 @@ public class ActivityDAO {
 			
 			statement.setString( 3, activity.getAct_date());
 			statement.setString( 4, activity.getAct_loc());
-			statement.setString( 5, String.valueOf(activity.getAct_volCount()));
-			statement.setString( 6, String.valueOf(activity.getAct_memCount()));
-			statement.setString( 7, String.valueOf(activity.getAct_nonCount()));
+			statement.setInt( 5, activity.getAct_volCount());
+			statement.setInt( 6, activity.getAct_memCount());
+			statement.setInt( 7, activity.getAct_nonCount());
 			
-			statement.setString( 8, String.valueOf(activity.getAct_totCount()));
+			statement.setInt( 8, activity.getAct_totCount());
 			statement.setString( 9, String.valueOf(activity.getAct_revenue()));
 			statement.setString(10, String.valueOf(activity.getAct_expense()));
+			System.out.println(activity.getAct_ID());
+			statement.setInt(11,activity.getAct_ID());
 
 
 			status = statement.executeUpdate();

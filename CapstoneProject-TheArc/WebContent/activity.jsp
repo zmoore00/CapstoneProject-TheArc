@@ -45,19 +45,21 @@
 			System.out.println("update");
 			
 			act_Name   	   =	request.getParameter("act_Name");
-			act_type   	   =	request.getParameter("act_type");
+			act_type   	   =	request.getParameter("act_Type");
 			
-			act_date   	   =	request.getParameter("act_date");
-			act_loc   	   =	request.getParameter("act_loc");
-			act_volCount   = 	request.getParameter("act_volCount");
-			act_memCount   = 	request.getParameter("act_memCount");
-			act_nonCount   = 	request.getParameter("act_nonCount");
+			act_date   	   =	request.getParameter("act_Date");
+			act_loc   	   =	request.getParameter("act_Loc");
+			act_volCount   = 	Integer.parseInt(request.getParameter("act_VolCount"));
+			act_memCount   = 	Integer.parseInt(request.getParameter("act_MemCount"));
+			act_nonCount   = 	Integer.parseInt(request.getParameter("act_NonCount"));
 			               
-			act_totCount   = 	request.getParameter("act_totCount");
-			act_revenue    =	request.getParameter("act_revenue");
-			act_expense    =	request.getParameter("act_expense");
+			act_totCount   = 	Integer.parseInt(request.getParameter("act_TotCount"));
+			act_revenue    =	Integer.parseInt(request.getParameter("act_Revenue"));
+			act_expense    =	Integer.parseInt(request.getParameter("act_Expense"));
 			
 			Activities activity = new Activities();
+			//act_ID =
+			activity.setAct_ID		  (act_ID);
 			activity.setAct_Name   	  (act_Name);
 			activity.setAct_type   	  (act_type); 	
                                       
@@ -70,37 +72,29 @@
 			activity.setAct_totCount  (act_totCount);
 			activity.setAct_revenue   (act_revenue);
 			activity.setAct_expense   (act_expense);
-			
+			System.out.println(act_ID);
 			ActivityDAO.updateActivity(activity);
 			response.sendRedirect("activity.jsp");
 			return;
 			
 		}
-		//delete
-		if(request.getParameter("act_ID") != null)
-		{//halp
-		String activityID = request.getParameter("act_ID");
-		System.out.println("delete");
-		System.out.println("haha woops");
-		response.sendRedirect("activity.jsp");
-		return;
-		}
+		
 		if(request.getParameter("act_ID") == null)
 		{
 		System.out.println("create");
 		
 		act_Name   	   =	request.getParameter("act_Name");
-		act_type   	   =	request.getParameter("act_type");
+		act_type   	   =	request.getParameter("act_Type");
 		
-		act_date   	   =	request.getParameter("act_date");
-		act_loc   	   =	request.getParameter("act_loc");
-		act_volCount   = 	request.getParameter("act_volCount");
-		act_memCount   = 	request.getParameter("act_memCount");
-		act_nonCount   = 	request.getParameter("act_nonCount");
+		act_date   	   =	request.getParameter("act_Date");
+		act_loc   	   =	request.getParameter("act_Loc");
+		//act_volCount   = 	Integer.parseInt(request.getParameter("act_volCount"));
+		//act_memCount   = 	Integer.parseInt(request.getParameter("act_memCount"));
+		//act_nonCount   = 	Integer.parseInt(request.getParameter("act_nonCount"));
 		               
-		act_totCount   = 	request.getParameter("act_totCount");
-		act_revenue    =	request.getParameter("act_revenue");
-		act_expense    =	request.getParameter("act_expense");
+		//act_totCount   = 	Integer.parseInt(request.getParameter("act_totCount"));
+	    //act_revenue    =	Integer.parseInt(request.getParameter("act_revenue"));
+		//act_expense    =	Integer.parseInt(request.getParameter("act_expense"));
 		
 		Activities activity = new Activities();
 		activity.setAct_Name   	  (act_Name);
@@ -132,6 +126,7 @@
 <head>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<link href="style.css" rel="stylesheet">
+	<link href="form.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 	<script type="text/javascript" src="jquery.cookie.js"></script> <!--required only if using cookies-->
     <script type="text/javascript" src="jquery.accordion.js"></script>
@@ -193,25 +188,29 @@
 		<!-- BEGIN LIST ACTIVITIES SECTION -->
 		<div class="accordion" id="section1">List Activities<span></span></div>
 			<div class="content">
-				<p><form class="form-horizontal">
-			<fieldset>
-				
-			<!-- Button -->
-			<div class="form-group">
-			  <label class="col-md-4 control-label" for="create">Get Activity List</label>
-			  <div class="col-md-4">
-				<button id="getActivities" name="getActivities" class="btn btn-warning">Submit</button>
-			  </div>
-			</div>
-
-			</fieldset>
-			</form></p>
+				<p>
+								<table id="listTable">
+				<tr>
+					<th>ID</th><th>Name</th><th>Type</th><th>Date</th><th>Location</th>
+				</tr>
+				<% for(int index = 0; index < activities.size(); index++){ %>
+								<tr>
+									<td width="30px"><%=activities.get(index).getAct_ID()%>
+									<td><%=activities.get(index).getAct_Name()%></td>
+									<td><%=activities.get(index).getAct_type() %></td>
+									<td><%=activities.get(index).getAct_date() %></td>
+									<td><%=activities.get(index).getAct_loc() %></td>				
+								</tr>
+				<%} %>
+				<!-- <th></th><th>Photos</th><th>Art</th><th>Bowling</th><th>Lab</th><th>Dance</th><th>Fishing</th><th>Water</th><th>Office</th><th>Special</th> -->
+				</table>
+			<fieldset></p>
 			</div>
 		
 		<!-- BEGIN CREATE ACTIVITIES SECTION -->
 		<div class="accordion" id="section2">Create Activity<span></span></div>
 			<div class="content">
-					<p>			<form class="form-horizontal">
+					<p>			<form class="form-horizontal" method="POST">
 			<fieldset>
 
 			<!-- Text input-->
@@ -271,15 +270,57 @@
 	<!-- BEGIN UPDATE ACTIVITY SECTION -->
 	<div class="accordion" id="section3">Update Activity (Add Counts)<span></span></div>
 		<div class="content">
-			<p><form class="form-horizontal">
+			<p><form class="form-horizontal" method="POST">
 			<fieldset>
 
 			<!-- Text input-->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="act_Name">Activity Name</label>  
+			  <label class="col-md-4 control-label" for="act_ID_Update">Activity ID</label>  
+			  <div class="col-md-4">
+			  <input id="act_ID_Update" name="act_ID_Update" type="text" placeholder="1" class="form-control input-md" required="">
+			  <p class="help-block">Make sure activity ID is correct!</p>
+			  </div>
+			</div>
+			
+						<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="mem_FName">Activity Name</label>  
 			  <div class="col-md-4">
 			  <input id="act_Name" name="act_Name" type="text" placeholder="Bowling" class="form-control input-md" required="">
-			  <p class="help-block">Make sure activity name is correct!</p>
+			  <p class="help-block">Please input a UNIQUE event name so you can update it later.</p>
+			  </div>
+			</div>
+
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="mem_CurFlag">Activity Type</label>
+			  <div class="col-md-2">
+				<select id="act_Type" name="act_Type" class="form-control">
+				  <option value="Bowling">Bowling</option>
+				  <option value="Dance">Dance</option>
+				  <option value="Swimming">Swimming</option>
+				  <option value="Fishing">Fishing</option>
+				  <option value="Special">Special</option>
+				  <option value="Misc">Misc</option>
+				</select>
+			  </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="mem_DOBFlag">Activity Date</label>  
+			  <div class="col-md-4">
+			  <input id="act_Date" name="act_Date" type="date" placeholder="2015-01-01" class="form-control input-md" required="">
+				
+			  </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="mem_City">Activity Location</label>  
+			  <div class="col-md-4">
+			  <input id="act_Loc" name="act_Loc" type="text" placeholder="Fort Smith, AR" class="form-control input-md" required="">
+				
 			  </div>
 			</div>
 
@@ -348,8 +389,6 @@
 			</fieldset>
 			</form></p>
 		</div>
-		
-     
   </div>
 </section>
 </div>
