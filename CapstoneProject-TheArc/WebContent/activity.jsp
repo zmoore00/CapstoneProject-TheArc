@@ -58,7 +58,7 @@
 			act_expense    =	Integer.parseInt(request.getParameter("act_Expense"));
 			
 			Activities activity = new Activities();
-			//act_ID =
+			//act_ID = act_ID_Update 
 			activity.setAct_ID		  (act_ID);
 			activity.setAct_Name   	  (act_Name);
 			activity.setAct_type   	  (act_type); 	
