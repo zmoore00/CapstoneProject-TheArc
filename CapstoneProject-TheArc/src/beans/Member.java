@@ -217,7 +217,7 @@ public class Member implements Serializable
 	{
 		return mem_GHID;
 	}
-	public void setMem_GHID(char mem_GHID) 
+	public void setMem_GHID(int mem_GHID) 
 	{
 		this.mem_GHID = mem_GHID;
 	}

@@ -26,7 +26,7 @@
 	String memDOBFlag = null;
 	String memPhotoFlag = null;
 	String memLiabFlag = null;
-	String memGHID  = null;
+	int memGHID;
 	String memEmailFlag = null;
 	String memBowlFlag = null;
 	String memSwimFlag = null;
@@ -50,7 +50,7 @@
 			memDOBFlag = String.valueOf(member.getMem_DOBFlag());
 			memPhotoFlag = String.valueOf(member.getMem_PhotoFlag());
 			memLiabFlag = String.valueOf(member.getMem_LiabFlag());
-			memGHID = String.valueOf(member.getMem_GHID());
+			memGHID = member.getMem_GHID();
 			memEmailFlag = String.valueOf(member.getMem_EmailFlag());
 			memBowlFlag = String.valueOf(member.getMem_BowlFlag());
 			memSwimFlag = String.valueOf(member.getMem_SwimFlag());
@@ -80,7 +80,7 @@
 	 		memDOBFlag = request.getParameter("mem_DOB");
 	 		memPhotoFlag = request.getParameter("mem_PhotoFlag");
 	 		memLiabFlag = request.getParameter("mem_LiabFLag");
-	 		memGHID = request.getParameter("mem_GHID");
+	 		memGHID = Integer.parseInt(request.getParameter("mem_GHID"));
 	 		memEmailFlag = request.getParameter("mem_EmailFlag");
 	 		memBowlFlag = request.getParameter("mem_BowlFlag");
 	 		memSwimFlag = request.getParameter("mem_SwimFlag");
@@ -104,7 +104,7 @@
 	 		member.setMem_DOBFlag(memDOBFlag);
 	 		member.setMem_PhotoFlag(memPhotoFlag.charAt(0));
 	 		member.setMem_LiabFlag(request.getParameter("mem_LiabFlag").charAt(0));
-	 		member.setMem_GHID(memGHID.charAt(0));
+	 		member.setMem_GHID(memGHID);
 	 		member.setMem_EmailFlag(memEmailFlag.charAt(0));
 	 		member.setMem_BowlFlag(memBowlFlag.charAt(0));
 	 		member.setMem_SwimFlag(memSwimFlag.charAt(0));
@@ -144,7 +144,7 @@
  		memDOBFlag = request.getParameter("mem_DOB");
  		memPhotoFlag = request.getParameter("mem_PhotoFlag");
  		memLiabFlag = request.getParameter("mem_LiabFLag");
- 		memGHID = request.getParameter("mem_GHID");
+ 		memGHID = Integer.parseInt(request.getParameter("mem_GHID"));
  		memEmailFlag = request.getParameter("mem_EmailFlag");
  		memBowlFlag = request.getParameter("mem_BowlFlag");
  		memSwimFlag = request.getParameter("mem_SwimFlag");
@@ -167,7 +167,7 @@
  		member.setMem_DOBFlag(memDOBFlag);
  		member.setMem_PhotoFlag(memPhotoFlag.charAt(0));
  		member.setMem_LiabFlag(request.getParameter("mem_LiabFlag").charAt(0));
- 		member.setMem_GHID(memGHID.charAt(0));
+ 		member.setMem_GHID(memGHID);
  		member.setMem_EmailFlag(memEmailFlag.charAt(0));
  		member.setMem_BowlFlag(memBowlFlag.charAt(0));
  		member.setMem_SwimFlag(memSwimFlag.charAt(0));
@@ -263,7 +263,7 @@
 									<td><%=members.get(index).getMem_LName()%>, <%=members.get(index).getMem_FName()%></td>
 									<td><%=members.get(index).getMem_Add1() %></td>
 									<td><%=members.get(index).getMem_Zip() %></td>
-									<td><%=members.get(index).getMem_Email() %></td>
+									<td><%=members.get(index).getMem_GHID() %></td>
 									<td><%=members.get(index).getMem_HPhone() %></td>
 									<td><%=members.get(index).getMem_CPhone() %></td>
 									<td><%=members.get(index).getMem_WPhone() %></td>

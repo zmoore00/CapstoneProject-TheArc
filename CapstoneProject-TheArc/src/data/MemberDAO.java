@@ -60,7 +60,7 @@ public class MemberDAO {
 	
 	public synchronized static int addMember(Member member){
 		int status=0;
-		String preparedSQL = "INSERT INTO ARC_Member(MEM_FName,MEM_LName,MEM_Add1,MEM_Add2,MEM_City,MEM_State,MEM_County,MEM_Zip,MEM_HPhone,MEM_CPhone,MEM_WPhone,MEM_RegDate,MEM_RenewDate,MEM_CurFlag,MEM_DOB,MEM_LiabFlag,MEM_PhotoFlag,MEM_GHID,MEM_PhysFlag,MEM_EmailFlag,MEM_BowlFlag,MEM_SwimFlag) VALUES(se?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+		String preparedSQL = "INSERT INTO ARC_Member(MEM_FName,MEM_LName,MEM_Add1,MEM_Add2,MEM_City,MEM_State,MEM_County,MEM_Zip,MEM_HPhone,MEM_CPhone,MEM_WPhone,MEM_RegDate,MEM_RenewDate,MEM_CurFlag,MEM_DOB,MEM_LiabFlag,MEM_PhotoFlag,MEM_GHID,MEM_PhysFlag,MEM_EmailFlag,MEM_BowlFlag,MEM_SwimFlag) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		PreparedStatement statement=null;
 		
 		try {
@@ -148,6 +148,7 @@ public class MemberDAO {
 			statement.setString(20, String.valueOf(member.getMem_EmailFlag()));
 			statement.setString(21, String.valueOf(member.getMem_BowlFlag()));
 			statement.setString(22, String.valueOf(member.getMem_SwimFlag()));
+			statement.setInt(23, Integer.parseInt(member.getMem_ID()));
 			
 			status = statement.executeUpdate();
 			statement.close();
@@ -193,6 +194,7 @@ public class MemberDAO {
 				statement.setString(20, String.valueOf(member.getMem_EmailFlag()));
 				statement.setString(21, String.valueOf(member.getMem_BowlFlag()));
 				statement.setString(22, String.valueOf(member.getMem_SwimFlag()));
+				statement.setString(23, String.valueOf(member.getMem_ID()));
 			}	
 			rs.close();		
 			statement.close();
