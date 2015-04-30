@@ -3,7 +3,131 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+<%	
+	
+	ArrayList<Activities> activities = ActivityDAO.getActivities();
+	int 	act_ID   		= 0;
+	String 	act_Name   		= null;	
+	String 	act_type   		= null;
+	
+	String 	act_date   		= null;
+	String 	act_loc   		= null;
+	int 	act_volCount   	= 0;
+	int		act_memCount   	= 0;
+	int		act_nonCount   	= 0;
+	
+	int		act_totCount   	= 0;
+	int		act_revenue   	= 0;
+	int		act_expense   	= 0; 
+	//list
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		for(Activities activity : activities){
+						
+			act_Name   		= activity.getAct_Name();                     
+			act_type   		= activity.getAct_type();                     
+			                                                               
+			act_date   		= activity.getAct_date();                     
+			act_loc   		= activity.getAct_loc();                      
+			act_volCount   	=activity.getAct_volCount(); 
+			act_memCount   	=activity.getAct_memCount(); 
+			act_nonCount   	=activity.getAct_nonCount(); 
+			                                               
+			act_totCount   	=activity.getAct_totCount(); 
+			act_revenue   	=activity.getAct_revenue();  
+			act_expense   	=activity.getAct_expense();  
+		}
+		}
+	
+	if(request.getMethod().equalsIgnoreCase("POST")){
+		//This is what handles the Update
+		if(request.getParameter("act_ID_Update") != null){
+			String volunteerID = request.getParameter("act_ID_Update");
+			System.out.println("update");
+			
+			act_Name   	   =	request.getParameter("act_Name");
+			act_type   	   =	request.getParameter("act_type");
+			
+			act_date   	   =	request.getParameter("act_date");
+			act_loc   	   =	request.getParameter("act_loc");
+			act_volCount   = 	request.getParameter("act_volCount");
+			act_memCount   = 	request.getParameter("act_memCount");
+			act_nonCount   = 	request.getParameter("act_nonCount");
+			               
+			act_totCount   = 	request.getParameter("act_totCount");
+			act_revenue    =	request.getParameter("act_revenue");
+			act_expense    =	request.getParameter("act_expense");
+			
+			Activities activity = new Activities();
+			activity.setAct_Name   	  (act_Name);
+			activity.setAct_type   	  (act_type); 	
+                                      
+			activity.setAct_date   	  (act_date);   	
+			activity.setAct_loc   	  (act_loc);	
+			activity.setAct_volCount  (act_volCount);
+			activity.setAct_memCount  (act_memCount);
+			activity.setAct_nonCount  (act_nonCount);
+            
+			activity.setAct_totCount  (act_totCount);
+			activity.setAct_revenue   (act_revenue);
+			activity.setAct_expense   (act_expense);
+			
+			ActivityDAO.updateActivity(activity);
+			response.sendRedirect("activity.jsp");
+			return;
+			
+		}
+		//delete
+		if(request.getParameter("act_ID") != null)
+		{//halp
+		String activityID = request.getParameter("act_ID");
+		System.out.println("delete");
+		System.out.println("haha woops");
+		response.sendRedirect("activity.jsp");
+		return;
+		}
+		if(request.getParameter("act_ID") == null)
+		{
+		System.out.println("create");
+		
+		act_Name   	   =	request.getParameter("act_Name");
+		act_type   	   =	request.getParameter("act_type");
+		
+		act_date   	   =	request.getParameter("act_date");
+		act_loc   	   =	request.getParameter("act_loc");
+		act_volCount   = 	request.getParameter("act_volCount");
+		act_memCount   = 	request.getParameter("act_memCount");
+		act_nonCount   = 	request.getParameter("act_nonCount");
+		               
+		act_totCount   = 	request.getParameter("act_totCount");
+		act_revenue    =	request.getParameter("act_revenue");
+		act_expense    =	request.getParameter("act_expense");
+		
+		Activities activity = new Activities();
+		activity.setAct_Name   	  (act_Name);
+		activity.setAct_type   	  (act_type); 	
+                                  
+		activity.setAct_date   	  (act_date);   	
+		activity.setAct_loc   	  (act_loc);	
+		activity.setAct_volCount  (act_volCount);
+		activity.setAct_memCount  (act_memCount);
+		activity.setAct_nonCount  (act_nonCount);
+        
+		activity.setAct_totCount  (act_totCount);
+		activity.setAct_revenue   (act_revenue);
+		activity.setAct_expense   (act_expense);
+		
+		ActivityDAO.addActivity(activity);
+		response.sendRedirect("activity.jsp");
+		return;
+		}
+	}
+	
+	if(request.getMethod().equalsIgnoreCase("PUT")){
+		System.out.println("Never gunna give you up!");
+		response.sendRedirect("activity.jsp");
+		return;
+	}
+	%>
 
 <head>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
