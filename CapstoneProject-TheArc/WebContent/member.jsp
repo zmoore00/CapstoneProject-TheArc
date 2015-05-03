@@ -27,7 +27,7 @@
 	String memDOBFlag = null;
 	String memPhotoFlag = null;
 	String memLiabFlag = null;
-	int memGHID;
+	int memGHID = 0;
 	String memEmailFlag = null;
 	String memBowlFlag = null;
 	String memSwimFlag = null;
@@ -323,7 +323,6 @@
 			<div class="content">
 					<p>			<form class="form-horizontal" method="POST">
 			<fieldset>
-
 			<!-- Text input-->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_FName">First Name</label>  
