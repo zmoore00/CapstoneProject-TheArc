@@ -45,7 +45,7 @@ public class GroupHomeDAO {
 		return grouphomes;
 	}
 	
-	public synchronized int addGroupHome(GroupHome grouphome){
+	public synchronized static int addGroupHome(GroupHome grouphome){
 		int status=0;
 		String preparedSQL = "INSERT INTO ARC_GroupHome(GRP_Name,GRP_Add1,GRP_Add2,GRP_City,GRP_State,GRP_Zip) VALUES(?,?,?,?,?,?);";
 		PreparedStatement statement=null;
