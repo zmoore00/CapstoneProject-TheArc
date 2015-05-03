@@ -271,6 +271,10 @@
 	 <div class="sub"> = hidden drop down item -->
 			<nav>
 				<ul>
+					<li><a href="index.jsp">HOME</a>
+						<div class="sub">
+						</div>
+					</li> 
 					<li><a href="member.jsp">MEMBERS</a>
 						<div class="sub">
 						</div>
@@ -290,8 +294,7 @@
 					<li><a href="report.jsp">REPORTS</a>
 						<div class="sub">
 						</div>
-					</li>
-					<li><a href="index">LOG OUT</a></li> 
+					</li>  
 				</ul>
 			</nav>
 		</div>
