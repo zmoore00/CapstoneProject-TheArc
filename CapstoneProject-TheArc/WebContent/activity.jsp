@@ -2107,16 +2107,16 @@ Pastebin v3.11 rendered in: 0.004 seconds
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_FName">Activity Name</label>  
 			  <div class="col-md-4">
-			  <input id="act_Name" name="act_Name" type="text" placeholder="Bowling" class="form-control input-md" required="">
+			  <input id="act_Name" value= "<%=act_Name%>" name="act_Name" type="text" placeholder="Bowling" class="form-control input-md" required="">
 			  <p class="help-block">Please input a UNIQUE event name so you can update it later.</p>
 			  </div>
 			</div>
-
 			<!-- Select Basic -->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_CurFlag">Activity Type</label>
 			  <div class="col-md-2">
 				<select id="act_Type" name="act_Type" class="form-control">
+				  <option value= "<%= act_type%>"> <%= act_type%> </option>
 				  <option value="Bowling">Bowling</option>
 				  <option value="Dance">Dance</option>
 				  <option value="Swimming">Swimming</option>
@@ -2131,7 +2131,7 @@ Pastebin v3.11 rendered in: 0.004 seconds
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_DOBFlag">Activity Date</label>  
 			  <div class="col-md-4">
-			  <input id="act_Date" name="act_Date" type="date" placeholder="2015-01-01" class="form-control input-md" required="">
+			  <input id="act_Date"  value= "<%=act_date%>" name="act_Date" type="date" placeholder="2015-01-01" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -2140,7 +2140,7 @@ Pastebin v3.11 rendered in: 0.004 seconds
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_City">Activity Location</label>  
 			  <div class="col-md-4">
-			  <input id="act_Loc" name="act_Loc" type="text" placeholder="Fort Smith, AR" class="form-control input-md" required="">
+			  <input id="act_Loc"  value= "<%=act_loc%>" name="act_Loc" type="text" placeholder="Fort Smith, AR" class="form-control input-md" required="">
 				
 			  </div>
 			</div>

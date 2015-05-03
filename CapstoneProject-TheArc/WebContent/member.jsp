@@ -9,6 +9,7 @@
 	int i;
 	
 	members=MemberDAO.getMembers();
+	
 	String memFname = null;
 	String memLname = null;
 	String memAdd1  = null;
@@ -31,7 +32,56 @@
 	String memBowlFlag = null;
 	String memSwimFlag = null;
 	
+	String memFnameUpdate = "John";
+	String memLnameUpdate = "Doe";
+	String memAdd1Update  = "123 Main Street";
+	String memAdd2Update   = "Appt. 2";
+	String memCityUpdate   = "Fort Smith";
+	String memStateUpdate  = "AR";
+	String memCountyUpdate   = "Sebastian";
+	String memZipUpdate    = "72903";
+	String memHPhoneUpdate  = "(000)000-0000";
+	String memCPhoneUpdate  = "(111)111-1111";
+	String memWPhoneUpdate  = "(222)222-2222";
+	String memRegDateUpdate  = "YYYY/MM/DD";
+	String memRenewDateUpdate  = "YYYY/MM/DD";
+	String memCurFlagUpdate  = "Y";
+	String memDOBFlagUpdate  = "YYYY/MM/DD";
+	String memPhotoFlagUpdate  = "Y";
+	String memLiabFlagUpdate  = "Y";
+	int    memGHIDUpdate = 0;
+	String memEmailFlagUpdate  = "Y";
+	String memBowlFlagUpdate  = "Y";
+	String memSwimFlagUpdate  = "Y";
+	
 	if(request.getMethod().equalsIgnoreCase("GET")){
+		if(request.getParameter("mem_ID_Update") != null){
+			Member memberUpdate;
+			memberUpdate = MemberDAO.getMember(request.getParameter("mem_ID_Update"));
+			
+			memFnameUpdate = memberUpdate.getMem_FName();
+			memLnameUpdate = memberUpdate.getMem_LName();
+			memAdd1Update  = memberUpdate.getMem_Add1();
+			memAdd2Update  = memberUpdate.getMem_Add2();
+			memCityUpdate  = memberUpdate.getMem_City();
+			memStateUpdate = memberUpdate.getMem_State();
+			memCountyUpdate   = memberUpdate.getMem_County();
+			memZipUpdate   = memberUpdate.getMem_Zip();
+			memHPhoneUpdate = memberUpdate.getMem_HPhone();
+			memCPhoneUpdate = memberUpdate.getMem_CPhone();
+			memWPhoneUpdate = memberUpdate.getMem_WPhone();
+			memRegDateUpdate = memberUpdate.getMem_RegDate();
+			memRenewDateUpdate = memberUpdate.getMem_RenewDate();
+			memCurFlagUpdate = String.valueOf(memberUpdate.getMem_CurFlag());
+			memDOBFlagUpdate = String.valueOf(memberUpdate.getMem_DOBFlag());
+			memPhotoFlagUpdate = String.valueOf(memberUpdate.getMem_PhotoFlag());
+			memLiabFlagUpdate = String.valueOf(memberUpdate.getMem_LiabFlag());
+			memGHIDUpdate = memberUpdate.getMem_GHID();
+			memEmailFlagUpdate = String.valueOf(memberUpdate.getMem_EmailFlag());
+			memBowlFlagUpdate = String.valueOf(memberUpdate.getMem_BowlFlag());
+			memSwimFlagUpdate = String.valueOf(memberUpdate.getMem_SwimFlag());
+		}
+		
 		for(Member member : members){
 			memFname = member.getMem_FName();
 			memLname = member.getMem_LName();
@@ -185,6 +235,7 @@
 <head>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<link href="style.css" rel="stylesheet">
+	<link href="form.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 	<script type="text/javascript" src="jquery.cookie.js"></script> <!--required only if using cookies-->
     <script type="text/javascript" src="jquery.accordion.js"></script>
@@ -490,22 +541,34 @@
 	<!-- BEGIN UPDATE MEMBER SECTION -->
 	<div class="accordion" id="section3">Update Member<span></span></div>
 		<div class="content">
+		<p><form class="form-horizontal" method="GET">
+			<fieldset>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  	<label class="col-md-4 control-label" for="mem_ID_Update">Member ID</label>  
+			  	<div class="col-md-5">
+			  		<input id="mem_ID_Update" name="mem_ID_Update" type="text" placeholder="" class="form-control input-md" required="">
+				</div>
+			</div>
+			
+			<!-- Button -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="populate">Populate Fields</label>
+			  <div class="col-md-4">
+				<button id="populate" name="populate" class="btn btn-primary">Get Info</button>
+			  </div>
+			</div>
+			
+			</form>
 			<p><form class="form-horizontal" method = "POST">
 			<fieldset>
 
 			<!-- Text input-->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="mem_ID_Update">Member ID</label>  
-			  <div class="col-md-5">
-			  <input id="mem_ID_Update" name="mem_ID_Update" type="text" placeholder="" class="form-control input-md" required="">
-			  </div>
-			</div>
-
-			<!-- Text input-->
-			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_FName">First Name</label>  
 			  <div class="col-md-4">
-			  <input id="mem_FName" name="mem_FName" type="text" placeholder="John" class="form-control input-md" required="">
+			  <input id="mem_FName" name="mem_FName" type="text" value = "<%=memFnameUpdate%>" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -514,7 +577,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_LName">Last Name</label>  
 			  <div class="col-md-4">
-			  <input id="mem_LName" name="mem_LName" type="text" placeholder="Smith" class="form-control input-md" required="">
+			  <input id="mem_LName" name="mem_LName" type="text" value = "<%=memLnameUpdate%>" placeholder="Smith" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -523,7 +586,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_Add1">Address 1</label>  
 			  <div class="col-md-5">
-			  <input id="mem_Add1" name="mem_Add1" type="text" placeholder="1 N 1st St" class="form-control input-md" required="">
+			  <input id="mem_Add1" name="mem_Add1" type="text" value = "<%=memAdd1Update%>" placeholder="1 N 1st St" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -532,7 +595,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_Add2">Address 2</label>  
 			  <div class="col-md-5">
-			  <input id="mem_Add2" name="mem_Add2" type="text" placeholder="" class="form-control input-md">
+			  <input id="mem_Add2" name="mem_Add2" type="text" value = "<%=memAdd2Update%>" placeholder="appt. 2" class="form-control input-md">
 				
 			  </div>
 			</div>
@@ -541,7 +604,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_City">City</label>  
 			  <div class="col-md-4">
-			  <input id="mem_City" name="mem_City" type="text" placeholder="Fort Smith" class="form-control input-md" required="">
+			  <input id="mem_City" name="mem_City" type="text" value = "<%=memCityUpdate%>" placeholder="Fort Smith" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -550,7 +613,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_State">State</label>  
 			  <div class="col-md-2">
-			  <input id="mem_State" name="mem_State" type="text" placeholder="AR" class="form-control input-md" required="">
+			  <input id="mem_State" name="mem_State" type="text" value = "<%=memStateUpdate%>" placeholder="AR" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -559,7 +622,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_Zip">ZIP</label>  
 			  <div class="col-md-2">
-			  <input id="mem_Zip" name="mem_Zip" type="text" placeholder="72901" class="form-control input-md" required="">
+			  <input id="mem_Zip" name="mem_Zip" type="text" value = "<%=memZipUpdate%>" placeholder="72901" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -568,7 +631,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_Country">County</label>  
 			  <div class="col-md-5">
-			  <input id="mem_County" name="mem_County" type="text" placeholder="Sebastian" class="form-control input-md" required="">
+			  <input id="mem_County" name="mem_County" type="text" value = "<%=memCountyUpdate%>" placeholder="Sebastian" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -577,7 +640,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_HPhone">Home Phone</label>  
 			  <div class="col-md-4">
-			  <input id="mem_HPhone" name="mem_HPhone" type="text" placeholder="(000) 000-0000" class="form-control input-md" required="">
+			  <input id="mem_HPhone" name="mem_HPhone" type="text" value = "<%=memHPhoneUpdate%>" placeholder="(000) 000-0000" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -586,7 +649,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_CPhone">Cell Phone</label>  
 			  <div class="col-md-4">
-			  <input id="mem_CPhone" name="mem_CPhone" type="text" placeholder="(000) 000-0000" class="form-control input-md">
+			  <input id="mem_CPhone" name="mem_CPhone" type="text" value = "<%=memCPhoneUpdate%>" placeholder="(000) 000-0000" class="form-control input-md">
 				
 			  </div>
 			</div>
@@ -595,7 +658,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_WPhone">Work Phone</label>  
 			  <div class="col-md-4">
-			  <input id="mem_WPhone" name="mem_WPhone" type="text" placeholder="(000) 000-0000" class="form-control input-md" required="">
+			  <input id="mem_WPhone" name="mem_WPhone" type="text" value = "<%=memWPhoneUpdate%>" placeholder="(000) 000-0000" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -604,7 +667,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_RegDate">Registration Date</label>  
 			  <div class="col-md-5">
-			  <input id="mem_RegDate" name="mem_RegDate" type="text" placeholder="2015/01/30" class="form-control input-md" required="">
+			  <input id="mem_RegDate" name="mem_RegDate" type="text" value = "<%=memRegDateUpdate%>" placeholder="2015/01/30" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -613,7 +676,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_RenewDate">Renew Date</label>  
 			  <div class="col-md-5">
-			  <input id="mem_RenewDate" name="mem_RenewDate" type="text" placeholder="2016/01/30" class="form-control input-md" required="">
+			  <input id="mem_RenewDate" name="mem_RenewDate" type="text" value = "<%=memRenewDateUpdate%>" placeholder="2016/01/30" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -633,7 +696,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_DOBFlag">Date of Birth</label>  
 			  <div class="col-md-4">
-			  <input id="mem_DOBFlag" name="mem_DOBFlag" type="date" placeholder="2015-01-01" class="form-control input-md" required="">
+			  <input id="mem_DOBFlag" name="mem_DOBFlag" type="date" value = "<%=memDOBFlagUpdate%>" placeholder="2015-01-01" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -697,7 +760,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_GHID">Group Home ID</label>  
 			  <div class="col-md-5">
-			  <input id="mem_GHID" name="mem_GHID" type="text" placeholder="" class="form-control input-md">
+			  <input id="mem_GHID" name="mem_GHID" type="text" value = "<%=memGHIDUpdate%>" placeholder="" class="form-control input-md">
 				
 			  </div>
 			</div>
@@ -711,6 +774,7 @@
 			</div>
 
 			</fieldset>
+			<%request.setAttribute("Mem_ID_Update", null); %>
 			</form></p>
 		</div>
 		

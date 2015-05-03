@@ -69,7 +69,7 @@ public class GroupHomeDAO {
 		return status;
 	}
 	
-	public synchronized int removeGroupHome(String GRP_ID){
+	public synchronized static int removeGroupHome(String GRP_ID){
 		int status=0;
 		String preparedSQL = "DELETE FROM ARC_GroupHome where GRP_ID = ?;";
 		PreparedStatement statement=null;
