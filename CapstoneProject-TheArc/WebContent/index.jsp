@@ -61,7 +61,8 @@
 <section id="welcome-bg">
   <div class="container"> 
   	 <div id="welcome">
-     The Arc Membership Application
+     The Arc Membership Application<br />
+     index page is not done yet
     </div>
 	<div id="subtext">
 	<p style= "text-align:center;">Build an all-in-one Browser Based Member Tracking Solution<br />
