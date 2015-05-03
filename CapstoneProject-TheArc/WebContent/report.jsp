@@ -69,19 +69,38 @@
 		<!-- BEGIN MAILING LIST SECTION -->
 		<div class="accordion" id="section1">Mailing List<span></span></div>
 			<div class="content">
-				<p><form class="form-horizontal">
+			<p><form class="form-horizontal">
 			<fieldset>
 				
-			<!-- Button -->
+			
+			<!-- Select Basic -->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="mailingList">Get Mailing List</label>
-			  <div class="col-md-4">
-				<button id="mailingList" name="mailingList" class="btn btn-warning">Submit</button>
+			  <label class="col-md-4 control-label" for="mem_CurFlag">Month of Birth</label>
+			  <div class="col-md-2">
+				<select id="mailingList" name="mailingList" class="form-control">
+				  <option value="1">January</option>
+				  <option value="2">February</option>
+				  <option value="3">March</option>
+				  <option value="4">April</option>
+				  <option value="5">March</option>
+				  <option value="6">June</option>
+				  <option value="7">July</option>
+				  <option value="8">August</option>
+				  <option value="9">September</option>
+				  <option value="10">October</option>
+				  <option value="11">November</option>
+				  <option value="12">December</option>
+				</select>
+			  </div>
+			  <div class="col-md-4"><button id="mailingList" name="mailingList" class="btn btn-warning">Submit</button>
 			  </div>
 			</div>
-
+			
+			</div>
+			
+			
 			</fieldset>
-			</form></p>
+			</form>
 			</div>
 		
 		<!-- BEGIN BOWLING LIST SECTION -->
