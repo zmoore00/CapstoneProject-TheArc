@@ -83,7 +83,7 @@
 			return;
 			}
 			
-			if(request.getParameter("grp_ID") == null)
+			if(request.getParameter("grp_ID") == null) 
 			{
 			System.out.println("create");
 			grpName = request.getParameter("grp_Name");
