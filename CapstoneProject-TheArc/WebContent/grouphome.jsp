@@ -140,7 +140,7 @@
 	 <div class="sub"> = hidden drop down item -->
 			<nav>
 				<ul>
-					<li><a href="index.jsp">HOME</a>
+					<li><a href="index.jsp">HOME </a>
 						<div class="sub">
 						</div>
 					</li> 
