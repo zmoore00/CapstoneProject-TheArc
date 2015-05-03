@@ -129,7 +129,7 @@ public class ActivityDAO {
 			statement.setInt( 8, activity.getAct_totCount());
 			statement.setString( 9, String.valueOf(activity.getAct_revenue()));
 			statement.setString(10, String.valueOf(activity.getAct_expense()));
-			System.out.println(activity.getAct_ID());
+			System.out.println(activity.getAct_ID() + " in update dao");
 			statement.setInt(11,activity.getAct_ID());
 
 
@@ -141,7 +141,8 @@ public class ActivityDAO {
 		}
 		return status;
 	}
-	public synchronized Activities getActivity(String ACT_ID) {
+	
+	public synchronized static Activities getActivity(String ACT_ID) {
 		Activities 				activity  = null;
 		PreparedStatement 		statement = null;
 		
@@ -155,7 +156,7 @@ public class ActivityDAO {
 			
 			while(rs.next()){
 				activity = 				new Activities();
-				
+				activity.setAct_ID(Integer.parseInt((rs.getString("ACT_ID"))));
 				activity.setAct_Name	(rs.getString("ACT_Name"));
 
 				activity.setAct_type	(rs.getString("ACT_Type"));

@@ -21,6 +21,7 @@
 	int		act_expense   	= 0; 
 	//list
 	if(request.getMethod().equalsIgnoreCase("GET")){
+		if(request.getParameter("act_ID_Update") == null){
 		for(Activities activity : activities){
 						
 			act_Name   		= activity.getAct_Name();                     
@@ -37,11 +38,48 @@
 			act_expense   	=activity.getAct_expense();  
 		}
 		}
-	
+		//clear values for update
+			act_ID   		= 0;
+		 	act_Name   		= "Activity Name";	
+		 	act_type   		= "Bowling";
+		
+		 	act_date   		= "1/01/01";
+		 	act_loc   		= "Fort Smith, AR";
+		 	act_volCount   	= 0;
+			act_memCount   	= 0;
+			act_nonCount   	= 0;
+		
+			act_totCount   	= 0;
+			act_revenue   	= 0;
+			act_expense   	= 0; 
+			
+		}
+	//set values for update
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		if(request.getParameter("act_ID_Update") != null){
+			Activities uActivity;
+			uActivity = ActivityDAO.getActivity(request.getParameter("act_ID_Update")); 
+			act_ID			 =uActivity.getAct_ID();
+			act_Name   		= uActivity.getAct_Name();
+			act_type   		= uActivity.getAct_type();
+			                  
+			act_date   		= uActivity.getAct_date();
+			act_loc   		= uActivity.getAct_loc();
+			act_volCount   	= uActivity.getAct_volCount();
+			act_memCount   	= uActivity.getAct_memCount();
+			act_nonCount   	= uActivity.getAct_nonCount();
+			                  
+			act_totCount   	= uActivity.getAct_totCount();
+			act_revenue   	= uActivity.getAct_revenue();
+			act_expense   	= uActivity.getAct_expense();
+				
+		}
+		
+	}
 	if(request.getMethod().equalsIgnoreCase("POST")){
 		//This is what handles the Update
 		if(request.getParameter("act_ID_Update") != null){
-			String volunteerID = request.getParameter("act_ID_Update");
+			int actID = Integer.parseInt(request.getParameter("act_ID_Update"));
 			System.out.println("update");
 			
 			act_Name   	   =	request.getParameter("act_Name");
@@ -58,8 +96,7 @@
 			act_expense    =	Integer.parseInt(request.getParameter("act_Expense"));
 			
 			Activities activity = new Activities();
-			//act_ID = act_ID_Update 
-			activity.setAct_ID		  (act_ID);
+			activity.setAct_ID		  (actID);
 			activity.setAct_Name   	  (act_Name);
 			activity.setAct_type   	  (act_type); 	
                                       
@@ -72,7 +109,6 @@
 			activity.setAct_totCount  (act_totCount);
 			activity.setAct_revenue   (act_revenue);
 			activity.setAct_expense   (act_expense);
-			System.out.println(act_ID);
 			ActivityDAO.updateActivity(activity);
 			response.sendRedirect("activity.jsp");
 			return;
@@ -88,13 +124,6 @@
 		
 		act_date   	   =	request.getParameter("act_Date");
 		act_loc   	   =	request.getParameter("act_Loc");
-		//act_volCount   = 	Integer.parseInt(request.getParameter("act_volCount"));
-		//act_memCount   = 	Integer.parseInt(request.getParameter("act_memCount"));
-		//act_nonCount   = 	Integer.parseInt(request.getParameter("act_nonCount"));
-		               
-		//act_totCount   = 	Integer.parseInt(request.getParameter("act_totCount"));
-	    //act_revenue    =	Integer.parseInt(request.getParameter("act_revenue"));
-		//act_expense    =	Integer.parseInt(request.getParameter("act_expense"));
 		
 		Activities activity = new Activities();
 		activity.setAct_Name   	  (act_Name);
@@ -109,18 +138,13 @@
 		activity.setAct_totCount  (act_totCount);
 		activity.setAct_revenue   (act_revenue);
 		activity.setAct_expense   (act_expense);
-		
+
 		ActivityDAO.addActivity(activity);
 		response.sendRedirect("activity.jsp");
 		return;
 		}
 	}
 	
-	if(request.getMethod().equalsIgnoreCase("PUT")){
-		System.out.println("Never gunna give you up!");
-		response.sendRedirect("activity.jsp");
-		return;
-	}
 	%>
 
 <head>
@@ -270,32 +294,40 @@
 	<!-- BEGIN UPDATE ACTIVITY SECTION -->
 	<div class="accordion" id="section3">Update Activity (Add Counts)<span></span></div>
 		<div class="content">
-			<p><form class="form-horizontal" method="POST">
+			<p><form class="form-horizontal" method="GET">
 			<fieldset>
 
 			<!-- Text input-->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="act_ID_Update">Activity ID</label>  
 			  <div class="col-md-4">
-			  <input id="act_ID_Update" name="act_ID_Update" type="text" placeholder="1" class="form-control input-md" required="">
+			  <input id="act_ID_Update" value= <%=act_ID %> name="act_ID_Update" type="text" placeholder="1" class="form-control input-md" required="">
 			  <p class="help-block">Make sure activity ID is correct!</p>
 			  </div>
 			</div>
-			
+			<!-- Button -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="populate">Populate Fields</label>
+			  <div class="col-md-4">
+				<button id="populate" name="populate" class="btn btn-primary" formnovalidate>Get Info</button>
+			  </div>
+			</div>
+			</form></p>
+			<p><form class="form-horizontal" method="POST">
 						<!-- Text input-->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_FName">Activity Name</label>  
 			  <div class="col-md-4">
-			  <input id="act_Name" name="act_Name" type="text" placeholder="Bowling" class="form-control input-md" required="">
+			  <input id="act_Name" value= <%=act_Name%> name="act_Name" type="text" placeholder="Bowling" class="form-control input-md" required="">
 			  <p class="help-block">Please input a UNIQUE event name so you can update it later.</p>
 			  </div>
 			</div>
-
 			<!-- Select Basic -->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_CurFlag">Activity Type</label>
 			  <div class="col-md-2">
 				<select id="act_Type" name="act_Type" class="form-control">
+				  <option value= <%= act_type%>> <%= act_type%> </option>
 				  <option value="Bowling">Bowling</option>
 				  <option value="Dance">Dance</option>
 				  <option value="Swimming">Swimming</option>
@@ -310,7 +342,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_DOBFlag">Activity Date</label>  
 			  <div class="col-md-4">
-			  <input id="act_Date" name="act_Date" type="date" placeholder="2015-01-01" class="form-control input-md" required="">
+			  <input id="act_Date"  value= <%=act_date%> name="act_Date" type="date" placeholder="2015-01-01" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -319,7 +351,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_City">Activity Location</label>  
 			  <div class="col-md-4">
-			  <input id="act_Loc" name="act_Loc" type="text" placeholder="Fort Smith, AR" class="form-control input-md" required="">
+			  <input id="act_Loc"  value= <%=act_loc%> name="act_Loc" type="text" placeholder="Fort Smith, AR" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -328,7 +360,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="act_VolCount">Volunteer Count</label>  
 			  <div class="col-md-4">
-			  <input id="act_VolCount" name="act_VolCount" type="text" placeholder="0" class="form-control input-md" required="">
+			  <input id="act_VolCount"  value= <%=act_volCount%> name="act_VolCount" type="text" placeholder="0" class="form-control input-md" required="">
 
 			  </div>
 			</div>
@@ -337,7 +369,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="act_MemCount">Member Count</label>  
 			  <div class="col-md-4">
-			  <input id="act_MemCount" name="act_MemCount" type="text" placeholder="0" class="form-control input-md" required="">
+			  <input id="act_MemCount"  value= <%=act_memCount%> name="act_MemCount" type="text" placeholder="0" class="form-control input-md" required="">
 
 			  </div>
 			</div>
@@ -346,7 +378,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="act_NonCount">Non Member Count</label>  
 			  <div class="col-md-4">
-			  <input id="act_NonCount" name="act_NonCount" type="text" placeholder="0" class="form-control input-md" required="">
+			  <input id="act_NonCount"  value= <%=act_nonCount%> name="act_NonCount" type="text" placeholder="0" class="form-control input-md" required="">
 
 			  </div>
 			</div>
@@ -355,7 +387,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="act_TotCount">Total Count</label>  
 			  <div class="col-md-4">
-			  <input id="act_TotCount" name="act_TotCount" type="text" placeholder="0" class="form-control input-md" required="">
+			  <input id="act_TotCount"  value= <%=act_totCount%> name="act_TotCount" type="text" placeholder="0" class="form-control input-md" required="">
 
 			  </div>
 			</div>
@@ -364,7 +396,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="act_Revenue">Revenue</label>  
 			  <div class="col-md-4">
-			  <input id="act_Revenue" name="act_Revenue" type="text" placeholder="$0.00" class="form-control input-md" required="">
+			  <input id="act_Revenue"  value= <%=act_revenue%> name="act_Revenue" type="text" placeholder="$0.00" class="form-control input-md" required="">
 
 			  </div>
 			</div>
@@ -373,7 +405,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="act_Revenue">Expenses</label>  
 			  <div class="col-md-4">
-			  <input id="act_Expense" name="act_Expense" type="text" placeholder="$0.00" class="form-control input-md" required="">
+			  <input id="act_Expense"  value= <%=act_expense%> name="act_Expense" type="text" placeholder="$0.00" class="form-control input-md" required="">
 
 			  </div>
 			</div>
