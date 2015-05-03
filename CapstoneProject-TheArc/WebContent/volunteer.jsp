@@ -578,7 +578,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="vol_FName">First Name</label>  
 			  <div class="col-md-4">
-			  <input id="vol_FName" value= <%=volFnameUpdate%> name="vol_FName" type="text" placeholder="John" class="form-control input-md" required="">
+			  <input id="vol_FName" value= "<%=volFnameUpdate%>" name="vol_FName" type="text" placeholder="John" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -587,7 +587,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="vol_LName">Last Name</label>  
 			  <div class="col-md-4">
-			  <input id="vol_LName" value= <%=volLnameUpdate%> name="vol_LName" type="text" placeholder="Smith" class="form-control input-md" required="">
+			  <input id="vol_LName" value= "<%=volLnameUpdate%>" name="vol_LName" type="text" placeholder="Smith" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -596,7 +596,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="vol_Add1">Address</label>  
 			  <div class="col-md-5">
-			  <input id="vol_Add1" value= <%=volAdd1Update%> name="vol_Add1" type="text" placeholder="1 N 1st St" class="form-control input-md" required="">
+			  <input id="vol_Add1" value= "<%=volAdd1Update%>" name="vol_Add1" type="text" placeholder="1 N 1st St" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -605,7 +605,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="vol_City">City</label>  
 			  <div class="col-md-4">
-			  <input id="vol_City" value= <%=volCityUpdate%> name="vol_City" type="text" placeholder="Fort Smith" class="form-control input-md" required="">
+			  <input id="vol_City" value= "<%=volCityUpdate%>" name="vol_City" type="text" placeholder="Fort Smith" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -614,7 +614,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="vol_State">State</label>  
 			  <div class="col-md-2">
-			  <input id="vol_State" value= <%=volStateUpdate%> name="vol_State" type="text" placeholder="AR" class="form-control input-md" required="">
+			  <input id="vol_State" value= "<%=volStateUpdate%>" name="vol_State" type="text" placeholder="AR" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -623,7 +623,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="vol_Zip">ZIP</label>  
 			  <div class="col-md-2">
-			  <input id="vol_Zip" value= <%=volZipUpdate%> name="vol_Zip" type="text" placeholder="72901" class="form-control input-md" required="">
+			  <input id="vol_Zip" value= "<%=volZipUpdate%>" name="vol_Zip" type="text" placeholder="72901" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -632,7 +632,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="vol_HPhone">Home Phone</label>  
 			  <div class="col-md-4">
-			  <input id="vol_HPhone" value= <%=volHPhoneUpdate%> name="vol_HPhone" type="text" placeholder="(000) 000-0000" class="form-control input-md" required="">
+			  <input id="vol_HPhone" value= "<%=volHPhoneUpdate%>" name="vol_HPhone" type="text" placeholder="(000) 000-0000" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -641,7 +641,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="vol_CPhone">Cell Phone</label>  
 			  <div class="col-md-4">
-			  <input id="vol_CPhone" value= <%=volCPhoneUpdate%> name="vol_CPhone" type="text" placeholder="(000) 000-0000" class="form-control input-md">
+			  <input id="vol_CPhone" value= "<%=volCPhoneUpdate%>" name="vol_CPhone" type="text" placeholder="(000) 000-0000" class="form-control input-md">
 				
 			  </div>
 			</div>
@@ -650,7 +650,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="vol_WPhone">Work Phone</label>  
 			  <div class="col-md-4">
-			  <input id="vol_WPhone" value= <%=volWPhoneUpdate%> name="vol_WPhone" type="text" placeholder="(000) 000-0000" class="form-control input-md" required="">
+			  <input id="vol_WPhone" value= "<%=volWPhoneUpdate%>" name="vol_WPhone" type="text" placeholder="(000) 000-0000" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -659,7 +659,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="vol_Email">Email</label>  
 			  <div class="col-md-2">
-			  <input id="vol_Email" value= <%=volEmailUpdate%> name="vol_Email" type="text" placeholder="" class="form-control input-md" required="">
+			  <input id="vol_Email" value= "<%=volEmailUpdate%>" name="vol_Email" type="text" placeholder="" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -668,7 +668,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="vol_Hours">Hours</label>  
 			  <div class="col-md-2">
-			  <input id="vol_Hours" value= <%=volHoursUpdate%> name="vol_Hours" type="text" placeholder="" class="form-control input-md" required="">
+			  <input id="vol_Hours" value= "<%=volHoursUpdate%>" name="vol_Hours" type="text" placeholder="" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -678,7 +678,7 @@
 			  <label class="col-md-4 control-label" for="vol_LiabFlag">Liability Flag</label>
 			  <div class="col-md-2">
 				<select id="vol_LiabFlag" name="vol_LiabFlag" class="form-control">
-					<option value= <%=volLiabFlagUpdate%>><%=String.valueOf(volLiabFlagUpdate)%></option>
+					<option value= "<%=volLiabFlagUpdate%>"><%=String.valueOf(volLiabFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -690,7 +690,7 @@
 			  <label class="col-md-4 control-label" for="vol_PhotoFlag">Photo Release Flag</label>
 			  <div class="col-md-2">
 				<select id="vol_PhotoFlag"  name="vol_PhotoFlag" class="form-control">
-				  <option value= <%=volPhotoFlagUpdate%>><%=String.valueOf(volPhotoFlagUpdate)%></option>
+				  <option value= "<%=volPhotoFlagUpdate%>"><%=String.valueOf(volPhotoFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -702,7 +702,7 @@
 			  <label class="col-md-4 control-label" for="vol_ArtFlag">Art Flag</label>
 			  <div class="col-md-2">
 				<select id="vol_ArtFlag" name="vol_ArtFlag" class="form-control">
-					<option value= <%=volArtFlagUpdate%>><%=String.valueOf(volArtFlagUpdate)%></option>
+					<option value= "<%=volArtFlagUpdate%>"><%=String.valueOf(volArtFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -714,7 +714,7 @@
 			  <label class="col-md-4 control-label" for="vol_BowlFlag">Bowling Flag</label>
 			  <div class="col-md-2">
 				<select id="vol_BowlFlag" name="vol_BowlFlag" class="form-control">
-					<option value= <%=volBowlFlagUpdate%>><%=String.valueOf(volBowlFlagUpdate)%></option>
+					<option value= "<%=volBowlFlagUpdate%>"><%=String.valueOf(volBowlFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -726,7 +726,7 @@
 			  <label class="col-md-4 control-label" for="vol_LabFlag">Computer Lab Flag</label>
 			  <div class="col-md-2">
 				<select id="vol_LabFlag" name="vol_LabFlag" class="form-control">
-					<option value= <%=volLabFlagUpdate%>><%=String.valueOf(volLabFlagUpdate)%></option>
+					<option value= "<%=volLabFlagUpdate%>"><%=String.valueOf(volLabFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -738,7 +738,7 @@
 			  <label class="col-md-4 control-label" for="vol_DanceFlag">Dance Flag</label>
 			  <div class="col-md-2">
 				<select id="vol_DanceFlag" name="vol_DanceFlag" class="form-control">
-					<option value= <%=volDanceFlagUpdate%>><%=String.valueOf(volDanceFlagUpdate)%></option>
+					<option value= "<%=volDanceFlagUpdate%>"><%=String.valueOf(volDanceFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -750,7 +750,7 @@
 			  <label class="col-md-4 control-label" for="vol_FishFlag">Fishing Flag</label>
 			  <div class="col-md-2">
 				<select id="vol_FishFlag" name="vol_FishFlag" class="form-control">
-					<option value= <%=volFishFlagUpdate%>><%=String.valueOf(volFishFlagUpdate)%></option>
+					<option value= "<%=volFishFlagUpdate%>"><%=String.valueOf(volFishFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -762,7 +762,7 @@
 			  <label class="col-md-4 control-label" for="vol_WaterFlag">Water Park Flag</label>
 			  <div class="col-md-2">
 				<select id="vol_WaterFlag" name="vol_WaterFlag" class="form-control">
-					<option value= <%=volWaterFlagUpdate%>><%=String.valueOf(volWaterFlagUpdate)%></option>
+					<option value= "<%=volWaterFlagUpdate%>"><%=String.valueOf(volWaterFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -774,7 +774,7 @@
 			  <label class="col-md-4 control-label" for="vol_OfficeFlag">Office Work Flag</label>
 			  <div class="col-md-2">
 				<select id="vol_OfficeFlag" name="vol_OfficeFlag" class="form-control">
-					<option value= <%=volOfficeFlagUpdate%>><%=String.valueOf(volOfficeFlagUpdate)%></option>
+					<option value= "<%=volOfficeFlagUpdate%>"><%=String.valueOf(volOfficeFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -786,7 +786,7 @@
 			  <label class="col-md-4 control-label" for="vol_SpecFlag">Special Events Flag</label>
 			  <div class="col-md-2">
 				<select id="vol_SpecFlag" name="vol_SpecFlag" class="form-control">
-					<option value= <%=volSpecFlagUpdate%>><%=String.valueOf(volSpecFlagUpdate)%></option>
+					<option value= "<%=volSpecFlagUpdate%>"><%=String.valueOf(volSpecFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>

@@ -318,7 +318,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_FName">Activity Name</label>  
 			  <div class="col-md-4">
-			  <input id="act_Name" value= <%=act_Name%> name="act_Name" type="text" placeholder="Bowling" class="form-control input-md" required="">
+			  <input id="act_Name" value= "<%=act_Name%>" name="act_Name" type="text" placeholder="Bowling" class="form-control input-md" required="">
 			  <p class="help-block">Please input a UNIQUE event name so you can update it later.</p>
 			  </div>
 			</div>
@@ -327,7 +327,7 @@
 			  <label class="col-md-4 control-label" for="mem_CurFlag">Activity Type</label>
 			  <div class="col-md-2">
 				<select id="act_Type" name="act_Type" class="form-control">
-				  <option value= <%= act_type%>> <%= act_type%> </option>
+				  <option value= "<%= act_type%>"> <%= act_type%> </option>
 				  <option value="Bowling">Bowling</option>
 				  <option value="Dance">Dance</option>
 				  <option value="Swimming">Swimming</option>
@@ -342,7 +342,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_DOBFlag">Activity Date</label>  
 			  <div class="col-md-4">
-			  <input id="act_Date"  value= <%=act_date%> name="act_Date" type="date" placeholder="2015-01-01" class="form-control input-md" required="">
+			  <input id="act_Date"  value= "<%=act_date%>" name="act_Date" type="date" placeholder="2015-01-01" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -351,7 +351,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_City">Activity Location</label>  
 			  <div class="col-md-4">
-			  <input id="act_Loc"  value= <%=act_loc%> name="act_Loc" type="text" placeholder="Fort Smith, AR" class="form-control input-md" required="">
+			  <input id="act_Loc"  value= "<%=act_loc%>" name="act_Loc" type="text" placeholder="Fort Smith, AR" class="form-control input-md" required="">
 				
 			  </div>
 			</div>
@@ -360,7 +360,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="act_VolCount">Volunteer Count</label>  
 			  <div class="col-md-4">
-			  <input id="act_VolCount"  value= <%=act_volCount%> name="act_VolCount" type="text" placeholder="0" class="form-control input-md" required="">
+			  <input id="act_VolCount"  value= "<%=act_volCount%>" name="act_VolCount" type="text" placeholder="0" class="form-control input-md" required="">
 
 			  </div>
 			</div>
@@ -369,7 +369,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="act_MemCount">Member Count</label>  
 			  <div class="col-md-4">
-			  <input id="act_MemCount"  value= <%=act_memCount%> name="act_MemCount" type="text" placeholder="0" class="form-control input-md" required="">
+			  <input id="act_MemCount"  value= "<%=act_memCount%>" name="act_MemCount" type="text" placeholder="0" class="form-control input-md" required="">
 
 			  </div>
 			</div>
@@ -378,7 +378,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="act_NonCount">Non Member Count</label>  
 			  <div class="col-md-4">
-			  <input id="act_NonCount"  value= <%=act_nonCount%> name="act_NonCount" type="text" placeholder="0" class="form-control input-md" required="">
+			  <input id="act_NonCount"  value= "<%=act_nonCount%>" name="act_NonCount" type="text" placeholder="0" class="form-control input-md" required="">
 
 			  </div>
 			</div>
@@ -387,7 +387,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="act_TotCount">Total Count</label>  
 			  <div class="col-md-4">
-			  <input id="act_TotCount"  value= <%=act_totCount%> name="act_TotCount" type="text" placeholder="0" class="form-control input-md" required="">
+			  <input id="act_TotCount"  value= "<%=act_totCount%>" name="act_TotCount" type="text" placeholder="0" class="form-control input-md" required="">
 
 			  </div>
 			</div>
@@ -396,7 +396,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="act_Revenue">Revenue</label>  
 			  <div class="col-md-4">
-			  <input id="act_Revenue"  value= <%=act_revenue%> name="act_Revenue" type="text" placeholder="$0.00" class="form-control input-md" required="">
+			  <input id="act_Revenue"  value= "<%=act_revenue%>" name="act_Revenue" type="text" placeholder="$0.00" class="form-control input-md" required="">
 
 			  </div>
 			</div>
@@ -405,7 +405,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="act_Revenue">Expenses</label>  
 			  <div class="col-md-4">
-			  <input id="act_Expense"  value= <%=act_expense%> name="act_Expense" type="text" placeholder="$0.00" class="form-control input-md" required="">
+			  <input id="act_Expense"  value= "<%=act_expense%>" name="act_Expense" type="text" placeholder="$0.00" class="form-control input-md" required="">
 
 			  </div>
 			</div>
