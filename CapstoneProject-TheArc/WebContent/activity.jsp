@@ -1,5 +1,5 @@
   <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*,beans.*,data.*" %>
+    pageEncoding="UTF-8" import="java.util.*,javax.swing.JOptionPane,beans.*,data.*" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +19,9 @@
 	int		act_totCount   	= 0;
 	int		act_revenue   	= 0;
 	int		act_expense   	= 0; 
+	int 	status			=0;
+	String 	message         ="YOU FAILED";
+	String anchor = "activity.jsp/#welcome";
 	//list
 	if(request.getMethod().equalsIgnoreCase("GET")){
 		if(request.getParameter("act_ID_Update") == null){
@@ -58,7 +61,9 @@
 	if(request.getMethod().equalsIgnoreCase("GET")){
 		if(request.getParameter("act_ID_Update") != null){
 			Activities uActivity;
+			try{
 			uActivity = ActivityDAO.getActivity(request.getParameter("act_ID_Update")); 
+			
 			act_ID			 =uActivity.getAct_ID();
 			act_Name   		= uActivity.getAct_Name();
 			act_type   		= uActivity.getAct_type();
@@ -72,7 +77,12 @@
 			act_totCount   	= uActivity.getAct_totCount();
 			act_revenue   	= uActivity.getAct_revenue();
 			act_expense   	= uActivity.getAct_expense();
-				
+			
+			}catch(Exception e){
+				message = "Invalid ID";
+				JOptionPane.showMessageDialog(null, message);
+			}
+			anchor = "activity.jsp#update";	
 		}
 		
 	}
@@ -109,10 +119,18 @@
 			activity.setAct_totCount  (act_totCount);
 			activity.setAct_revenue   (act_revenue);
 			activity.setAct_expense   (act_expense);
-			ActivityDAO.updateActivity(activity);
-			response.sendRedirect("activity.jsp");
+			status=ActivityDAO.updateActivity(activity);
+			anchor = "activity.jsp#update";
+			if(status == 1){
+				message = "Successfully updated Activity.";
+				
+			}else{
+				message = "ERROR 0418: Update unsuccessful.";
+			}
+			JOptionPane.showMessageDialog(null, message);
+			System.out.println(anchor);
+			response.sendRedirect(anchor);
 			return;
-			
 		}
 		
 		if(request.getParameter("act_ID") == null)
@@ -139,8 +157,16 @@
 		activity.setAct_revenue   (act_revenue);
 		activity.setAct_expense   (act_expense);
 
-		ActivityDAO.addActivity(activity);
-		response.sendRedirect("activity.jsp");
+		status = ActivityDAO.addActivity(activity);
+		if(status == 1){
+			message = "Successfully added Activity.";
+			
+		}else{
+			message = "ERROR 0417: Create unsuccessful.";
+		}
+		JOptionPane.showMessageDialog(null, message);
+		anchor = "activity.jsp#create";
+		response.sendRedirect(anchor);
 		return;
 		}
 	}
@@ -173,7 +199,7 @@
 	 <div class="sub"> = hidden drop down item -->
 			<nav>
 				<ul>
-					<li><a href="index.jsp">HOME</a>
+					<li><a href="index.jsp">HOME</a></li> 
 						<div class="sub">
 						</div>
 					</li> 
@@ -196,7 +222,7 @@
 					<li><a href="report.jsp">REPORTS</a>
 						<div class="sub">
 						</div>
-					</li> 
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -231,6 +257,7 @@
 				<%} %>
 				<!-- <th></th><th>Photos</th><th>Art</th><th>Bowling</th><th>Lab</th><th>Dance</th><th>Fishing</th><th>Water</th><th>Office</th><th>Special</th> -->
 				</table>
+				<div id="WEEEEEW"></div>
 			<fieldset></p>
 			</div>
 		
@@ -286,10 +313,10 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="create">Create Activity</label>
 			  <div class="col-md-4">
-				<button id="create" name="create" class="btn btn-primary">Submit</button>
+				<button id="create" name="create" class="btn btn-success">Submit</button>
 			  </div>
 			</div>
-
+			
 			</fieldset>
 			</form></p>
 	</div>
@@ -312,7 +339,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="populate">Populate Fields</label>
 			  <div class="col-md-4">
-				<button id="populate" name="populate" class="btn btn-primary" formnovalidate>Get Info</button>
+				<button id="populate" name="populate" class="btn btn-primary" >Get Info</button>
 			  </div>
 			</div>
 			</form></p>

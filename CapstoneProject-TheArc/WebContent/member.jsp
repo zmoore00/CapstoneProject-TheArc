@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*,beans.*,data.*" %>
+    pageEncoding="UTF-8" import="java.util.*,javax.swing.JOptionPane,beans.*,data.*" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +31,9 @@
 	String memEmailFlag = null;
 	String memBowlFlag = null;
 	String memSwimFlag = null;
-	
+	int 	status			=0;
+	String 	message         ="YOU FAILED";
+	String anchor = "member.jsp/#welcome";
 	String memFnameUpdate = "John";
 	String memLnameUpdate = "Doe";
 	String memAdd1Update  = "123 Main Street";
@@ -53,12 +55,12 @@
 	String memEmailFlagUpdate  = "Y";
 	String memBowlFlagUpdate  = "Y";
 	String memSwimFlagUpdate  = "Y";
-	
+
 	if(request.getMethod().equalsIgnoreCase("GET")){
 		if(request.getParameter("mem_ID_Update") != null){
 			Member memberUpdate;
+			try{
 			memberUpdate = MemberDAO.getMember(request.getParameter("mem_ID_Update"));
-			
 			memFnameUpdate = memberUpdate.getMem_FName();
 			memLnameUpdate = memberUpdate.getMem_LName();
 			memAdd1Update  = memberUpdate.getMem_Add1();
@@ -80,7 +82,12 @@
 			memEmailFlagUpdate = String.valueOf(memberUpdate.getMem_EmailFlag());
 			memBowlFlagUpdate = String.valueOf(memberUpdate.getMem_BowlFlag());
 			memSwimFlagUpdate = String.valueOf(memberUpdate.getMem_SwimFlag());
-		}
+			}catch(Exception e){
+				message=" Invalid ID";
+				JOptionPane.showMessageDialog(null, message);
+			}
+			}
+	
 		
 		for(Member member : members){
 			memFname = member.getMem_FName();
@@ -106,6 +113,7 @@
 			memSwimFlag = String.valueOf(member.getMem_SwimFlag());
 		}
 	}
+
 	//This handles the Delete AND Create for a Volunteer and can be used for all others
 	if(request.getMethod().equalsIgnoreCase("POST")){
 		//This is what handles the Update
@@ -158,9 +166,16 @@
 	 		member.setMem_EmailFlag(memEmailFlag.charAt(0));
 	 		member.setMem_BowlFlag(memBowlFlag.charAt(0));
 	 		member.setMem_SwimFlag(memSwimFlag.charAt(0));
-	 		
-			MemberDAO.updateMember(member);
-			response.sendRedirect("member.jsp");
+			status = MemberDAO.updateMember(member);
+			anchor = "member.jsp#update";
+			if(status == 1){
+				message = "Successfully updated member.";
+				
+			}else{
+				message = "ERROR 0418: Update unsuccessful.";
+			}
+			JOptionPane.showMessageDialog(null, message);
+			response.sendRedirect(anchor);
 			return;
 		}
 		
@@ -168,7 +183,7 @@
 		if(request.getParameter("mem_ID") != null)
 		{
 		String memberID = request.getParameter("mem_ID");
-		int status = MemberDAO.removeMember(memberID);
+		status = MemberDAO.removeMember(memberID);
 		response.sendRedirect("member.jsp");
 		return;
 		}
@@ -222,7 +237,16 @@
  		member.setMem_BowlFlag(memBowlFlag.charAt(0));
  		member.setMem_SwimFlag(memSwimFlag.charAt(0));
 		MemberDAO.addMember(member);
-		response.sendRedirect("member.jsp");
+		
+		anchor = "member.jsp#create";
+		if(status == 1){
+			message = "Successfully created member.";
+			
+		}else{
+			message = "ERROR 0400: create unsuccessful.";
+		}
+		JOptionPane.showMessageDialog(null, message);
+		response.sendRedirect(anchor);
 		return;
 		
 		}
@@ -651,7 +675,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_CPhone">Cell Phone</label>  
 			  <div class="col-md-4">
-			  <input id="mem_CPhone" name="mem_CPhone" type="text" value = "<%=memCPhoneUpdate%>" placeholder="(000) 000-0000" class="form-control input-md">
+			  <input id="mem_CPhone" name="mem_CPhone" type="text" value = "<%=memCPhoneUpdate %>" placeholder="(000) 000-0000" class="form-control input-md">
 				
 			  </div>
 			</div>
