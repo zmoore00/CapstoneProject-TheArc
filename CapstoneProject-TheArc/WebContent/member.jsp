@@ -682,15 +682,18 @@
 
 			<!-- Select Basic -->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="mem_CurFlag">Current Member?</label>
+			  <label class="col-md-4 control-label" for="mem_CurFlag">Activity Type</label>
 			  <div class="col-md-2">
-				<select id="mem_CurFlag" name="mem_CurFlag" class="form-control">
-				  <option value="Y">Y</option>
-				  <option value="N">N</option>
+				<select id="act_Type" name="act_Type" class="form-control">
+				  <option value="Bowling">Bowling</option>
+				  <option value="Dance">Dance</option>
+				  <option value="Swimming">Swimming</option>
+				  <option value="Fishing">Fishing</option>
+				  <option value="Special">Special</option>
+				  <option value="Misc">Misc</option>
 				</select>
 			  </div>
 			</div>
-
 			<!-- Text input-->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_DOBFlag">Date of Birth</label>  
