@@ -3,7 +3,234 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<%
+	//This is the Java section that reads in the Volunteers from the database, this can be used for all others
+	ArrayList<Member> members;
+	int i;
+	
+	members=MemberDAO.getMembers();
+	
+	String memFname = null;
+	String memLname = null;
+	String memAdd1  = null;
+	String memAdd2  = null;
+	String memCity  = null;
+	String memState = null;
+	String memCounty  = null;
+	String memZip   = null;
+	String memHPhone = null;
+	String memCPhone = null;
+	String memWPhone = null;
+	String memRegDate = null;
+	String memRenewDate = null;
+	String memCurFlag = null;
+	String memDOBFlag = null;
+	String memPhotoFlag = null;
+	String memLiabFlag = null;
+	int memGHID;
+	String memEmailFlag = null;
+	String memBowlFlag = null;
+	String memSwimFlag = null;
+	
+	String memFnameUpdate = "John";
+	String memLnameUpdate = "Doe";
+	String memAdd1Update  = "123 Main Street";
+	String memAdd2Update   = "Appt. 2";
+	String memCityUpdate   = "Fort Smith";
+	String memStateUpdate  = "AR";
+	String memCountyUpdate   = "Sebastian";
+	String memZipUpdate    = "72903";
+	String memHPhoneUpdate  = "(000)000-0000";
+	String memCPhoneUpdate  = "(111)111-1111";
+	String memWPhoneUpdate  = "(222)222-2222";
+	String memRegDateUpdate  = "YYYY/MM/DD";
+	String memRenewDateUpdate  = "YYYY/MM/DD";
+	String memCurFlagUpdate  = "Y";
+	String memDOBFlagUpdate  = "YYYY/MM/DD";
+	String memPhotoFlagUpdate  = "Y";
+	String memLiabFlagUpdate  = "Y";
+	int    memGHIDUpdate = 0;
+	String memEmailFlagUpdate  = "Y";
+	String memBowlFlagUpdate  = "Y";
+	String memSwimFlagUpdate  = "Y";
+	
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		if(request.getParameter("mem_ID_Update") != null){
+			Member memberUpdate;
+			memberUpdate = MemberDAO.getMember(request.getParameter("mem_ID_Update"));
+			
+			memFnameUpdate = memberUpdate.getMem_FName();
+			memLnameUpdate = memberUpdate.getMem_LName();
+			memAdd1Update  = memberUpdate.getMem_Add1();
+			memAdd2Update  = memberUpdate.getMem_Add2();
+			memCityUpdate  = memberUpdate.getMem_City();
+			memStateUpdate = memberUpdate.getMem_State();
+			memCountyUpdate   = memberUpdate.getMem_County();
+			memZipUpdate   = memberUpdate.getMem_Zip();
+			memHPhoneUpdate = memberUpdate.getMem_HPhone();
+			memCPhoneUpdate = memberUpdate.getMem_CPhone();
+			memWPhoneUpdate = memberUpdate.getMem_WPhone();
+			memRegDateUpdate = memberUpdate.getMem_RegDate();
+			memRenewDateUpdate = memberUpdate.getMem_RenewDate();
+			memCurFlagUpdate = String.valueOf(memberUpdate.getMem_CurFlag());
+			memDOBFlagUpdate = String.valueOf(memberUpdate.getMem_DOBFlag());
+			memPhotoFlagUpdate = String.valueOf(memberUpdate.getMem_PhotoFlag());
+			memLiabFlagUpdate = String.valueOf(memberUpdate.getMem_LiabFlag());
+			memGHIDUpdate = memberUpdate.getMem_GHID();
+			memEmailFlagUpdate = String.valueOf(memberUpdate.getMem_EmailFlag());
+			memBowlFlagUpdate = String.valueOf(memberUpdate.getMem_BowlFlag());
+			memSwimFlagUpdate = String.valueOf(memberUpdate.getMem_SwimFlag());
+		}
+		
+		for(Member member : members){
+			memFname = member.getMem_FName();
+			memLname = member.getMem_LName();
+			memAdd1  = member.getMem_Add1();
+			memAdd2  = member.getMem_Add2();
+			memCity  = member.getMem_City();
+			memState = member.getMem_State();
+			memCounty   = member.getMem_County();
+			memZip   = member.getMem_Zip();
+			memHPhone = member.getMem_HPhone();
+			memCPhone = member.getMem_CPhone();
+			memWPhone = member.getMem_WPhone();
+			memRegDate = member.getMem_RegDate();
+			memRenewDate = member.getMem_RenewDate();
+			memCurFlag = String.valueOf(member.getMem_CurFlag());
+			memDOBFlag = String.valueOf(member.getMem_DOBFlag());
+			memPhotoFlag = String.valueOf(member.getMem_PhotoFlag());
+			memLiabFlag = String.valueOf(member.getMem_LiabFlag());
+			memGHID = member.getMem_GHID();
+			memEmailFlag = String.valueOf(member.getMem_EmailFlag());
+			memBowlFlag = String.valueOf(member.getMem_BowlFlag());
+			memSwimFlag = String.valueOf(member.getMem_SwimFlag());
+		}
+	}
+	//This handles the Delete AND Create for a Volunteer and can be used for all others
+	if(request.getMethod().equalsIgnoreCase("POST")){
+		//This is what handles the Update
+		if(request.getParameter("mem_ID_Update") != null){
+			String memberID = request.getParameter("mem_ID_Update");
+			System.out.println("update");
+			
+			memFname = request.getParameter("mem_FName");
+			memLname = request.getParameter("mem_LName");
+	 		memAdd1  = request.getParameter("mem_Add1");
+	 		memAdd2  = request.getParameter("mem_Add2");
+	 		memCity  = request.getParameter("mem_City");
+	 		memState = request.getParameter("mem_State");
+	 		memCounty  = request.getParameter("mem_County");
+	 		memZip   = request.getParameter("mem_Zip");
+	 		memHPhone = request.getParameter("mem_HPhone");
+	 		memCPhone = request.getParameter("mem_CPhone");
+	 		memWPhone = request.getParameter("mem_WPhone");
+	 		memRegDate = request.getParameter("mem_RegDate");
+	 		memRenewDate = request.getParameter("mem_RenewDate");
+	 		memCurFlag = request.getParameter("mem_CurFlag");
+	 		memDOBFlag = request.getParameter("mem_DOB");
+	 		memPhotoFlag = request.getParameter("mem_PhotoFlag");
+	 		memLiabFlag = request.getParameter("mem_LiabFLag");
+	 		memGHID = Integer.parseInt(request.getParameter("mem_GHID"));
+	 		memEmailFlag = request.getParameter("mem_EmailFlag");
+	 		memBowlFlag = request.getParameter("mem_BowlFlag");
+	 		memSwimFlag = request.getParameter("mem_SwimFlag");
 
+			Member member = new Member();
+			member.setMem_ID(memberID);
+			member.setMem_FName(memFname);
+			member.setMem_LName(memLname);
+	 		member.setMem_Add1(memAdd1);
+	 		member.setMem_Add2(memAdd2);
+	 		member.setMem_City(memCity);
+	 		member.setMem_State(memState);
+	 		member.setMem_County(memCounty);
+	 		member.setMem_Zip(memZip);
+	 		member.setMem_HPhone(memHPhone);
+	 		member.setMem_CPhone(memCPhone);
+	 		member.setMem_WPhone(memWPhone);
+	 		member.setMem_RegDate(memRegDate);
+	 		member.setMem_RenewDate(memRenewDate);
+	 		member.setMem_CurFlag(memCurFlag.charAt(0));
+	 		member.setMem_DOBFlag(memDOBFlag);
+	 		member.setMem_PhotoFlag(memPhotoFlag.charAt(0));
+	 		member.setMem_LiabFlag(request.getParameter("mem_LiabFlag").charAt(0));
+	 		member.setMem_GHID(memGHID);
+	 		member.setMem_EmailFlag(memEmailFlag.charAt(0));
+	 		member.setMem_BowlFlag(memBowlFlag.charAt(0));
+	 		member.setMem_SwimFlag(memSwimFlag.charAt(0));
+	 		
+			MemberDAO.updateMember(member);
+			response.sendRedirect("member.jsp");
+			return;
+		}
+		
+		//This is what handles the delete
+		if(request.getParameter("mem_ID") != null)
+		{
+		String memberID = request.getParameter("mem_ID");
+		int status = MemberDAO.removeMember(memberID);
+		response.sendRedirect("member.jsp");
+		return;
+		}
+		
+		//This is what handles the Create
+		if(request.getParameter("mem_ID") == null)
+		{
+		System.out.println("create");
+		memFname = request.getParameter("mem_FName");
+		memLname = request.getParameter("mem_LName");
+ 		memAdd1  = request.getParameter("mem_Add1");
+ 		memAdd2  = request.getParameter("mem_Add2");
+ 		memCity  = request.getParameter("mem_City");
+ 		memState = request.getParameter("mem_State");
+ 		memCounty  = request.getParameter("mem_County");
+ 		memZip   = request.getParameter("mem_Zip");
+ 		memHPhone = request.getParameter("mem_HPhone");
+ 		memCPhone = request.getParameter("mem_CPhone");
+ 		memWPhone = request.getParameter("mem_WPhone");
+ 		memRegDate = request.getParameter("mem_RegDate");
+ 		memRenewDate = request.getParameter("mem_RenewDate");
+ 		memCurFlag = request.getParameter("mem_CurFlag");
+ 		memDOBFlag = request.getParameter("mem_DOB");
+ 		memPhotoFlag = request.getParameter("mem_PhotoFlag");
+ 		memLiabFlag = request.getParameter("mem_LiabFLag");
+ 		memGHID = Integer.parseInt(request.getParameter("mem_GHID"));
+ 		memEmailFlag = request.getParameter("mem_EmailFlag");
+ 		memBowlFlag = request.getParameter("mem_BowlFlag");
+ 		memSwimFlag = request.getParameter("mem_SwimFlag");
+
+ 		Member member = new Member();
+		member.setMem_FName(memFname);
+		member.setMem_LName(memLname);
+ 		member.setMem_Add1(memAdd1);
+ 		member.setMem_Add2(memAdd2);
+ 		member.setMem_City(memCity);
+ 		member.setMem_State(memState);
+ 		member.setMem_County(memCounty);
+ 		member.setMem_Zip(memZip);
+ 		member.setMem_HPhone(memHPhone);
+ 		member.setMem_CPhone(memCPhone);
+ 		member.setMem_WPhone(memWPhone);
+ 		member.setMem_RegDate(memRegDate);
+ 		member.setMem_RenewDate(memRenewDate);
+ 		member.setMem_CurFlag(memCurFlag.charAt(0));
+ 		member.setMem_DOBFlag(memDOBFlag);
+ 		member.setMem_PhotoFlag(memPhotoFlag.charAt(0));
+ 		member.setMem_LiabFlag(request.getParameter("mem_LiabFlag").charAt(0));
+ 		member.setMem_GHID(memGHID);
+ 		member.setMem_EmailFlag(memEmailFlag.charAt(0));
+ 		member.setMem_BowlFlag(memBowlFlag.charAt(0));
+ 		member.setMem_SwimFlag(memSwimFlag.charAt(0));
+		MemberDAO.addMember(member);
+		response.sendRedirect("member.jsp");
+		return;
+		
+		}
+		
+		
+	}
+	
+%>
 
 <head>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -92,7 +319,8 @@
 				  <option value="12">December</option>
 				</select>
 			  </div>
-			  <div class="col-md-4"><button id="mailingList" name="mailingList" class="btn btn-warning">Submit</button>
+			  <div class="col-md-4">
+			  	<button id="mem_DOBFlag" name="mem_DOBFlag" value = "" class="btn btn-warning">Submit</button>
 			  </div>
 			</div>
 			
@@ -101,6 +329,24 @@
 			
 			</fieldset>
 			</form>
+			<table id="listTable">
+				<tr>
+					<th>ID</th><th>Name</th><th>Address</th><th>ZIP</th><th>Email</th><th>Home Phone</th><th>Cell Phone</th><th>Work Phone</th>
+				</tr>
+				<% for(int index = 0; index < members.size(); index++){ %>
+								<tr>
+									<td width="30px"><%=members.get(index).getMem_ID()%>
+									<td><%=members.get(index).getMem_LName()%>, <%=members.get(index).getMem_FName()%></td>
+									<td><%=members.get(index).getMem_Add1() %></td>
+									<td><%=members.get(index).getMem_Zip() %></td>
+									<td><%=members.get(index).getMem_GHID() %></td>
+									<td><%=members.get(index).getMem_HPhone() %></td>
+									<td><%=members.get(index).getMem_CPhone() %></td>
+									<td><%=members.get(index).getMem_WPhone() %></td>
+								</tr>
+				<%} %>
+				<!-- <th></th><th>Photos</th><th>Art</th><th>Bowling</th><th>Lab</th><th>Dance</th><th>Fishing</th><th>Water</th><th>Office</th><th>Special</th> -->
+				</table>
 			</div>
 		
 		<!-- BEGIN BOWLING LIST SECTION -->

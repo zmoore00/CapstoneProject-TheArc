@@ -53,7 +53,6 @@
 						<div class="sub">
 						</div>
 					</li> 
-					<li><a href="index">LOG OUT</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -62,10 +61,17 @@
 <section id="welcome-bg">
   <div class="container"> 
   	 <div id="welcome">
-     Title here
+     The Arc Membership Application
     </div>
 	<div id="subtext">
-	Text here!
+	<p style= "text-align:center;">Build an all-in-one Browser Based Member Tracking Solution<br />
+<ul style="list-style:none;">
+<li>Creating a database for Member, Volunteer and Activity data</li>
+<li>Giving the organization basic CRUD functionality</li>
+<li>Automatic report generation</li>
+<li>All in an easy to use browser based application</li>
+</ul>
+	</p>
 	</div>
   </div>		  
 </section>
