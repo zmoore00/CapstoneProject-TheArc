@@ -4,6 +4,100 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<% 
+		ArrayList<GroupHome> grouphomes;
+		int i;
+		
+		grouphomes = GroupHomeDAO.getGroupHomes();
+		String GRP_Name  = null;
+		String GRP_Add1  = null;
+		String GRP_Add2  = null;
+		String GRP_City  = null;
+		String GRP_State = null;
+		String GRP_Zip   = null;
+
+		if(request.getMethod().equalsIgnoreCase("GET")){
+			for(GroupHome grouphome : grouphomes){
+				grpName  = grouphome.getGRP_Name();
+				grpAdd1  = grouphome.getGRP_Add1();
+				grpAdd2  = grouphome.getGRP_Add2();
+				grpCity  = grouphome.getGRP_City();
+				grpState = grouphome.getGRP_State();
+				grpZip   = grouphome.getGRP_Zip();
+								
+			}
+		}
+		
+		if(request.getMethod().equalsIgnoreCase("POST")){
+			if(request.getParameter("grp_ID_Update") != null){
+				String grouphomeID = request.getParameter("grp_ID_Update");
+				System.out.println("update");
+				
+				grpName = request.getParameter("grp_Name");
+				grpAdd1 = request.getParameter("grp_Add1");
+		 		grpAdd2  = request.getParameter("grp_Add2");
+		 		grpCity  = request.getParameter("grp_City");
+		 		grpState = request.getParameter("grp_State");
+		 		grpZip   = request.getParameter("grp_Zip");
+		 		
+		 		GroupHome grouphome = new GroupHome();
+		 		grouphome.setGRP_ID(grouphomeID);
+		 		grouphome.setGRP_Name(grouphomeID);
+		 		grouphome.setGRP_Add1(grouphomeID);
+		 		grouphome.setGRP_Add2(grouphomeID);
+		 		grouphome.setGRP_City(grouphomeID);
+		 		grouphome.setGRP_State(grouphomeID);
+		 		grouphome.setGRP_Zip(grouphomeID);
+		 		
+		 		GroupHomeDAO.updateGroupHome(grouphome);
+		 		response.sendRedirect("grouphome.jsp");
+		 		return;
+			}
+		 		
+		 		
+				
+		}
+			
+		if(request.getParameter("GRP_ID") != null)
+		{
+		String grouphomeID = request.getParameter("GRP_ID");
+		System.out.println("delete");
+		int status = GroupHomeDAO.removeGroupHome(grouphomeID);
+		response.sendRedirect("grouphome.jsp");
+		return;
+		}
+		
+		if(request.getParameter("GRP_ID") == null)
+		{
+		System.out.println("create");
+		grpName = request.getParameter("GRP_Name");
+		grpAdd1 = request.getParameter("GRP_Add1");
+ 		grpAdd2  = request.getParameter("GRP_Add2");
+ 		grpCity  = request.getParameter("GRP_City");
+ 		grpState = request.getParameter("GRP_State");
+ 		grpZip   = request.getParameter("GRP_Zip");
+ 		
+		
+ 		GroupHome grouphome = new GroupHome();
+		grouphome.setGRP_Name(grpName);
+		grouphome.setGRP_Add1(grpAdd1);
+		grouphome.setGRP_Add2(grpAdd2);
+		grouphome.setGRP_City(grpCity);
+		grouphome.setGRP_State(grpState);
+		grouphome.setGRP_Zip(grpZip);
+ 
+		
+		GroupHomeDAO.addGroupHome(grouphome);
+		response.sendRedirect("grouphome.jsp");
+		return;
+		}
+		
+				
+			
+				
+			
+%>
+
 
 <head>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
