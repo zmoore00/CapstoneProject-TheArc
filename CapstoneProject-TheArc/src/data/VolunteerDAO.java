@@ -206,6 +206,37 @@ public class VolunteerDAO {
 		
 	}
 	
+	public synchronized static Volunteer getVolunteerHours(String id) {	 	
+	 	Volunteer volunteer=null;
+	 	PreparedStatement statement=null;
+		String preparedSQL = "SELECT VOL_ID, VOL_FName, VOL_LName, VOL_Hours FROM ARC_Volunteer WHERE VOL_ID = ?;";
+
+	try{
+	    	connection = ConnectionDAO.getCon();
+	    	statement = connection.prepareStatement(preparedSQL);
+	    	statement.setInt(1, Integer.parseInt(id));
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()){
+				volunteer = new Volunteer();
+				volunteer.setVol_ID(rs.getString("VOL_ID"));
+				volunteer.setVol_FName(rs.getString("VOL_FName"));
+				volunteer.setVol_LName(rs.getString("VOL_LName"));
+				volunteer.setVol_Hours(rs.getInt("VOL_Hours"));
+		
+			}	
+			rs.close();		
+			statement.close();
+			connection.close();
+			
+		}catch (SQLException ex){
+			System.out.println("Error: " + ex);
+			System.out.println("Query: " + statement.toString());
+		}
+	    
+	    return volunteer;
+		
+	}
+	
 	
 
 }
