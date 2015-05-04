@@ -327,7 +327,7 @@
 				<!--  This is for a get to list all of the volunteers, this can be used on all of the lists -->
 				<table id="listTable">
 				<tr>
-					<th>ID</th><th>Name</th><th>Address</th><th>ZIP</th><th>Email</th><th>Home Phone</th><th>Cell Phone</th><th>Work Phone</th>
+					<th>ID</th><th>Name</th><th>Address</th><th>ZIP</th><th>Current Member</th><th>Home Phone</th><th>Cell Phone</th><th>Work Phone</th>
 				</tr>
 				<% for(int index = 0; index < members.size(); index++){ %>
 								<tr>
@@ -335,7 +335,7 @@
 									<td><%=members.get(index).getMem_LName()%>, <%=members.get(index).getMem_FName()%></td>
 									<td><%=members.get(index).getMem_Add1() %></td>
 									<td><%=members.get(index).getMem_Zip() %></td>
-									<td><%=members.get(index).getMem_GHID() %></td>
+									<td><%=members.get(index).getMem_CurFlag() %></td>
 									<td><%=members.get(index).getMem_HPhone() %></td>
 									<td><%=members.get(index).getMem_CPhone() %></td>
 									<td><%=members.get(index).getMem_WPhone() %></td>
@@ -706,21 +706,19 @@
 				
 			  </div>
 			</div>
-
+			
 			<!-- Select Basic -->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="mem_CurFlag">Activity Type</label>
+			  <label class="col-md-4 control-label" for="mem_CurFlag">Current Member?</label>
 			  <div class="col-md-2">
-				<select id="act_Type" name="act_Type" class="form-control">
-				  <option value="Bowling">Bowling</option>
-				  <option value="Dance">Dance</option>
-				  <option value="Swimming">Swimming</option>
-				  <option value="Fishing">Fishing</option>
-				  <option value="Special">Special</option>
-				  <option value="Misc">Misc</option>
+				<select id="mem_CurFlag" name="mem_CurFlag" class="form-control">
+				<option value= "<%=memCurFlagUpdate%>"><%=String.valueOf(memCurFlagUpdate)%></option>
+				  <option value="Y">Y</option>
+				  <option value="N">N</option>
 				</select>
 			  </div>
 			</div>
+
 			<!-- Text input-->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="mem_DOBFlag">Date of Birth</label>  
@@ -735,6 +733,7 @@
 			  <label class="col-md-4 control-label" for="mem_LiabFlag">Liability Flag</label>
 			  <div class="col-md-2">
 				<select id="mem_LiabFlag" name="mem_LiabFlag" class="form-control">
+				<option value= "<%=memLiabFlagUpdate%>"><%=String.valueOf(memLiabFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -746,6 +745,7 @@
 			  <label class="col-md-4 control-label" for="mem_PhotoFlag">Photo Release Flag</label>
 			  <div class="col-md-2">
 				<select id="mem_PhotoFlag" name="mem_PhotoFlag" class="form-control">
+				<option value= "<%=memPhotoFlagUpdate%>"><%=String.valueOf(memPhotoFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -757,6 +757,7 @@
 			  <label class="col-md-4 control-label" for="mem_emailFlag">Newsletter?</label>
 			  <div class="col-md-2">
 				<select id="mem_EmailFlag" name="mem_EmailFlag" class="form-control">
+				<option value= "<%=memEmailFlagUpdate%>"><%=String.valueOf(memEmailFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -768,6 +769,7 @@
 			  <label class="col-md-4 control-label" for="mem_BowlFlag">Add to Bowling List?</label>
 			  <div class="col-md-2">
 				<select id="mem_BowlFlag" name="mem_BowlFlag" class="form-control">
+				<option value= "<%=memBowlFlagUpdate%>"><%=String.valueOf(memBowlFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
@@ -779,6 +781,7 @@
 			  <label class="col-md-4 control-label" for="mem_SwimFlag">Add to Swimming List?</label>
 			  <div class="col-md-2">
 				<select id="mem_SwimFlag" name="mem_SwimFlag" class="form-control">
+				<option value= "<%=memSwimFlagUpdate%>"><%=String.valueOf(memSwimFlagUpdate)%></option>
 				  <option value="Y">Y</option>
 				  <option value="N">N</option>
 				</select>
