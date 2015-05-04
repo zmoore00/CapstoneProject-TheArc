@@ -65,14 +65,23 @@
      index page is not done yet
     </div>
 	<div id="subtext">
-	<p style= "text-align:center;">Build an all-in-one Browser Based Member Tracking Solution<br />
-<ul style="list-style:none;">
-<li>Creating a database for Member, Volunteer and Activity data</li>
-<li>Giving the organization basic CRUD functionality</li>
-<li>Automatic report generation</li>
-<li>All in an easy to use browser based application</li>
+	<table><tr><td style = "width: 50%;">
+	<p style = "text-align: left; text-weight:bold; text-size:45px;">Easy All-In-One Web Based Member Tracking Solution<br />
+<ul style="list-style: squre; text-align:left;">
+<li>Choose what to CRUD at Menu on top </li>
+<li>Click what to do and Input Information</li>
+<li>Report Generated Automatically</li>
 </ul>
 	</p>
+	</td>
+	<td>
+	<p>
+	More content here. More content here. More content here. More content here. More content here. 
+	More content here. More content here. More content here. More content here. More content here.
+	More content here. More content here.  
+	</p>
+	</td></tr>
+	</table>
 	</div>
   </div>		  
 </section>
