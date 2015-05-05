@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*,beans.*,data.*" %>
+    pageEncoding="UTF-8" import="java.util.*,javax.swing.JOptionPane,beans.*,data.*" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +32,12 @@
 	String memBowlFlag = null;
 	String memSwimFlag = null;
 	
+	String vol_ID = "";
+	String vol_FName = "";
+	String vol_LName = "";
+	String vol_Hours = "";
+	
+	String anchor = "activity.jsp/#welcome";
 	
 	if(request.getMethod().equalsIgnoreCase("GET")){
 		//JORDAN AND JEREMY, THERE WILL HAVE TO BE SOME KIND OF IF STATEMENT HERE THAT WILL
@@ -52,6 +58,25 @@
 			memRegDate = member.getMem_RegDate();
 			memRenewDate = member.getMem_RenewDate();
 			memCurFlag = String.valueOf(member.getMem_CurFlag());
+		}
+		
+		if(request.getParameter("vol_ID") != null){
+			//System.out.println("Get Vol Hours");
+
+			Volunteer volunteer;
+			try{
+				volunteer = VolunteerDAO.getVolunteer(request.getParameter("vol_ID"));
+				vol_ID = volunteer.getVol_ID();
+				vol_FName = volunteer.getVol_FName();
+				vol_LName = volunteer.getVol_LName();
+				vol_Hours = String.valueOf(volunteer.getVol_Hours());
+				}
+			catch(Exception e){
+				String message = "Unable to find that ID";
+				JOptionPane.showMessageDialog(null, message);
+				anchor = "report.jsp#VolList";
+				response.sendRedirect(anchor);
+			}
 		}
 	}
 	
@@ -180,7 +205,7 @@
 			</div>
 		
 		<!-- BEGIN BOWLING LIST SECTION -->
-		<div class="accordion" id="section1">EXPIRED MEMBERS<span></span></div>
+		<div class="accordion" id="section2">EXPIRED MEMBERS<span></span></div>
 			<div class="content">
 				<p><form class="form-horizontal" method="GET">
 			<fieldset>
@@ -209,39 +234,42 @@
 			</div>
 
 			</fieldset>
-			</form></p>
-			</div>
+			</form>
 			
-		<!-- BEGIN SWIMMING LIST SECTION -->
-		<div class="accordion" id="section1">Volunteer Hours<span></span></div>
+			
+		<!-- BEGIN VOLUNTEER HOURS LIST SECTION -->
+		<div class="accordion" id="section3">VOLUNTEER HOURS<span></span></div>
 			<div class="content">
 			<p><form class="form-horizontal">
 			<fieldset>
 				
-			 <label class="col-md-4 control-label" for="mem_CurFlag">Select Month</label>
+			 <label class="col-md-4 control-label" for="ID">Enter ID</label>
 			  <div class="col-md-2">
-				<select id="mailingList" name="mailingList" class="form-control">
-				  <option value="1">January</option>
-				  <option value="2">February</option>
-				  <option value="3">March</option>
-				  <option value="4">April</option>
-				  <option value="5">March</option>
-				  <option value="6">June</option>
-				  <option value="7">July</option>
-				  <option value="8">August</option>
-				  <option value="9">September</option>
-				  <option value="10">October</option>
-				  <option value="11">November</option>
-				  <option value="12">December</option>
-				</select>
+				<input id="vol_ID" name="vol_ID" type="text" placeholder="" class="form-control input-md" required="">
 			  </div>
-			  <div class="col-md-4"><button id="mailingList" name="mailingList" class="btn btn-warning">Submit</button>
+			  <div class="col-md-4"><button id="VolList" name="VolList" class="btn btn-warning">Submit</button>
 			  </div>
-			</div>
-
+			  
 			</fieldset>
-			</form></p>
+			<br>
+			</form>
+			
+				<table id="listTable">
+				<tr>
+					<th>ID</th><th>First Name</th><th>Last Name</th><th>Hours</th>
+				</tr>
+								<tr>
+									<td><%=vol_ID %></td>
+									<td><%=vol_FName %></td>
+									<td><%=vol_LName %></td>
+									<td><%=vol_Hours %></td>
+								</tr>
+				<!-- <th></th><th>Photos</th><th>Art</th><th>Bowling</th><th>Lab</th><th>Dance</th><th>Fishing</th><th>Water</th><th>Office</th><th>Special</th> -->
+				</table>
 			</div>
+		</div>
+			
+	</div>
 		
 </div>
 </section>
