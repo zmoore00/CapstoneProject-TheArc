@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*,beans.*,data.*" %>
+    pageEncoding="UTF-8" import="java.util.*,javax.swing.JOptionPane,beans.*,data.*" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,12 +56,13 @@
 	String volSpecFlagUpdate = "Y";
 	String volEmailUpdate = "Y";
 	
+	String anchor = "volunteer.jsp#welcome";
 	
 	if(request.getMethod().equalsIgnoreCase("GET")){
 		
 		if(request.getParameter("vol_ID_Update") != null){
 			
-			Volunteer volunteerUpdate;
+			try{Volunteer volunteerUpdate;
 			volunteerUpdate = VolunteerDAO.getVolunteer(request.getParameter("vol_ID_Update"));
 			
 			volFnameUpdate=volunteerUpdate.getVol_FName();
@@ -86,6 +87,12 @@
 			volSpecFlagUpdate = String.valueOf(volunteerUpdate.getVol_SpecFlag());
 			volEmailUpdate = volunteerUpdate.getVol_Email();
 			//response.sendRedirect("volunteer.jsp");
+			}
+			catch(Exception e){
+				String message = "Unable to find that ID";
+				JOptionPane.showMessageDialog(null, message);
+
+			}
 			
 		}
 		for(Volunteer volunteer : volunteers){
@@ -169,23 +176,43 @@
 	 		volunteer.setVol_SpecFlag(volSpecFlag.charAt(0));
 	 		volunteer.setVol_Email(volEmail);
 	 		
-			VolunteerDAO.updateVolunteer(volunteer);
-			response.sendRedirect("volunteer.jsp");
-			return;
+			try{
+				VolunteerDAO.updateVolunteer(volunteer);
+			}
+			catch(Exception e){
+				String message = "Unable to update";
+				JOptionPane.showMessageDialog(null, message);
+				anchor = "volunteer.jsp#update";
+				response.sendRedirect(anchor);
+			}
+			String message = "ID " + volunteerID + " updated successfully";
+			JOptionPane.showMessageDialog(null, message);
+			anchor = "volunteer.jsp#update";
+			response.sendRedirect(anchor);
 		}
 		
 		//This is what handles the delete
-		if(request.getParameter("vol_ID") != null)
+		if(request.getParameter("vol_ID_Delete") != null)
 		{
-		String volunteerID = request.getParameter("vol_ID");
-		System.out.println("delete");
-		int status = VolunteerDAO.removeVolunteer(volunteerID);
-		response.sendRedirect("volunteer.jsp");
-		return;
+			String volunteerID = request.getParameter("vol_ID_Delete");
+			System.out.println("delete");
+			try{
+				int status = VolunteerDAO.removeVolunteer(volunteerID);
+			}
+			catch(Exception e){
+				String message = "Unable to delete";
+				JOptionPane.showMessageDialog(null, message);
+				anchor = "volunteer.jsp#delete";
+				response.sendRedirect(anchor);
+			}
+			String message = "ID " + volunteerID + " deleted successfully";
+			JOptionPane.showMessageDialog(null, message);
+			anchor = "volunteer.jsp#delete";
+			response.sendRedirect(anchor);
 		}
 		
 		//This is what handles the Create
-		if(request.getParameter("vol_ID") == null)
+		if(request.getParameter("vol_ID_Update") == null && request.getParameter("vol_ID_Delete") == null)
 		{
 		System.out.println("create");
 		System.out.println("VolLabFlag " + request.getParameter("vol_LabFlag"));
@@ -234,9 +261,17 @@
  		volunteer.setVol_SpecFlag(volSpecFlag.charAt(0));
  		volunteer.setVol_Email(volEmail);
 		
-		VolunteerDAO.addVolunteer(volunteer);
-		response.sendRedirect("volunteer.jsp");
-		return;
+		try{VolunteerDAO.addVolunteer(volunteer);}
+		catch(Exception e){
+			String message = "Unable to create volunteer";
+			JOptionPane.showMessageDialog(null, message);
+			anchor = "volunteer.jsp#create";
+			response.sendRedirect(anchor);
+		}
+		String message = "Volunteer created successfully";
+		JOptionPane.showMessageDialog(null, message);
+		anchor = "volunteer.jsp#create";
+		response.sendRedirect(anchor);		
 		}
 		
 		
@@ -818,7 +853,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="vol_ID">Volunteer ID</label>  
 			  <div class="col-md-5">
-			  <input id="vol_ID" name="vol_ID" type="text" placeholder="" class="form-control input-md" required="">
+			  <input id="vol_ID_Delete" name="vol_ID_Delete" type="text" placeholder="" class="form-control input-md" required="">
 			  </div>
 			</div>
 			
