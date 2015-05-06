@@ -135,7 +135,7 @@
 	 		memRegDate = request.getParameter("mem_RegDate");
 	 		memRenewDate = request.getParameter("mem_RenewDate");
 	 		memCurFlag = request.getParameter("mem_CurFlag");
-	 		memDOBFlag = request.getParameter("mem_DOB");
+	 		memDOBFlag = request.getParameter("mem_DOBFlag");
 	 		memPhotoFlag = request.getParameter("mem_PhotoFlag");
 	 		memLiabFlag = request.getParameter("mem_LiabFLag");
 	 		memGHID = Integer.parseInt(request.getParameter("mem_GHID"));
@@ -206,7 +206,7 @@
  		memRegDate = request.getParameter("mem_RegDate");
  		memRenewDate = request.getParameter("mem_RenewDate");
  		memCurFlag = request.getParameter("mem_CurFlag");
- 		memDOBFlag = request.getParameter("mem_DOB");
+ 		memDOBFlag = request.getParameter("mem_DOBFlag");
  		memPhotoFlag = request.getParameter("mem_PhotoFlag");
  		memLiabFlag = request.getParameter("mem_LiabFLag");
  		memGHID = Integer.parseInt(request.getParameter("mem_GHID"));
