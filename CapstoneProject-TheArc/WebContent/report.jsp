@@ -178,10 +178,7 @@
 			  	<button id="mem_DOBFlag" name="mem_DOBFlag" value = "" class="btn btn-warning">Submit</button>
 			  </div>
 			</div>
-			
-			
-			
-			
+				
 			</fieldset>
 			</form>
 			<table id="listTable">
@@ -209,7 +206,8 @@
 			<div class="content">
 				<p><form class="form-horizontal" method="GET">
 			<fieldset>
-				
+			</fieldset>
+			</form>	
 			<!-- Button -->
 			<div class="form-group">
 			  <table id="listTable">
@@ -233,8 +231,7 @@
 			  </div>
 			</div>
 
-			</fieldset>
-			</form>
+			
 			
 			
 		<!-- BEGIN VOLUNTEER HOURS LIST SECTION -->

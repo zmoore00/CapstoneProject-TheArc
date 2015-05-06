@@ -62,11 +62,12 @@
   <div class="container"> 
   	 <div id="welcome">
      The Arc Membership Application<br />
-     index page is not done yet
     </div>
 	<div id="subtext">
-	<table><tr><td style = "width: 50%;">
-	<p style = "text-align: left; text-weight:bold; text-size:45px;">Easy All-In-One Web Based Member Tracking Solution<br />
+	<table style="margin: 30px 0 0 70px;">
+	<tr>
+	<td style = "width: 50%;">
+	<p style = "text-align: left;">All-In-One Web Based Member Tracking Solution<br />
 <ul style="list-style: squre; text-align:left;">
 <li>Choose what to CRUD at Menu on top </li>
 <li>Click what to do and Input Information</li>
@@ -74,13 +75,23 @@
 </ul>
 	</p>
 	</td>
-	<td>
-	<p>
-	More content here. More content here. More content here. More content here. More content here. 
-	More content here. More content here. More content here. More content here. More content here.
-	More content here. More content here.  
+	<td style = "width: 25%; ">
+	<p style = "text-align: left; ">
+	Printable Version <br />
+	<a href="http://www.arcrivervalley.org/Arc_Membership_App_2013.pdf" target="blank">Membership Application</a><br />
+	<a href="http://www.arcrivervalley.org/Arc_Volunteer.pdf" target="blank">Volunteer Application</a><br />
+	<a href="http://www.arcrivervalley.org/the-arc-recreation-events.html" target="blank">Events</a><br />
 	</p>
-	</td></tr>
+	</td>
+	<td style = "width: 19%; ">
+	<p style = "text-align: left; ">Contact Dev. Team<br />
+		<a href="mailto:eburke00@g.uafs.edu">Database Team</a><br />
+		<a href="mailto:jcurra00@g.uafs.edu,jdavis16@g.uafs.edu,zmoore00@g.uafs.edu">Software Dev. Team</a><br />
+		<a href="mailto:ncampb02@g.uafs.edu, kseo00@g.uafs.edu">Web Dev. Team</a><br />
+	</p>
+	
+	</td>
+	</tr>
 	</table>
 	</div>
   </div>		  
