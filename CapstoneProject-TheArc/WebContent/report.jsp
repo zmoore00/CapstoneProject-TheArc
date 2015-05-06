@@ -99,9 +99,10 @@
 				
 				
 				if(dobDate !=null){
-					dobMonth = dobDate.substring(0,2); //get testable value
+					dobMonth = dobDate.substring(5,7); //get testable value
+					System.out.println(dobMonth + " : " + month);
 				}
-				if("2".equals(month)){ //test monnths, if true assign member to member report list, else continue
+				if(dobMonth.equals(month)){ //test monnths, if true assign member to member report list, else continue
 					Member dobReport = new Member();
 					dobReport.setMem_ID(dobIteratemember.getMem_ID());
 					dobReport.setMem_FName(dobIteratemember.getMem_FName());
@@ -196,16 +197,16 @@
 			  <label class="col-md-4 control-label" for="mem_CurFlag">Select Month</label>
 			  <div class="col-md-2">
 				<select id="mailingList" name="mailingList" class="form-control">
-				  <option value="0">Select Month</option>
-				  <option value="1">January</option>
-				  <option value="2">February</option>
-				  <option value="3">March</option>
-				  <option value="4">April</option>
-				  <option value="5">May</option>
-				  <option value="6">June</option>
-				  <option value="7">July</option>
-				  <option value="8">August</option>
-				  <option value="9">September</option>
+				  <option value="00">Select Month</option>
+				  <option value="01">January</option>
+				  <option value="02">February</option>
+				  <option value="03">March</option>
+				  <option value="04">April</option>
+				  <option value="05">May</option>
+				  <option value="06">June</option>
+				  <option value="07">July</option>
+				  <option value="08">August</option>
+				  <option value="09">September</option>
 				  <option value="10">October</option>
 				  <option value="11">November</option>
 				  <option value="12">December</option>
