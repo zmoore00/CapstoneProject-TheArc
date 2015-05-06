@@ -6,6 +6,7 @@
 <%
 	//This is the Java section that reads in the Volunteers from the database, this can be used for all others
 	ArrayList<Member> members;
+	ArrayList<Member> dobMembers = new ArrayList<Member>();
 	int i;
 	
 	members=MemberDAO.getEXPMembers();
@@ -36,8 +37,10 @@
 	String vol_FName = "";
 	String vol_LName = "";
 	String vol_Hours = "";
+
 	
 	String anchor = "activity.jsp/#welcome";
+	
 	
 	if(request.getMethod().equalsIgnoreCase("GET")){
 		//JORDAN AND JEREMY, THERE WILL HAVE TO BE SOME KIND OF IF STATEMENT HERE THAT WILL
@@ -58,8 +61,9 @@
 			memRegDate = member.getMem_RegDate();
 			memRenewDate = member.getMem_RenewDate();
 			memCurFlag = String.valueOf(member.getMem_CurFlag());
+			
 		}
-		
+		//Volunteer Hours Java Code
 		if(request.getParameter("vol_ID") != null){
 			//System.out.println("Get Vol Hours");
 
@@ -77,6 +81,40 @@
 				anchor = "report.jsp#VolList";
 				response.sendRedirect(anchor);
 			}
+		}
+		//only execute birthday report if mailingList has a value
+		if(request.getParameter("mailingList") != null){
+			//get selected month
+			String month= request.getParameter("mailingList");
+			//set up data structure for report
+			ArrayList<Member> tempDobMems = MemberDAO.getMembers();
+			//variables needed to test date
+			String dobDate ="";
+			String dobMonth ="";
+			//iterate through members, find members with birthdays this month and assign them to new data structure
+			for(Member dobIteratemember : tempDobMems){
+				dobMonth="";
+				dobDate="";
+				dobDate=dobIteratemember.getMem_DOBFlag(); //get date
+				
+				
+				if(dobDate !=null){
+					dobMonth = dobDate.substring(0,2); //get testable value
+				}
+				if("2".equals(month)){ //test monnths, if true assign member to member report list, else continue
+					Member dobReport = new Member();
+					dobReport.setMem_ID(dobIteratemember.getMem_ID());
+					dobReport.setMem_FName(dobIteratemember.getMem_FName());
+					dobReport.setMem_LName(dobIteratemember.getMem_LName());
+					dobReport.setMem_DOBFlag(dobIteratemember.getMem_DOBFlag());
+					dobReport.setMem_Email(dobIteratemember.getMem_Email());
+					dobReport.setMem_HPhone(dobIteratemember.getMem_HPhone());
+					dobMembers.add(dobReport);
+					System.out.println("added mem");
+				}
+
+			}
+			
 		}
 	}
 	
@@ -164,7 +202,7 @@
 				  <option value="2">February</option>
 				  <option value="3">March</option>
 				  <option value="4">April</option>
-				  <option value="5">March</option>
+				  <option value="5">May</option>
 				  <option value="6">June</option>
 				  <option value="7">July</option>
 				  <option value="8">August</option>
@@ -183,18 +221,16 @@
 			</form>
 			<table id="listTable">
 				<tr>
-					<th>ID</th><th>Name</th><th>Address</th><th>ZIP</th><th>Email</th><th>Home Phone</th><th>Cell Phone</th><th>Work Phone</th>
+					<th>ID</th><th>Name</th><th>Date of Birth</th><th>Email</th><th>Home Phone</th>
 				</tr>
-				<% for(int index = 0; index < members.size(); index++){ %>
+				<% for(int dobI = 0; dobI < dobMembers.size(); dobI++){ System.out.println(dobMembers.get(dobI).getMem_ID());%>
+				
 								<tr>
-									<td width="30px"><%=members.get(index).getMem_ID()%>
-									<td><%=members.get(index).getMem_LName()%>, <%=members.get(index).getMem_FName()%></td>
-									<td><%=members.get(index).getMem_Add1() %></td>
-									<td><%=members.get(index).getMem_Zip() %></td>
-									<td><%=members.get(index).getMem_GHID() %></td>
-									<td><%=members.get(index).getMem_HPhone() %></td>
-									<td><%=members.get(index).getMem_CPhone() %></td>
-									<td><%=members.get(index).getMem_WPhone() %></td>
+									<td width="30px"><%=dobMembers.get(dobI).getMem_ID()%>
+									<td><%=dobMembers.get(dobI).getMem_LName()%>, <%=dobMembers.get(dobI).getMem_FName()%></td>
+									<td><%=dobMembers.get(dobI).getMem_DOBFlag() %></td>
+									<td><%=dobMembers.get(dobI).getMem_Email() %></td>
+									<td><%=dobMembers.get(dobI).getMem_HPhone() %></td>
 								</tr>
 				<%} %>
 				<!-- <th></th><th>Photos</th><th>Art</th><th>Bowling</th><th>Lab</th><th>Dance</th><th>Fishing</th><th>Water</th><th>Office</th><th>Special</th> -->
