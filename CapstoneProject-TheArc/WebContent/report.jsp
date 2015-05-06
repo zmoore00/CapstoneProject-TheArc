@@ -110,7 +110,6 @@
 					dobReport.setMem_Email(dobIteratemember.getMem_Email());
 					dobReport.setMem_HPhone(dobIteratemember.getMem_HPhone());
 					dobMembers.add(dobReport);
-					System.out.println("added mem");
 				}
 
 			}
@@ -223,7 +222,7 @@
 				<tr>
 					<th>ID</th><th>Name</th><th>Date of Birth</th><th>Email</th><th>Home Phone</th>
 				</tr>
-				<% for(int dobI = 0; dobI < dobMembers.size(); dobI++){ System.out.println(dobMembers.get(dobI).getMem_ID());%>
+				<% for(int dobI = 0; dobI < dobMembers.size(); dobI++){;%>
 				
 								<tr>
 									<td width="30px"><%=dobMembers.get(dobI).getMem_ID()%>
