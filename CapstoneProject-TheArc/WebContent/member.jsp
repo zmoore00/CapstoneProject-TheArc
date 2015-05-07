@@ -230,7 +230,7 @@
  		member.setMem_RenewDate(memRenewDate);
  		member.setMem_CurFlag(memCurFlag.charAt(0));
  		member.setMem_DOBFlag(memDOBFlag);
- 		member.setMem_PhotoFlag(memPhotoFlag.charAt(0));
+ 		member.setMem_PhotoFlag(memPhotoFlag.charAt(0)); 
  		member.setMem_LiabFlag(request.getParameter("mem_LiabFlag").charAt(0));
  		member.setMem_GHID(memGHID);
  		member.setMem_EmailFlag(memEmailFlag.charAt(0));
