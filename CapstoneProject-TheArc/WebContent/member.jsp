@@ -239,7 +239,7 @@
 		MemberDAO.addMember(member);
 		
 		anchor = "member.jsp#create";
-		if(status == 1){
+		if(status == 0){
 			message = "Successfully created member.";
 			
 		}else{
